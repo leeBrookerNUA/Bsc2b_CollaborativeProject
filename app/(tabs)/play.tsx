@@ -1,9 +1,10 @@
-import BatteryCard from "@/componenents/play/BatteryCard";
+import BatteryCard from "@/componenents/BatteryCard";
+import React from "react";
 import { StyleSheet, View } from "react-native";
 
 export default function PlayScreen() {
   return (
-    <View style={StyleSheet.container}>
+    <View style={styles.container}>
       <BatteryCard
         title="Hand Crank is Turning!"
         subtitle="Charging Battery..."
@@ -14,3 +15,12 @@ export default function PlayScreen() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#6fb1ff",
+    padding: 16,
+    justifyContent: "center",
+  },
+});

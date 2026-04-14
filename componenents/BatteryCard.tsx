@@ -1,3 +1,4 @@
+import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 interface BatteryCardProps {
@@ -12,8 +13,11 @@ export default function BatteryCard(props: BatteryCardProps) {
   const { title, subtitle, chargeText, remainingText, fillPercent } = props;
 
   return (
-    // Main Blue Box
     <View style={styles.card}>
+      <View style={styles.batteryWrapper}>
+        <Text>Battery Goes Here</Text>
+      </View>
+
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.subtitle}>{subtitle}</Text>
       <Text style={styles.chargeText}>{chargeText}</Text>
@@ -55,5 +59,8 @@ const styles = StyleSheet.create({
     color: "#EAF2FF",
     fontSize: 14,
     textAlign: "center",
+  },
+  batteryWrapper: {
+    marginBottom: 20,
   },
 });
