@@ -1,23 +1,59 @@
 import { StyleSheet, Text, View } from "react-native";
 
 interface BatteryCardProps {
-    bgColor: string;
-    text: string;
-    icon:  string;
+  title: string;
+  subtitle: string;
+  chargeText: string;
+  remainingText: string;
+  fillPercent: number;
 }
 
-export default function batteryCard (props: BatteryCardProps) {
-    const {bgColor, text, icon } = props;
+export default function BatteryCard(props: BatteryCardProps) {
+  const { title, subtitle, chargeText, remainingText, fillPercent } = props;
 
-        <View style = {styles.container}>
-            <Icon> {icon} </Icon>
-            <Text> {text} </Text>
-        </View>
-
+  return (
+    // Main Blue Box
+    <View style={styles.card}>
+      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.subtitle}>{subtitle}</Text>
+      <Text style={styles.chargeText}>{chargeText}</Text>
+      <Text style={styles.remainingText}>{remainingText}</Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: "#3A86FF"
-    }
-})
+  card: {
+    backgroundColor: "#3A86FF",
+    borderRadius: 24,
+    paddingVertical: 16,
+    paddingHorizontal: 20,
+    alignItems: "center",
+  },
+  title: {
+    color: "#FFFFFF",
+    fontSize: 20,
+    fontWeight: "800",
+    textAlign: "center",
+    marginBottom: 6,
+  },
+  subtitle: {
+    color: "#FFFFFF",
+    opacity: 0.8,
+    fontSize: 16,
+    textAlign: "center",
+    marginBottom: 4,
+  },
+  chargeText: {
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontWeight: "800",
+    textAlign: "center",
+    marginBottom: 4,
+  },
+  remainingText: {
+    color: "#EAF2FF",
+    fontSize: 14,
+    textAlign: "center",
+  },
+});
