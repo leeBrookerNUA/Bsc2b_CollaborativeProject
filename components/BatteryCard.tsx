@@ -101,7 +101,6 @@ const styles = StyleSheet.create({
 // Text styles for title, subtitle, charge text, and remaining text with appropriate colors and font sizes
   title: {
     fontSize: 20,
-    letterSpacing: 0.5,
     textAlign: "center",
     marginBottom: 8,
   },
@@ -109,14 +108,12 @@ const styles = StyleSheet.create({
   subtitle: {
     opacity: 0.8,
     fontSize: 16,
-    letterSpacing: 0.5,
     textAlign: "center",
     marginBottom: 10,
   },
   // Charge text with bold font to emphasize the current charge status
   chargeText: {
     fontSize: 16,
-    letterSpacing: 0.5,
     textAlign: "center",
     marginBottom: 6,
   },
@@ -124,7 +121,6 @@ const styles = StyleSheet.create({
   remainingText: {
     opacity: 0.8,
     fontSize: 14,
-    letterSpacing: 0.5,
     textAlign: "center",
   },
   
