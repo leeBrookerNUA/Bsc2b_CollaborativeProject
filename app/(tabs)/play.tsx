@@ -1,10 +1,18 @@
-import BatteryCard from "@/componenents/BatteryCard";
+import BatteryCard from "@/components/BatteryCard";
+import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { ImageBackground, StyleSheet } from "react-native";
+
 
 export default function PlayScreen() {
-  return (
-    <View style={styles.container}>
+ return (
+  <LinearGradient colors={["#6fb1ff", "#3A86FF"]} style={styles.container}>
+
+    <ImageBackground
+      source={require("../../assets/stars-bg.png")}
+      style={styles.starsBackground}
+      imageStyle={styles.starsImage}
+    >
       <BatteryCard
         title="Hand Crank is Turning!"
         subtitle="Charging Battery..."
@@ -12,14 +20,24 @@ export default function PlayScreen() {
         remainingText="120 Cranks Remaining"
         fillPercent={65}
       />
-    </View>
-  );
+
+    </ImageBackground>
+  </LinearGradient>
+);
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#6fb1ff",
+  },
+  starsBackground: {
+    flex: 1,
+  },
+  starsImage: {
+    resizeMode: "cover",
+  },
+  content: {
+    flex: 1,
     padding: 16,
     justifyContent: "center",
   },

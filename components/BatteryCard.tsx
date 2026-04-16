@@ -1,3 +1,4 @@
+import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import AppHeading from "./AppHeading";
@@ -28,7 +29,7 @@ export default function BatteryCard(props: BatteryCardProps) {
 
   return (
     // Card container that holds the battery icon and text information, styled with a background color and padding
-    <View style={styles.card}>
+    <LinearGradient style={styles.card} colors={["#6fb1ff", "#3A86FF"]}>
         {/* Battery icon wrapper */}
         <View style={styles.batteryWrapper}>
          
@@ -43,7 +44,7 @@ export default function BatteryCard(props: BatteryCardProps) {
       <AppText style={styles.subtitle}>{subtitle}</AppText>
       <AppHeading style={styles.chargeText}>{chargeText}</AppHeading>
       <AppText style={styles.remainingText}>{remainingText}</AppText>
-    </View>
+    </LinearGradient>
   );
 }
 
