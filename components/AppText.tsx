@@ -16,7 +16,7 @@ export default function AppText({ children, style, ...rest }: AppTextProps) {
 
 const styles = StyleSheet.create({
     text: {
-        fontFamily: "quicksand_600SemiBold",
+        fontFamily: "quicksand_500Medium",
         color: "#FFFFFF",
         textShadowColor: "rgba(0, 0, 0, 0.25)",
         textShadowOffset: { width: 0, height: 4 },

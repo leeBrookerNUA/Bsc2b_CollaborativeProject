@@ -16,13 +16,13 @@ interface BatteryCardProps {
 // BatteryCard component that displays a battery icon with dynamic fill based on the fillPercent prop, along with title, subtitle, charge status, and remaining cranks information
 export default function BatteryCard(props: BatteryCardProps) {
   // Destructure props for easier access to individual properties
-  const { title, subtitle, chargeText, remainingText, fillPercent} = props;
+  const { title, subtitle, chargeText, remainingText, fillPercent } = props;
 
   // Determine battery color based on fill percentage, with thresholds for low, medium, and high charge levels
-  let batteryColor = "#2ECC71"; 
+  let batteryColor = "#2ECC71";
 
   if (fillPercent < 20) {
-    batteryColor = "#FF4D4F"; 
+    batteryColor = "#FF4D4F";
   } else if (fillPercent < 50) {
     batteryColor = "#FF9F1C";
   }
@@ -30,16 +30,18 @@ export default function BatteryCard(props: BatteryCardProps) {
   return (
     // Card container that holds the battery icon and text information, styled with a background color and padding
     <LinearGradient style={styles.card} colors={["#6fb1ff", "#3A86FF"]}>
-        {/* Battery icon wrapper */}
-        <View style={styles.batteryWrapper}>
-         
-          <View style={styles.batteryBody}>
-            {/* Uses fillPercent to determine battery fill width */}
+      <View style={styles.darkOverlay} />
+      <View style={styles.lightOverlay} />
+      {/* Battery icon wrapper */}
+      <View style={styles.batteryWrapper}>
+
+        <View style={styles.batteryBody}>
+          {/* Uses fillPercent to determine battery fill width */}
           <View style={[styles.batteryFill, { width: `${fillPercent}%`, backgroundColor: batteryColor },]} />
-        </View> 
+        </View>
         <View style={styles.batteryTip} />
       </View>
-    
+
       <AppHeading style={styles.title}>{title}</AppHeading>
       <AppText style={styles.subtitle}>{subtitle}</AppText>
       <AppHeading style={styles.chargeText}>{chargeText}</AppHeading>
@@ -52,7 +54,6 @@ export default function BatteryCard(props: BatteryCardProps) {
 const styles = StyleSheet.create({
   // Card container with background and padding
   card: {
-    backgroundColor: "#3A86FF",
     borderRadius: 24,
     paddingVertical: 24,
     paddingHorizontal: 20,
@@ -66,8 +67,18 @@ const styles = StyleSheet.create({
     shadowRadius: 16,
     elevation: 6,
   },
+  darkOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "rgba(0, 0, 0, 0.1)",
+    borderRadius: 20,
+  },
+  lightOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "rgba(255, 255, 255, 0.05)",
+    borderRadius: 20,
+  },
 
-// Battery icon wrapper with horizontal layout
+  // Battery icon wrapper with horizontal layout
   batteryWrapper: {
     flexDirection: "row",
     alignItems: "center",
@@ -97,8 +108,8 @@ const styles = StyleSheet.create({
     borderRadius: 2,
     marginLeft: -2,
   },
-  
-// Text styles for title, subtitle, charge text, and remaining text with appropriate colors and font sizes
+
+  // Text styles for title, subtitle, charge text, and remaining text with appropriate colors and font sizes
   title: {
     fontSize: 20,
     textAlign: "center",
@@ -123,5 +134,5 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: "center",
   },
-  
+
 });

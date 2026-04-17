@@ -1,5 +1,6 @@
 import BadgeCard from "@/components/BadgeCard";
 import BatteryCard from "@/components/BatteryCard";
+import FunFactCard from "@/components/FunFactCard";
 import StatCard from "@/components/StatCard";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
@@ -54,6 +55,12 @@ export default function PlayScreen() {
               iconBgColor="rgba(46, 204, 113, 0.12)"
             />
 
+            <FunFactCard
+              title="Live Fun Fact!"
+              subtitle="It takes around 200 cranks to fully  charge one battery"
+              button="Learn More"
+            />
+
           </View>
         </View>
       </ImageBackground>
@@ -75,6 +82,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     justifyContent: "center",
+    flexDirection: "column",
   },
   statsRow: {
     flexDirection: "row",
