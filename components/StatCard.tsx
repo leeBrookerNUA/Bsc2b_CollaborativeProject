@@ -9,7 +9,7 @@ interface StatCardProps {
     value: string,
     title: string,
     iconColor: string,
-    iconBgColor: string,
+    iconBgColor?: string,
 }
 
 export default function StatCard(props: StatCardProps) {
