@@ -54,19 +54,21 @@ export default function BatteryCard(props: BatteryCardProps) {
 const styles = StyleSheet.create({
   // Card container with background and padding
   card: {
+    width: "100%",
     borderRadius: 24,
-    paddingVertical: 24,
-    paddingHorizontal: 20,
+    paddingVertical: 18,
+    paddingHorizontal: 18,
     alignItems: "center",
     justifyContent: "center",
-    minHeight: 220,
+    minHeight: 175,
 
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 8 },
+    shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.15,
-    shadowRadius: 16,
-    elevation: 6,
+    shadowRadius: 10,
+    elevation: 4,
   },
+
   darkOverlay: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: "rgba(0, 0, 0, 0.1)",
@@ -82,16 +84,16 @@ const styles = StyleSheet.create({
   batteryWrapper: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 24,
+    marginBottom: 14,
   },
   // Battery body with border and padding
   batteryBody: {
-    width: 120,
-    height: 60,
+    width: 92,
+    height: 42,
     borderWidth: 4,
     borderColor: "#FFFFFF",
-    borderRadius: 16,
-    padding: 6,
+    borderRadius: 14,
+    padding: 5,
     justifyContent: "center",
   },
   // Battery fill with dynamic width based on fillPercent prop
@@ -102,11 +104,11 @@ const styles = StyleSheet.create({
   },
   // Battery tip to represent the positive terminal of the battery
   batteryTip: {
-    width: 10,
-    height: 20,
+    width: 8,
+    height: 18,
     backgroundColor: "#FFFFFF",
-    borderRadius: 2,
-    marginLeft: -2,
+    borderRadius: 4,
+    marginLeft: 4,
   },
 
   // Text styles for title, subtitle, charge text, and remaining text with appropriate colors and font sizes

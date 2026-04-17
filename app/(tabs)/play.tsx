@@ -1,6 +1,7 @@
 import BadgeCard from "@/components/BadgeCard";
 import BatteryCard from "@/components/BatteryCard";
 import FunFactCard from "@/components/FunFactCard";
+import HelpTipCard from "@/components/HelpTipCard";
 import StatCard from "@/components/StatCard";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
@@ -8,7 +9,7 @@ import { ImageBackground, StyleSheet, View } from "react-native";
 
 export default function PlayScreen() {
   return (
-    <LinearGradient colors={["#6fb1ff", "#3A86FF"]} style={styles.container}>
+    <LinearGradient colors={["#3A86FF", "#6fb1ff"]} style={styles.container}>
 
       <ImageBackground
         source={require("../../assets/stars-bg.png")}
@@ -25,10 +26,14 @@ export default function PlayScreen() {
             fillPercent={65}
           />
 
+          <View style={styles.spacer10} />
+
           <BadgeCard
             title="Hand Crank Active!"
             iconName="refresh"
           />
+
+          <View style={styles.spacer12} />
 
           <View style={styles.statsRow}>
             <StatCard
@@ -54,14 +59,23 @@ export default function PlayScreen() {
               iconColor="#2ECC71"
               iconBgColor="rgba(46, 204, 113, 0.12)"
             />
-
-            <FunFactCard
-              title="Live Fun Fact!"
-              subtitle="It takes around 200 cranks to fully  charge one battery"
-              button="Learn More"
-            />
-
           </View>
+
+          <View style={styles.spacer14} />
+
+          <FunFactCard
+            title="Live Fun Fact!"
+            subtitle="It takes around 200 cranks to fully  charge one battery"
+            button="Learn More"
+          />
+
+          <View style={styles.spacer10} />
+
+          <HelpTipCard
+            title="Keep turning! steadily to charge faster!"
+            iconName="question"
+          />
+
         </View>
       </ImageBackground>
     </LinearGradient>
@@ -80,13 +94,20 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    padding: 16,
-    justifyContent: "center",
-    flexDirection: "column",
+    paddingHorizontal: 16,
+    paddingTop: 90,
   },
   statsRow: {
     flexDirection: "row",
-    marginTop: 16,
-    gap: 12,
-  }
+    gap: 10,
+  },
+  spacer10: {
+    height: 10,
+  },
+  spacer12: {
+    height: 12,
+  },
+  spacer14: {
+    height: 14,
+  },
 });
