@@ -85,7 +85,8 @@ const styles = StyleSheet.create({
   batteryWrapper: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 10,
+    marginBottom: 8,
+    marginTop: 8,
   },
   // Battery body with border and padding
   batteryBody: {

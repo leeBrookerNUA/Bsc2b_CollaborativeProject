@@ -1,18 +1,20 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 import AppHeading from "./AppHeading";
 import AppText from "./AppText";
+
 
 interface FunFactCardProps {
     title: string;
     subtitle: string;
     button: string;
+    onMorePress?: () => void;
 }
 
 export default function FunFactCard(props: FunFactCardProps) {
 
-    const { title, subtitle, button } = props;
+    const { title, subtitle, button, onMorePress } = props;
 
     return (
         <LinearGradient style={styles.card} colors={["#FFF2A6", "#FFE066", "#E0C120"]}>
@@ -23,9 +25,9 @@ export default function FunFactCard(props: FunFactCardProps) {
                 <AppHeading style={styles.title}>{title}</AppHeading>
                 <AppText style={styles.subtitle}>{subtitle}</AppText>
 
-                <View style={styles.moreButton}>
+                <Pressable style={styles.moreButton} onPress={onMorePress}>
                     <AppHeading style={styles.button}>{button}</AppHeading>
-                </View>
+                </Pressable>
             </View>
         </LinearGradient >
     )
