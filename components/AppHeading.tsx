@@ -16,11 +16,11 @@ export default function AppHeading({ children, style, ...rest }: AppHeadingProps
 
 const styles = StyleSheet.create({
     text: {
-        fontFamily: "Fredoka_600SemiBold",
+        fontFamily: "Fredoka_700Bold",
         color: "#FFFFFF",
-        textShadowColor: "rgba(0, 0, 0, 0.25)",
+        textShadowColor: "rgba(0, 0, 0, 0.2)",
         textShadowOffset: { width: 0, height: 4 },
-        textShadowRadius: 4,
-        letterSpacing: 0.5,
+        textShadowRadius: 6,
+        letterSpacing: 0.2,
     },
 });

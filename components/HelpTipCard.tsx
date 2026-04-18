@@ -17,7 +17,7 @@ export default function HelpTipCard(props: HelpTipCardProps) {
             <View style={styles.contentRow}>
 
                 <View style={styles.iconContainer}>
-                    <FontAwesome5 name={iconName} size={24} color="#FFFFFF" />
+                    <FontAwesome5 name={iconName} size={14} color="#FFFFFF" />
                 </View>
 
                 <AppText style={styles.title}>{title}</AppText>
@@ -30,18 +30,16 @@ const styles = StyleSheet.create({
     card: {
         width: "100%",
         backgroundColor: "rgba(255, 255, 255, 0.15)",
-        borderRadius: 16,
-        paddingVertical: 14,
-        paddingHorizontal: 16,
+        borderRadius: 14,
+        borderWidth: 1.5,
+        borderColor: "rgba(255, 255, 255, 0.12)",
+        paddingVertical: 8,
+        paddingHorizontal: 12,
         alignItems: "center",
         flexDirection: "row",
         justifyContent: "center",
+        overflow: 'hidden',
 
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 8 },
-        shadowOpacity: 0.15,
-        shadowRadius: 16,
-        elevation: 6,
     },
     contentRow: {
         flexDirection: "row",
@@ -55,10 +53,10 @@ const styles = StyleSheet.create({
     iconContainer: {
         backgroundColor: "rgba(255, 255, 255, 0.15)",
         borderRadius: 99,
-        width: 36,
-        height: 36,
+        width: 24,
+        height: 24,
         alignItems: "center",
         justifyContent: "center",
-        marginLeft: 12,
+        marginRight: 8,
     },
 });

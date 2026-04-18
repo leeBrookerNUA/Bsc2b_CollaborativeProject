@@ -13,12 +13,13 @@ export default function BadgeCard(props: BadgeCardProps) {
 
     return (
         <View style={styles.card}>
+
             <View style={styles.contentRow}>
 
                 <AppText style={styles.title}>{title}</AppText>
 
                 <View style={styles.iconContainer}>
-                    <FontAwesome name={iconName} size={24} color="#FFFFFF" />
+                    <FontAwesome name={iconName} size={16} color="#FFFFFF" />
                 </View>
             </View>
         </View>
@@ -29,18 +30,15 @@ const styles = StyleSheet.create({
     card: {
         width: "100%",
         backgroundColor: "rgba(255, 255, 255, 0.15)",
-        borderRadius: 16,
-        paddingVertical: 14,
-        paddingHorizontal: 16,
+        borderRadius: 14,
+        borderWidth: 1.5,
+        borderColor: "rgba(255, 255, 255, 0.12)",
+        paddingVertical: 8,
+        paddingHorizontal: 12,
         alignItems: "center",
         flexDirection: "row",
         justifyContent: "center",
-
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 8 },
-        shadowOpacity: 0.15,
-        shadowRadius: 16,
-        elevation: 6,
+        overflow: "hidden",
     },
     contentRow: {
         flexDirection: "row",
@@ -54,10 +52,10 @@ const styles = StyleSheet.create({
     iconContainer: {
         backgroundColor: "rgba(255, 255, 255, 0.15)",
         borderRadius: 99,
-        width: 36,
-        height: 36,
+        width: 28,
+        height: 28,
         alignItems: "center",
         justifyContent: "center",
-        marginLeft: 12,
+        marginLeft: 8,
     },
 });

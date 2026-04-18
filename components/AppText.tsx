@@ -16,11 +16,11 @@ export default function AppText({ children, style, ...rest }: AppTextProps) {
 
 const styles = StyleSheet.create({
     text: {
-        fontFamily: "quicksand_500Medium",
+        fontFamily: "Quicksand_700Bold",
         color: "#FFFFFF",
-        textShadowColor: "rgba(0, 0, 0, 0.25)",
-        textShadowOffset: { width: 0, height: 4 },
-        textShadowRadius: 4,
-        letterSpacing: 0.5,
+        textShadowColor: "rgba(0, 0, 0, 0.2)",
+        textShadowOffset: { width: 0, height: 2 },
+        textShadowRadius: 6,
+        letterSpacing: 0.2,
     },
 });

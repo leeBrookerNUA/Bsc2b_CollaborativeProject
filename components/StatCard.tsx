@@ -13,7 +13,7 @@ interface StatCardProps {
 }
 
 export default function StatCard(props: StatCardProps) {
-    const { iconName, value, title, iconColor, iconBgColor = "rgba(255,255,255,0.4)" } = props;
+    const { iconName, value, title, iconColor, iconBgColor = "rgba(255,255,255,0.55)" } = props;
 
     return (
         <View style={styles.card}>
@@ -32,20 +32,15 @@ export default function StatCard(props: StatCardProps) {
 const styles = StyleSheet.create({
     card: {
         flex: 1,
-        backgroundColor: "rgba(255, 255, 255, 0.9)",
-        borderColor: "rgba(58, 134, 255, 0.25)",
-        borderWidth: 2,
+        backgroundColor: "#EEF4FF",
+        borderColor: "rgba(58, 134, 255, 0.5)",
+        borderWidth: 4,
         borderRadius: 20,
         paddingVertical: 8,
-        paddingHorizontal: 12,
+        paddingHorizontal: 8,
         alignItems: "center",
         justifyContent: "center",
-
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 8 },
-        shadowOpacity: 0.15,
-        shadowRadius: 16,
-        elevation: 6,
+        overflow: 'hidden',
     },
 
     iconContainer: {
@@ -54,17 +49,17 @@ const styles = StyleSheet.create({
         height: 36,
         alignItems: "center",
         justifyContent: "center",
-        marginBottom: 10,
+        marginBottom: 6,
     },
 
     value: {
         fontSize: 16,
         color: "#1F2A44",
-        marginBottom: 4,
+        marginBottom: 2,
     },
 
     title: {
-        fontSize: 16,
+        fontSize: 14,
         color: "#5B6780",
         textAlign: "center",
     },

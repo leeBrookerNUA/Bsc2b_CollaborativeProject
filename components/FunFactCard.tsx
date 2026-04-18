@@ -35,17 +35,17 @@ const styles = StyleSheet.create({
     card: {
         width: "100%",
         borderRadius: 20,
-        paddingVertical: 24,
-        paddingHorizontal: 20,
+        paddingVertical: 14,
+        paddingHorizontal: 14,
         alignItems: "stretch",
         justifyContent: "center",
-        minHeight: 175,
+        overflow: "hidden",
 
         shadowColor: "#000",
-        shadowOffset: { width: 0, height: 8 },
-        shadowOpacity: 0.15,
-        shadowRadius: 16,
-        elevation: 6,
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.1,
+        shadowRadius: 8,
+        elevation: 2,
     },
     darkOverlay: {
         ...StyleSheet.absoluteFillObject,
@@ -66,12 +66,12 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         textAlign: "left",
-        marginBottom: 8,
+        marginBottom: 6,
     },
     subtitle: {
-        fontSize: 16,
+        fontSize: 18,
         textAlign: "center",
-        marginBottom: 8,
+        marginBottom: 6,
     },
     button: {
         fontSize: 16,
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         alignItems: "center",
         justifyContent: "center",
-        paddingVertical: 10,
-        marginTop: 8,
+        paddingVertical: 8,
+        marginTop: 4,
     },
 });
