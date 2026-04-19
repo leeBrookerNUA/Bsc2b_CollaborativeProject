@@ -1,10 +1,10 @@
-import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import AppText from "./AppText";
 
 interface InstructionCardProps {
-    iconName: React.ComponentProps<typeof FontAwesome5>["name"];
+    iconName: React.ComponentProps<typeof FontAwesome>["name"];
     title: string;
 };
 
@@ -16,7 +16,7 @@ export default function InstructionCard(props: InstructionCardProps) {
             <View style={styles.contentRow}>
 
                 <View style={styles.iconContainer}>
-                    <FontAwesome5 name={iconName} size={24} color="#FFFFFF" />
+                    <FontAwesome name={iconName} size={24} color="#FFFFFF" />
                 </View>
 
                 <AppText style={styles.title}>{title}</AppText>

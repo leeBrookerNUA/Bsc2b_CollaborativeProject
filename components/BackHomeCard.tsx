@@ -1,19 +1,22 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { Pressable, StyleSheet } from "react-native";
 import AppHeading from "./AppHeading";
 
 interface BackHomeCardProps {
-    title: string;
+    button: string;
+    onBackPress?: () => void;
 
 }
 
 export default function BackHomeCard(props: BackHomeCardProps) {
-    const { title } = props;
+    const {button, onBackPress } = props;
 
     return (
-        <View style={styles.card}>
-            <AppHeading style={styles.title}>{title}</AppHeading>
-        </View>
+        <Pressable style={styles.backButton} onPress={onBackPress}> 
+
+            <AppHeading style={styles.button}>{button}</AppHeading>
+
+        </Pressable>
 
     );
 }

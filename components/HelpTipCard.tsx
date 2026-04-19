@@ -28,8 +28,9 @@ export default function HelpTipCard(props: HelpTipCardProps) {
 
 const styles = StyleSheet.create({
     card: {
+        minHeight: 64,
         width: "100%",
-        backgroundColor: "rgba(255, 255, 255, 0.3)",
+        backgroundColor: "rgba(255, 255, 255, 0.15)",
         borderRadius: 14,
         borderWidth: 1.5,
         borderColor: "rgba(255, 255, 255, 0.12)",

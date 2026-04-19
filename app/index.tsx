@@ -22,48 +22,48 @@ export default function InstructionsScreen() {
                 onSettingsPress={() => console.log("Settings Pressed")}
             />
 
-            <View style={styles.spacer16} />
+            <View style={styles.spacer12} />
 
             <InfoCard
                 title="How to use the toy!"
                 subtitle="Folllow these steps to start charging your toy battery!"
             />
 
-            <View style={styles.spacer16} />
+            <View style={styles.spacer12} />
 
             <InstructionCard 
                 iconName="bolt"
                 title="Turn on the toy"
             />
-            <View style={styles.spacer16} />
+            <View style={styles.spacer12} />
 
             <InstructionCard 
                 iconName="wifi"
                 title="Connect the toy to Wi-Fi"
             />
 
-            <View style={styles.spacer16} />
+            <View style={styles.spacer12} />
 
             <InstructionCard 
                 iconName="refresh"
                 title="Turn the hand crank or place the toy in sunlight"
             />
 
-            <View style={styles.spacer16} />
+            <View style={styles.spacer12} />
 
             <InstructionCard 
                 iconName="bolt"
                 title="Watch the battery charge in the app"
             />
 
-            <View style={styles.spacer16} />
+            <View style={styles.spacer20} />
 
             <HelpTipCard
                 iconName="question-circle"
                 title="Ask an adult if you need help connecting the toy!"
             />
 
-            <View style={styles.spacer32} />
+            <View style={styles.spacer20} />
 
             <BackHomeCard
                 title="Back Home"
@@ -74,10 +74,10 @@ export default function InstructionsScreen() {
 }
 
 const styles = StyleSheet.create({
-    spacer16: {
-        height: 16,
+    spacer12: {
+        height: 12,
     },
-    spacer32: {
-        height: 32,
+    spacer20: {
+        height: 20,
     },
 });
