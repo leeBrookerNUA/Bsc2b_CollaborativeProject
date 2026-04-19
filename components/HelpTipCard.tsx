@@ -3,12 +3,13 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import AppText from "./AppText";
 
-interface InstructionCardProps {
+interface HelpTipCardProps {
     iconName: React.ComponentProps<typeof FontAwesome5>["name"];
     title: string;
-};
 
-export default function InstructionCard(props: InstructionCardProps) {
+}
+
+export default function HelpTipCard(props: HelpTipCardProps) {
     const { iconName, title } = props;
 
     return (
@@ -19,7 +20,7 @@ export default function InstructionCard(props: InstructionCardProps) {
                     <FontAwesome5 name={iconName} size={24} color="#FFFFFF" />
                 </View>
 
-                <AppText style={styles.title}>{title}</AppText>
+                <AppText style={styles.title}>{title}</AppText> 
             </View>
         </View>
     );
@@ -34,12 +35,15 @@ const styles = StyleSheet.create({
         borderColor: "rgba(255, 255, 255, 0.12)",
         paddingVertical: 6,
         paddingHorizontal: 10,
+        alignItems: "center",
         flexDirection: "row",
+        justifyContent: "center",
         overflow: 'hidden',
 
     },
     contentRow: {
         flexDirection: "row",
+        alignItems: "center",
     },
 
     title: {
@@ -49,8 +53,8 @@ const styles = StyleSheet.create({
     iconContainer: {
         backgroundColor: "rgba(255, 255, 255, 0.15)",
         borderRadius: 99,
-        width: 32,
-        height: 32,
+        width: 20,
+        height: 20,
         alignItems: "center",
         justifyContent: "center",
         marginRight: 6,
