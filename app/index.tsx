@@ -26,7 +26,7 @@ export default function InstructionsScreen() {
 
             <InfoCard
                 title="How to use the toy!"
-                subtitle="Folllow these steps to start charging your toy battery!"
+                subtitle="Follow these steps to start charging your toy battery!"
             />
 
             <View style={styles.spacer12} />
@@ -67,6 +67,7 @@ export default function InstructionsScreen() {
 
             <BackHomeCard
                 title="Back Home"
+                onBackHomePress={() => console.log("Back Home Pressed")}
             />
 
         </ScreenBackground>

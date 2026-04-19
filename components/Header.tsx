@@ -17,9 +17,12 @@ export default function Header(props: HeaderProps) {
 
     return (
         <View style={styles.header}>
+
             <View style={styles.iconSlot}>
                 {leftIconName ? (
-                    <Pressable style={styles.iconButton} onPress={onBackPress}>
+                    <Pressable
+                    onPress={onBackPress}
+                    style={({ pressed }) => [styles.iconButton, pressed && styles.iconButtonPressed,]}>
                         <FontAwesome5 name={leftIconName} size={32} color="#FFFFFF" />
                     </Pressable>
                 ) : null}
@@ -29,7 +32,9 @@ export default function Header(props: HeaderProps) {
 
             <View style={styles.iconSlot}>
                 {rightIconName ? (
-                    <Pressable style={styles.iconButton} onPress={onSettingsPress}>
+                    <Pressable
+                        onPress={onSettingsPress}
+                        style={({ pressed }) => [styles.iconButton, pressed && styles.iconButtonPressed,]}>
                         <FontAwesome5 name={rightIconName} size={32} color="#FFFFFF" />
                     </Pressable>
                 ) : null}
@@ -50,11 +55,11 @@ const styles = StyleSheet.create({
     },
     iconSlot: {
         width: 38,
-        height: 38,        
+        height: 38,
         alignItems: "center",
         justifyContent: "center",
     },
-    
+
     iconButton: {
         width: 38,
         height: 38,
@@ -63,6 +68,12 @@ const styles = StyleSheet.create({
         backgroundColor: "rgba(255, 255, 255, 0.12)",
         borderRadius: 18,
     },
+     iconButtonPressed: {
+        backgroundColor: "rgba(58, 134, 255, 0.75)",
+        borderWidth: 2,
+        borderColor: "rgba(255, 255, 255, 0.5)",
+    },
+    
     title: {
         fontSize: 32,
         textAlign: "center",

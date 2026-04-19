@@ -28,7 +28,7 @@ export default function HelpTipCard(props: HelpTipCardProps) {
 
 const styles = StyleSheet.create({
     card: {
-        minHeight: 64,
+        minHeight: 52,
         width: "100%",
         backgroundColor: "rgba(255, 255, 255, 0.15)",
         borderRadius: 14,
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     contentRow: {
         flexDirection: "row",
         alignItems: "center",
+        justifyContent: "center",
     },
 
     title: {

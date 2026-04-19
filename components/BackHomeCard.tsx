@@ -3,19 +3,21 @@ import { Pressable, StyleSheet } from "react-native";
 import AppHeading from "./AppHeading";
 
 interface BackHomeCardProps {
-    button: string;
-    onBackPress?: () => void;
+    title: string;
+    onBackHomePress?: () => void;
 
 }
 
 export default function BackHomeCard(props: BackHomeCardProps) {
-    const {button, onBackPress } = props;
+    const { title, onBackHomePress } = props;
 
     return (
-        <Pressable style={styles.backButton} onPress={onBackPress}> 
 
-            <AppHeading style={styles.button}>{button}</AppHeading>
-
+        <Pressable
+            onPress={onBackHomePress}
+            style={({ pressed }) => [styles.card, pressed && styles.cardPressed,
+            ]}>
+            <AppHeading style={styles.title}>{title}</AppHeading>
         </Pressable>
 
     );
@@ -36,6 +38,11 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         overflow: 'hidden',
 
+    },
+    cardPressed: {
+        backgroundColor: "rgba(58, 134, 255, 0.75)",
+        borderWidth: 2,
+        borderColor: "rgba(255, 255, 255, 0.5)",
     },
 
     title: {

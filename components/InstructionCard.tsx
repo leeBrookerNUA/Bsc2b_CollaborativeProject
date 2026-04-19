@@ -28,18 +28,19 @@ export default function InstructionCard(props: InstructionCardProps) {
 const styles = StyleSheet.create({
     card: {
         width: "100%",
+        minHeight: 50,
         backgroundColor: "rgba(255, 255, 255, 0.3)",
-        borderRadius: 14,
+        borderRadius: 16,
         borderWidth: 1.5,
         borderColor: "rgba(255, 255, 255, 0.12)",
-        paddingVertical: 6,
-        paddingHorizontal: 10,
-        flexDirection: "row",
+        paddingVertical: 8,
+        paddingHorizontal: 12,
         overflow: 'hidden',
 
     },
     contentRow: {
         flexDirection: "row",
+        alignItems: "center",
     },
 
     title: {

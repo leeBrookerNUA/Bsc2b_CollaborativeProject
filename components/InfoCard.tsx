@@ -37,11 +37,11 @@ const styles = StyleSheet.create({
   card: {
     width: "100%",
     borderRadius: 24,
-    paddingVertical: 10,
-    paddingHorizontal: 14,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
     alignItems: "center",
     justifyContent: "center",
-    minHeight: 150,
+    minHeight: 120,
     overflow: "hidden",
 
     shadowColor: "#000",
@@ -64,14 +64,14 @@ const styles = StyleSheet.create({
 
 
   title: {
-    fontSize: 28,
+    fontSize: 24,
     textAlign: "center",
     marginBottom: 6,
   },
  
   subtitle: {
     opacity: 0.8,
-    fontSize: 18,
+    fontSize: 16,
     textAlign: "center",
     marginBottom: 6,
   },
