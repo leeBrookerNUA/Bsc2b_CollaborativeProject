@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
         paddingVertical: 6,
         paddingHorizontal: 10,
         alignItems: "center",
-        flexDirection: "row",
         justifyContent: "center",
         overflow: 'hidden',
 
@@ -46,17 +45,20 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
+        width: "100%",
     },
 
     title: {
         fontSize: 14,
+        flexShrink: 1,
+        lineHeight: 16,
     },
 
     iconContainer: {
         backgroundColor: "rgba(255, 255, 255, 0.15)",
         borderRadius: 99,
-        width: 20,
-        height: 20,
+        width: 28,
+        height: 28,
         alignItems: "center",
         justifyContent: "center",
         marginRight: 6,

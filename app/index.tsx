@@ -9,76 +9,82 @@ import { StyleSheet, View } from "react-native";
 
 
 export default function InstructionsScreen() {
-    return (
+  return (
 
-        <ScreenBackground>
+    <ScreenBackground>
+      <View style={styles.page}>
+        <View>
 
+          <Header
+            title="Instructions"
+            leftIconName="arrow-circle-left"
+            rightIconName="cog"
+            onBackPress={() => console.log("Back Pressed")}
+            onSettingsPress={() => console.log("Settings Pressed")}
+          />
 
-            <Header
-                title="Instructions"
-                leftIconName="arrow-circle-left"
-                rightIconName="cog"
-                onBackPress={() => console.log("Back Pressed")}
-                onSettingsPress={() => console.log("Settings Pressed")}
-            />
+          <View style={styles.spacer12} />
 
-            <View style={styles.spacer12} />
+          <InfoCard
+            title="How to use the toy!"
+            subtitle="Follow these steps to start charging your toy battery!"
+          />
 
-            <InfoCard
-                title="How to use the toy!"
-                subtitle="Follow these steps to start charging your toy battery!"
-            />
+          <View style={styles.spacer12} />
 
-            <View style={styles.spacer12} />
+          <InstructionCard
+            iconName="bolt"
+            title="Turn on the toy"
+          />
+          <View style={styles.spacer12} />
 
-            <InstructionCard 
-                iconName="bolt"
-                title="Turn on the toy"
-            />
-            <View style={styles.spacer12} />
+          <InstructionCard
+            iconName="wifi"
+            title="Connect the toy to Wi-Fi"
+          />
 
-            <InstructionCard 
-                iconName="wifi"
-                title="Connect the toy to Wi-Fi"
-            />
+          <View style={styles.spacer12} />
 
-            <View style={styles.spacer12} />
+          <InstructionCard
+            iconName="refresh"
+            title="Turn the hand crank or place it in sunlight"
+          />
 
-            <InstructionCard 
-                iconName="refresh"
-                title="Turn the hand crank or place the toy in sunlight"
-            />
+          <View style={styles.spacer12} />
 
-            <View style={styles.spacer12} />
+          <InstructionCard
+            iconName="bolt"
+            title="Watch the battery charge in the app"
+          />
 
-            <InstructionCard 
-                iconName="bolt"
-                title="Watch the battery charge in the app"
-            />
+          <View style={styles.spacer20} />
 
-            <View style={styles.spacer20} />
+          <HelpTipCard
+            iconName="question-circle"
+            title="Ask an adult if you need help connecting the toy"
+          />
 
-            <HelpTipCard
-                iconName="question-circle"
-                title="Ask an adult if you need help connecting the toy!"
-            />
+        </View>
 
-            <View style={styles.spacer20} />
+        <BackHomeCard
+          title="Back Home"
+          onBackHomePress={() => console.log("Back Home Pressed")}
+        />
+      </View>
 
-            <BackHomeCard
-                title="Back Home"
-                onBackHomePress={() => console.log("Back Home Pressed")}
-            />
-
-        </ScreenBackground>
-    );
+    </ScreenBackground>
+  );
 }
 
 const styles = StyleSheet.create({
-    spacer12: {
-        height: 12,
-    },
-    spacer20: {
-        height: 20,
-    },
+  page: {
+    flex: 1,
+    justifyContent: "space-between",
+  },
+  spacer12: {
+    height: 12,
+  },
+  spacer20: {
+    height: 20,
+  },
 });

@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
         opacity: 0.7,
     },
     scrollContent: {
+        flexGrow: 1,
         paddingHorizontal: 16,
         paddingTop: 18,
         paddingBottom: 28,

@@ -28,13 +28,14 @@ export default function InstructionCard(props: InstructionCardProps) {
 const styles = StyleSheet.create({
     card: {
         width: "100%",
-        minHeight: 50,
+        minHeight: 52,
         backgroundColor: "rgba(255, 255, 255, 0.3)",
         borderRadius: 16,
         borderWidth: 1.5,
         borderColor: "rgba(255, 255, 255, 0.12)",
         paddingVertical: 8,
         paddingHorizontal: 12,
+        justifyContent: "center",
         overflow: 'hidden',
 
     },
@@ -45,6 +46,8 @@ const styles = StyleSheet.create({
 
     title: {
         fontSize: 14,
+        flexShrink: 1,
+        lineHeight: 18,
     },
 
     iconContainer: {
