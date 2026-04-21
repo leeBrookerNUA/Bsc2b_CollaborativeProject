@@ -1,12 +1,14 @@
 import BackHomeCard from "@/components/BackHomeCard";
 import Header from "@/components/Header";
+import PillButtonCard from "@/components/PillButtonCard";
 
 import ScreenBackground from "@/components/ScreenBackground";
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 
 export default function InstructionsScreen() {
+  const [selectedPill, setSelectedPill] = useState("Solar");
   return (
 
     <ScreenBackground>
@@ -23,7 +25,28 @@ export default function InstructionsScreen() {
 
           <View style={styles.spacer12} />
 
-          
+          <View style={styles.pillRow}>
+
+          <PillButtonCard
+          title="Solar"
+          selected={selectedPill === "Solar"}
+          onPillPress={() => setSelectedPill("Solar")}
+
+          />
+
+          <PillButtonCard
+          title="Wind"
+          selected={selectedPill === "Wind"}
+          onPillPress={() => setSelectedPill("Wind")}
+          />
+
+          <PillButtonCard
+          title="Manual"
+          selected={selectedPill === "Manual"}
+          onPillPress={() => setSelectedPill("Manual")}
+          />
+
+          </View>
 
           <View style={styles.spacer12} />
 
@@ -38,7 +61,7 @@ export default function InstructionsScreen() {
 
           <View style={styles.spacer12} />
 
-         =
+         
 
           <View style={styles.spacer20} />
 
@@ -58,6 +81,10 @@ const styles = StyleSheet.create({
   page: {
     flex: 1,
     justifyContent: "space-between",
+  },
+  pillRow: {
+    flexDirection: "row",
+    gap: 8,
   },
   spacer12: {
     height: 12,
