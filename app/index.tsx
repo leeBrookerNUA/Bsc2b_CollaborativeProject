@@ -34,6 +34,7 @@ export default function PlayScreen() {
             iconName="lightbulb"
             title="Fun Facts"
             gradientColors={["#FFE98A", "#FFD84D", "#E0C120"]}
+            onMainButtonPress={() => console.log("Facts Button Pressed")}
           />
           <View style={styles.spacer16} />
 
@@ -41,6 +42,7 @@ export default function PlayScreen() {
             iconName="leaf"
             title="Energy Saving Tips"
             gradientColors={["#8ef0b3", "#5EDE92", "#2ecc71"]}
+             onMainButtonPress={() => console.log("Tips Button Pressed")}
           />
 
           <View style={styles.spacer16} />
@@ -49,6 +51,7 @@ export default function PlayScreen() {
             iconName="question"
             title="Quiz"
             gradientColors={["#D2A8FF", "#B782F2", "#9B5DE5"]}
+             onMainButtonPress={() => console.log("Quiz Button Pressed")}
           />
 
           <View style={styles.spacer16} />
