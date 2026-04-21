@@ -38,6 +38,22 @@ const styles = StyleSheet.create({
     borderColor: "#3abecfff",
     backgroundColor: "#3abecfff",
   },
+
+   //Not sure how to use these yet
+  page: {
+    flex: 1,
+    justifyContent: "space-between",
+  },
+  pillRow: {
+    flexDirection: "row",
+    gap: 8,
+  },
+  spacer12: {
+    height: 12,
+  },
+  spacer20: {
+    height: 20,
+  },
 });
 
 
