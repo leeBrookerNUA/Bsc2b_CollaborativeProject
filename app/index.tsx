@@ -10,20 +10,20 @@ export default function Index() {
 
     return (
         <ScreenBackground>  {/* Background component that wraps the entire screen and displays background star image */}
-            <View style={styles.mainview}> 
+            <View style={styles.mainview}>
 
                 <Header title="Home" onBackPress={() => { }} onSettingsPress={() => { }} />
 
-                <View style={styles.heightSpacer20} /> {/* Styling that makes space between parts */ }
+                <View style={styles.heightSpacer20} /> {/* Styling that makes space between parts */}
 
-                <View> 
-                    <AppText style={{ fontSize: 16 }}>Welcome to our app about generating electricity!</AppText> 
+                <View>
+                    <AppText style={{ fontSize: 16 }}>Welcome to our app about generating electricity!</AppText>
                 </View>
 
                 <View style={styles.heightSpacer20} />
 
                 <View style={styles.container}>
-                    <View style={styles.row}> {/* Row of buttons that user will be able to press to goto different parts of app */ }
+                    <View style={styles.row}> {/* Row of buttons that user will be able to press to goto different parts of app */}
                         <PillButtonCard
                             title="Play"
                             selected={selectedPill === "Play"}
@@ -64,7 +64,7 @@ export default function Index() {
     );
 }
 {/* Styles used for the home page */ }
-const styles = StyleSheet.create({ 
+const styles = StyleSheet.create({
     title: { fontSize: 24, fontWeight: "bold", color: "#fff", fontFamily: "Fredoka One", },
     mainview: { flex: 1, alignItems: "center", paddingTop: 24, backgroundColor: "transparent", borderWidth: 0, borderColor: "transparent", },
     introBox: { width: "100%", paddingHorizontal: 16, paddingVertical: 12, backgroundColor: "#3abecfff", borderRadius: 12, },
