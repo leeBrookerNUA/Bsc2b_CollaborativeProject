@@ -1,9 +1,8 @@
 import BackHomeCard from "@/components/BackHomeCard";
 import Header from "@/components/Header";
-import HelpTipCard from "@/components/HelpTipCard";
 import InfoCard from "@/components/InfoCard";
-import InstructionCard from "@/components/InstructionCard";
 import ScreenBackground from "@/components/ScreenBackground";
+import TipsCard from "@/components/TipsCard";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
@@ -22,50 +21,46 @@ export default function InstructionsScreen() {
             onBackPress={() => console.log("Back Pressed")}
             onSettingsPress={() => console.log("Settings Pressed")}
           />
+          <View style={styles.padding16} >
 
-          <View style={styles.spacer12} />
+            <View style={styles.spacer24} />
 
-          <InfoCard
-            title="How to use the toy!"
-            subtitle="Follow these steps to start charging your toy battery!"
-          />
+            <InfoCard
+              title="What YOU can do to help!"
+              subtitle="Small actions can gave energy everyday!"
+            />
 
-          <View style={styles.spacer12} />
+            <View style={styles.spacer16} />
 
-          <InstructionCard
-            iconName="bolt"
-            title="Turn on the toy"
-          />
-          <View style={styles.spacer12} />
+            <TipsCard
+              iconName="power-off"
+              title="Turn off toys when not in use"
+            />
+            <View style={styles.spacer16} />
 
-          <InstructionCard
-            iconName="wifi"
-            title="Connect the toy to Wi-Fi"
-          />
+            <TipsCard
+              iconName="sun-o"
+              title="Use sunlight when possible"
+            />
 
-          <View style={styles.spacer12} />
+            <View style={styles.spacer16} />
 
-          <InstructionCard
-            iconName="refresh"
-            title="Turn the hand crank or place it in sunlight"
-          />
+            <TipsCard
+              iconName="bolt"
+              title="Charge only when needed"
+            />
 
-          <View style={styles.spacer12} />
+            <View style={styles.spacer16} />
 
-          <InstructionCard
-            iconName="bolt"
-            title="Watch the battery charge in the app"
-          />
+            <TipsCard
+              iconName="plug"
+              title="Ask an adult to unplug chargers"
+            />
 
-          <View style={styles.spacer20} />
+            <View style={styles.spacer20} />
 
-          <HelpTipCard
-            iconName="question-circle"
-            title="Ask an adult if you need help connecting the toy"
-          />
-
+          </View>
         </View>
-
         <BackHomeCard
           title="Back Home"
           onBackHomePress={() => console.log("Back Home Pressed")}
@@ -80,11 +75,18 @@ const styles = StyleSheet.create({
   page: {
     flex: 1,
     justifyContent: "space-between",
+    
   },
-  spacer12: {
+  padding16: {
+    padding: 16,
+  },
+  spacer16: {
     height: 12,
   },
   spacer20: {
     height: 20,
+  },
+  spacer24: {
+    height: 24,
   },
 });

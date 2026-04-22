@@ -1,15 +1,14 @@
-import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import AppText from "./AppText";
 
-interface HelpTipCardProps {
-    iconName: React.ComponentProps<typeof FontAwesome5>["name"];
+interface TipsCardProps {
+    iconName: React.ComponentProps<typeof FontAwesome>["name"];
     title: string;
+};
 
-}
-
-export default function HelpTipCard(props: HelpTipCardProps) {
+export default function TipsCard(props: TipsCardProps) {
     const { iconName, title } = props;
 
     return (
@@ -17,10 +16,10 @@ export default function HelpTipCard(props: HelpTipCardProps) {
             <View style={styles.contentRow}>
 
                 <View style={styles.iconContainer}>
-                    <FontAwesome5 name={iconName} size={24} color="#FFFFFF" />
+                    <FontAwesome name={iconName} size={24} color="#FFFFFF" />
                 </View>
 
-                <AppText style={styles.title}>{title}</AppText> 
+                <AppText style={styles.title}>{title}</AppText>
             </View>
         </View>
     );
@@ -28,15 +27,14 @@ export default function HelpTipCard(props: HelpTipCardProps) {
 
 const styles = StyleSheet.create({
     card: {
-        minHeight: 52,
         width: "100%",
-        backgroundColor: "rgba(255, 255, 255, 0.15)",
-        borderRadius: 14,
-        borderWidth: 1.5,
-        borderColor: "rgba(255, 255, 255, 0.12)",
-        paddingVertical: 6,
-        paddingHorizontal: 10,
-        alignItems: "center",
+        minHeight: 60,
+        backgroundColor: "(rgba(46, 204, 113, 0.75)",
+        borderRadius: 16,
+        borderWidth: 3,
+        borderColor: "rgba(255, 255, 255, 0.1)",
+        paddingVertical: 8,
+        paddingHorizontal: 12,
         justifyContent: "center",
         overflow: 'hidden',
 
@@ -44,21 +42,19 @@ const styles = StyleSheet.create({
     contentRow: {
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "center",
-        width: "100%",
     },
 
     title: {
-        fontSize: 14,
+        fontSize: 16,
         flexShrink: 1,
-        lineHeight: 16,
+        lineHeight: 18,
     },
 
     iconContainer: {
         backgroundColor: "rgba(255, 255, 255, 0.15)",
         borderRadius: 99,
-        width: 28,
-        height: 28,
+        width: 32,
+        height: 32,
         alignItems: "center",
         justifyContent: "center",
         marginRight: 6,

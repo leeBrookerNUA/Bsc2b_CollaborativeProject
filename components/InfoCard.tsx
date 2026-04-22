@@ -20,7 +20,7 @@ export default function InfoCard(props: InfoCardProps) {
 
     return (
     // Card container that holds the battery icon and text information, styled with a background color and padding
-    <LinearGradient style={styles.card} colors={["#D2A8FF", "#9B5DE5"]}>
+    <LinearGradient style={styles.card} colors={["#5EDE92", "#2ecc71"]}>
       <View style={styles.darkOverlay} />
       <View style={styles.lightOverlay} />
 
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     alignItems: "center",
     justifyContent: "center",
-    minHeight: 120,
+    minHeight: 160,
     overflow: "hidden",
 
     shadowColor: "#000",
@@ -67,11 +67,12 @@ const styles = StyleSheet.create({
     fontSize: 24,
     textAlign: "center",
     marginBottom: 6,
+    
   },
  
   subtitle: {
     opacity: 0.8,
-    fontSize: 16,
+    fontSize: 18,
     textAlign: "center",
     marginBottom: 6,
   },
