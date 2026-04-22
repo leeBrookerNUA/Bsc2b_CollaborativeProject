@@ -1,7 +1,7 @@
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { ColorValue, Pressable, StyleSheet, View } from "react-native";
+import { ColorValue, StyleSheet, View } from "react-native";
 import AppHeading from "./AppHeading";
 import AppText from "./AppText";
 
@@ -18,10 +18,8 @@ export default function FactCard(props: FactCardProps) {
 
   return (
     <View style={styles.shadowWrapper}>
-      <Pressable
-        onPress={onMainButtonPress}
-        style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}
-      >
+      <View style={styles.card}>  
+      
         <LinearGradient
           colors={gradientColors}
           style={styles.gradient}
@@ -38,7 +36,7 @@ export default function FactCard(props: FactCardProps) {
           <AppHeading style={styles.title}>{title}</AppHeading>
           <AppText style={styles.subText}>{subText}</AppText>
         </View>
-      </Pressable>
+      </View>
     </View>
   );
 }
@@ -58,7 +56,7 @@ const styles = StyleSheet.create({
   card: {
     position: "relative",
     width: "100%",
-    height: 140,
+    
     borderRadius: 24,
     overflow: "hidden",
     justifyContent: "center",

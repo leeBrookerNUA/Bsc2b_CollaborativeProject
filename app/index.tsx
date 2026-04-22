@@ -1,7 +1,7 @@
 import BackHomeCard from "@/components/BackHomeCard";
+import FactCard from "@/components/FactCard";
 import Header from "@/components/Header";
 import PillButtonCard from "@/components/PillButtonCard";
-
 import ScreenBackground from "@/components/ScreenBackground";
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
@@ -23,7 +23,7 @@ export default function InstructionsScreen() {
             onSettingsPress={() => console.log("Settings Pressed")}
           />
 
-          <View style={styles.spacer12} />
+          <View style={styles.spacer24} />
 
           <View style={styles.pillRow}>
 
@@ -48,7 +48,16 @@ export default function InstructionsScreen() {
 
           </View>
 
-          <View style={styles.spacer12} />
+          <View style={styles.spacer24} />
+
+          <FactCard 
+          iconName="solar-panel"
+          title="Did you know?"
+          subText="Solar panels turn sunlight into electricity and work best in brigt sunlight."
+          gradientColors={["#FFE98A", "#FFD84D", "#E0C120"]}
+
+          />
+
 
           
           <View style={styles.spacer12} />
@@ -91,5 +100,8 @@ const styles = StyleSheet.create({
   },
   spacer20: {
     height: 20,
+  },
+   spacer24: {
+    height: 24,
   },
 });
