@@ -24,7 +24,7 @@ export default function Index() {
                     <View style={styles.row}>{/* Row of buttons that user will be able to press to goto different parts of app */}
                         <ButtonCard
                             title="Play"
-                            gradientColors={["#18d467", "#18d467", "#18d467"]}
+                            gradientColors={["#185ad4", "#185ad4", "#185ad4"]}
                             iconName="play"
                             onMainButtonPress={() => { console.log("Play"); }}
                         />
@@ -45,7 +45,7 @@ export default function Index() {
                     <View style={styles.row}>
                         <ButtonCard
                             title="Facts and Tips"
-                            gradientColors={["#196baf", "#196baf", "#196baf"]}
+                            gradientColors={["#5d0b6d", "#5d0b6d", "#5d0b6d"]}
                             iconName="industry"
                             onMainButtonPress={() => { console.log("Facts and Tips"); }}
                         />
@@ -56,7 +56,7 @@ export default function Index() {
                     <View style={styles.row}>
                         <ButtonCard
                             title="Settings"
-                            gradientColors={["#5d0b6d", "#5d0b6d", "#5d0b6d"]}
+                            gradientColors={["#4cbe1f", "#4cbe1f", "#4cbe1f"]}
                             iconName="cogs"
                             onMainButtonPress={() => { console.log("Settings"); }}
                         />
