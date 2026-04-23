@@ -24,7 +24,7 @@ export default function Index() {
                     <View style={styles.row}> {/* Row of buttons that user will be able to press to goto different parts of app */}
                         <ButtonCard
                             title="Play"
-                            gradientColors={["#9634aa", "#9e0c92", "#2fa560"]}
+                            gradientColors={["#18d467", "#18d467", "#18d467"]}
                             iconName="play"
                             onMainButtonPress={() => { console.log("Play"); }}
                         />
@@ -34,7 +34,7 @@ export default function Index() {
 
                         <ButtonCard
                             title="Instructions"
-                            gradientColors={["#9634aa", "#9e0c92", "#2fa560"]}
+                            gradientColors={["#c7ad1c", "#c7ad1c", "#c7ad1c"]}
                             iconName="wrench"
                             onMainButtonPress={() => { console.log("Instructions"); }}
                         />
@@ -45,7 +45,7 @@ export default function Index() {
                     <View style={styles.row}>
                         <ButtonCard
                             title="Facts and Tips"
-                            gradientColors={["#9634aa", "#9e0c92", "#2fa560"]}
+                            gradientColors={["#196baf", "#196baf", "#196baf"]}
                             iconName="industry"
                             onMainButtonPress={() => { console.log("Facts and Tips"); }}
                         />
@@ -56,7 +56,7 @@ export default function Index() {
                     <View style={styles.row}>
                         <ButtonCard
                             title="Settings"
-                            gradientColors={["#9634aa", "#9e0c92", "#2fa560"]}
+                            gradientColors={["#5d0b6d", "#5d0b6d", "#5d0b6d"]}
                             iconName="cogs"
                             onMainButtonPress={() => { console.log("Settings"); }}
                         />
@@ -69,9 +69,7 @@ export default function Index() {
 
 {/* Styles used for the home page */ }
 const styles = StyleSheet.create({
-    title: { fontSize: 24, fontWeight: "bold", color: "#fff", fontFamily: "Fredoka One", },
     mainview: { flex: 1, alignItems: "center", paddingTop: 24, backgroundColor: "transparent", borderWidth: 0, borderColor: "transparent", },
-    introBox: { width: "100%", paddingHorizontal: 16, paddingVertical: 12, backgroundColor: "#3abecfff", borderRadius: 12, },
     container: { width: "100%", paddingHorizontal: 16, marginTop: 12, },
     row: { flexDirection: "row", },
     widthSpacer12: { width: 12, },
