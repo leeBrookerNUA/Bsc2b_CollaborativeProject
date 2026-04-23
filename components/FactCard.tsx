@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   },
 
   subText: {
-    fontSize: 18,
+    fontSize: 20,
     textAlign: "center",
     lineHeight: 20,
   },
