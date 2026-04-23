@@ -46,7 +46,7 @@ export default function Index() {
                         <ButtonCard
                             title="Facts and Tips"
                             gradientColors={["#5d0b6d", "#5d0b6d", "#5d0b6d"]}
-                            iconName="industry"
+                            iconName="lightbulb"
                             onMainButtonPress={() => { console.log("Facts and Tips"); }}
                         />
                     </View>
