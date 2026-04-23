@@ -6,10 +6,11 @@ interface PillButtonCardProps {
     title: string;
     selected?: boolean;
     onPillPress?: () => void;
+    tintColor?: string;
 }
 
 export default function PillButtonCard(props: PillButtonCardProps) {
-    const { title, selected = false, onPillPress } = props;
+    const { title, selected = false, onPillPress, tintColor } = props;
 
     return (
         <Pressable
@@ -17,6 +18,7 @@ export default function PillButtonCard(props: PillButtonCardProps) {
             style={[
                 styles.card,
                 selected && styles.cardSelected,
+                selected && { backgroundColor: tintColor || "#EBC50A" },
             ]}
         >
             <View style={[styles.topHighlight, selected && styles.topHighlightSelected]} />
@@ -56,22 +58,19 @@ const styles = StyleSheet.create({
         transform: [{ translateY: 1 }],
     },
 
-  
-
     innerShadowBandSelected: {
         position: "absolute",
         left: 3,
         right: 3,
         bottom: 32,
         height: "30%",
-        
         backgroundColor: "rgba(0, 0, 0, 0.1)",
         borderRadius: 99,
     },
 
     topHighlight: {
         position: "absolute",
-        top:-1,
+        top: -1,
         left: 3,
         right: 3,
         height: "25%",

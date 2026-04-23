@@ -10,16 +10,19 @@ interface FactCardProps {
   title: string;
   subText: string;
   gradientColors?: readonly [ColorValue, ColorValue, ...ColorValue[]];
-  onMainButtonPress?: () => void;
 }
 
 export default function FactCard(props: FactCardProps) {
-  const { iconName, title, subText, gradientColors = ["#FFF2A6", "#FFE066", "#E0C120"], onMainButtonPress,} = props;
+  const {
+    iconName,
+    title,
+    subText,
+    gradientColors = ["#FFF2A6", "#FFE066", "#E0C120"],
+  } = props;
 
   return (
     <View style={styles.shadowWrapper}>
-      <View style={styles.card}>  
-      
+      <View style={styles.card}>
         <LinearGradient
           colors={gradientColors}
           style={styles.gradient}
@@ -30,7 +33,7 @@ export default function FactCard(props: FactCardProps) {
 
         <View style={styles.content}>
           <View style={styles.iconContainer}>
-            <FontAwesome5 name={iconName} size={32} color="#FFFFFF" />
+            <FontAwesome5 name={iconName} size={36} color="#FFFFFF" />
           </View>
 
           <AppHeading style={styles.title}>{title}</AppHeading>
@@ -44,7 +47,7 @@ export default function FactCard(props: FactCardProps) {
 const styles = StyleSheet.create({
   shadowWrapper: {
     width: "100%",
-    borderRadius: 24,
+    borderRadius: 30,
 
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },
@@ -63,39 +66,35 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  cardPressed: {
-    transform: [{ scale: 0.98 }],
-    opacity: 0.95,
-  },
-
   gradient: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
   },
 
   darkOverlay: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
     backgroundColor: "rgba(0, 0, 0, 0.1)",
   },
 
   lightOverlay: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
     backgroundColor: "rgba(255, 255, 255, 0.05)",
   },
 
-  content: {
-    zIndex: 1,
-    width: "100%",
-    paddingVertical: 28,
-    paddingHorizontal: 20,
-    alignItems: "center",
-    justifyContent: "center",
-  },
+ content: {
+  zIndex: 1,
+  width: "100%",
+  paddingTop: 10,
+  paddingBottom: 22,
+  paddingHorizontal: 20,
+  alignItems: "center",
+  justifyContent: "center",
+},
 
   iconContainer: {
     backgroundColor: "rgba(255,255,255,0.1)",
     borderRadius: 99,
-    width: 52,
-    height: 52,
+    width: 60,
+    height: 60,
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 6,
@@ -106,9 +105,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 10,
   },
+
   subText: {
     fontSize: 18,
     textAlign: "center",
     lineHeight: 20,
-  }
+  },
 });
