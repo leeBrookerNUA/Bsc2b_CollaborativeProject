@@ -1,5 +1,5 @@
-import Header from '@/components/Header';
-import React from 'react';
+import Header from "../components/Header";
+import React from "react";
 import { StyleSheet, View } from "react-native";
 import AppText from "../components/AppText";
 import ButtonCard from "../components/ButtonCard";
