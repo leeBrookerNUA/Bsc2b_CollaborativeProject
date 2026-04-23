@@ -1,13 +1,11 @@
 import Header from '@/components/Header';
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, View } from "react-native";
 import AppText from "../components/AppText";
-import PillButtonCard from "../components/PillButtonCard";
+import ButtonCard from "../components/ButtonCard";
 import ScreenBackground from "../components/ScreenBackground";
 
 export default function Index() {
-    const [selectedPill, setSelectedPill] = useState("Feature 1");
-
     return (
         <ScreenBackground>  {/* Background component that wraps the entire screen and displays background star image */}
             <View style={styles.mainview}>
@@ -24,45 +22,51 @@ export default function Index() {
 
                 <View style={styles.container}>
                     <View style={styles.row}> {/* Row of buttons that user will be able to press to goto different parts of app */}
-                        <PillButtonCard
+                        <ButtonCard
                             title="Play"
-                            selected={selectedPill === "Play"}
-                            onPillPress={() => { setSelectedPill("Play"); console.log("Play"); }}
+                            gradientColors={["#9634aa", "#9e0c92", "#2fa560"]}
+                            iconName="play"
+                            onMainButtonPress={() => { console.log("Play"); }}
                         />
+                    </View>
+                    <View style={styles.heightSpacer20} />
+                    <View style={styles.row}>
 
-                        <View style={styles.widthSpacer12} />
-
-                        <PillButtonCard
+                        <ButtonCard
                             title="Instructions"
-                            selected={selectedPill === "Instructions"}
-                            onPillPress={() => { setSelectedPill("Instructions"); console.log("Instructions"); }}
+                            gradientColors={["#9634aa", "#9e0c92", "#2fa560"]}
+                            iconName="wrench"
+                            onMainButtonPress={() => { console.log("Instructions"); }}
                         />
-
                     </View>
 
                     <View style={styles.heightSpacer20} />
 
                     <View style={styles.row}>
-                        <PillButtonCard
+                        <ButtonCard
                             title="Facts and Tips"
-                            selected={selectedPill === "Facts and Tips"}
-                            onPillPress={() => { setSelectedPill("Facts and Tips"); console.log("Facts and Tips"); }}
+                            gradientColors={["#9634aa", "#9e0c92", "#2fa560"]}
+                            iconName="industry"
+                            onMainButtonPress={() => { console.log("Facts and Tips"); }}
                         />
+                    </View>
 
-                        <View style={styles.widthSpacer12} />
+                    <View style={styles.heightSpacer20} />
 
-                        <PillButtonCard
+                    <View style={styles.row}>
+                        <ButtonCard
                             title="Settings"
-                            selected={selectedPill === "Settings"}
-                            onPillPress={() => { setSelectedPill("Settings"); console.log("Settings"); }}
+                            gradientColors={["#9634aa", "#9e0c92", "#2fa560"]}
+                            iconName="cogs"
+                            onMainButtonPress={() => { console.log("Settings"); }}
                         />
-
                     </View>
                 </View>
             </View>
         </ScreenBackground>
     );
 }
+
 {/* Styles used for the home page */ }
 const styles = StyleSheet.create({
     title: { fontSize: 24, fontWeight: "bold", color: "#fff", fontFamily: "Fredoka One", },
