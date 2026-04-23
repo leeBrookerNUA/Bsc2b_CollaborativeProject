@@ -1,18 +1,18 @@
-import Header from "../components/Header";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import AppText from "../components/AppText";
 import ButtonCard from "../components/ButtonCard";
+import Header from "../components/Header";
 import ScreenBackground from "../components/ScreenBackground";
 
 export default function Index() {
     return (
-        <ScreenBackground>  {/* Background component that wraps the entire screen and displays background star image */}
+        <ScreenBackground>{/* Background component that wraps the entire screen and displays background star image */}
             <View style={styles.mainview}>
 
                 <Header title="Home" onBackPress={() => { }} onSettingsPress={() => { }} />
 
-                <View style={styles.heightSpacer20} /> {/* Styling that makes space between parts */}
+                <View style={styles.heightSpacer20} />{/* Background component that wraps the entire screen and displays background star image */}
 
                 <View>
                     <AppText style={{ fontSize: 16 }}>Welcome to our app about generating electricity!</AppText>
@@ -21,7 +21,7 @@ export default function Index() {
                 <View style={styles.heightSpacer20} />
 
                 <View style={styles.container}>
-                    <View style={styles.row}> {/* Row of buttons that user will be able to press to goto different parts of app */}
+                    <View style={styles.row}>{/* Row of buttons that user will be able to press to goto different parts of app */}
                         <ButtonCard
                             title="Play"
                             gradientColors={["#18d467", "#18d467", "#18d467"]}
@@ -67,7 +67,7 @@ export default function Index() {
     );
 }
 
-{/* Styles used for the home page */ }
+//Styles used for the home page
 const styles = StyleSheet.create({
     mainview: { flex: 1, alignItems: "center", paddingTop: 24, backgroundColor: "transparent", borderWidth: 0, borderColor: "transparent", },
     container: { width: "100%", paddingHorizontal: 16, marginTop: 12, },
