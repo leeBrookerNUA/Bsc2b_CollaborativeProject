@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   card: {
     position: "relative",
     width: "100%",
-    
+    minHeight: 220,
     borderRadius: 24,
     overflow: "hidden",
     justifyContent: "center",
@@ -85,9 +85,8 @@ const styles = StyleSheet.create({
   content: {
     zIndex: 1,
     width: "100%",
-    height: "100%",
-    paddingVertical: 12,
-    paddingHorizontal: 14,
+    paddingVertical: 28,
+    paddingHorizontal: 20,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -105,9 +104,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     textAlign: "center",
+    marginBottom: 10,
   },
   subText: {
     fontSize: 18,
     textAlign: "center",
+    lineHeight: 20,
   }
 });

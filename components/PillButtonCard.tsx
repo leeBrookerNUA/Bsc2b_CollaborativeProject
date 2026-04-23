@@ -36,15 +36,15 @@ const styles = StyleSheet.create({
         borderColor: "rgba(255, 255, 255, 0.18)",
         paddingVertical: 6,
         paddingHorizontal: 12,
-        minHeight: 40,
+        minHeight: 36,
         alignItems: "center",
         justifyContent: "center",
         overflow: "hidden",
 
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 1,
-        shadowRadius: 5,
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
         elevation: 2,
     },
 
