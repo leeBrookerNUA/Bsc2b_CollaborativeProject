@@ -1,0 +1,66 @@
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import AppText from "./AppText";
+
+interface HelpTipCardProps {
+    iconName: React.ComponentProps<typeof FontAwesome5>["name"];
+    title: string;
+
+}
+
+export default function HelpTipCard(props: HelpTipCardProps) {
+    const { iconName, title } = props;
+
+    return (
+        <View style={styles.card}>
+            <View style={styles.contentRow}>
+
+                <View style={styles.iconContainer}>
+                    <FontAwesome5 name={iconName} size={24} color="#FFFFFF" />
+                </View>
+
+                <AppText style={styles.title}>{title}</AppText> 
+            </View>
+        </View>
+    );
+}
+
+const styles = StyleSheet.create({
+    card: {
+        minHeight: 52,
+        width: "100%",
+        backgroundColor: "rgba(255, 255, 255, 0.15)",
+        borderRadius: 14,
+        borderWidth: 1.5,
+        borderColor: "rgba(255, 255, 255, 0.12)",
+        paddingVertical: 6,
+        paddingHorizontal: 10,
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: 'hidden',
+
+    },
+    contentRow: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        width: "100%",
+    },
+
+    title: {
+        fontSize: 14,
+        flexShrink: 1,
+        lineHeight: 16,
+    },
+
+    iconContainer: {
+        backgroundColor: "rgba(255, 255, 255, 0.15)",
+        borderRadius: 99,
+        width: 28,
+        height: 28,
+        alignItems: "center",
+        justifyContent: "center",
+        marginRight: 6,
+    },
+});
