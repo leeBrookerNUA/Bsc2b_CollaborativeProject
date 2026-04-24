@@ -1,78 +1,89 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import AppText from "../components/AppText";
 import ButtonCard from "../components/ButtonCard";
 import Header from "../components/Header";
 import ScreenBackground from "../components/ScreenBackground";
 
 export default function Index() {
-    return (
-        <ScreenBackground>{/* Background component that wraps the entire screen and displays background star image */}
-            <View style={styles.mainview}>
+  return (
+    <ScreenBackground>
+      <View style={styles.page}>
+        <Header
+          title="Home"
+          onBackPress={() => {}}
+          onSettingsPress={() => {}}
+        />
 
-                <Header title="Home" onBackPress={() => { }} onSettingsPress={() => { }} />
+        <View style={styles.spacer20} />
 
-                <View style={styles.heightSpacer20} />{/* Background component that wraps the entire screen and displays background star image */}
+        <View style={styles.container}>
+          <ButtonCard
+            title="Play"
+            gradientColors={["#8FC4FF", "#5FA8FF", "#3A86FF"]}
+            iconLibrary="Ionicons"
+            iconName="play"
+            onMainButtonPress={() => {
+              console.log("Play");
+            }}
+          />
 
-                <View>
-                    <AppText style={{ fontSize: 16 }}>Welcome to our app about generating electricity!</AppText>
-                </View>
+          <View style={styles.spacer16} />
 
-                <View style={styles.heightSpacer20} />
+          <ButtonCard
+            title="Facts & Tips"
+            gradientColors={["#FFF2A6", "#FFE066", "#E0C120"]}
+            iconLibrary="MaterialIcons"
+            iconName="lightbulb"
+            onMainButtonPress={() => {
+              console.log("Instructions");
+            }}
+          />
 
-                <View style={styles.container}>
-                    <View style={styles.row}>{/* Row of buttons that user will be able to press to goto different parts of app */}
-                        <ButtonCard
-                            title="Play"
-                            gradientColors={["#185ad4", "#185ad4", "#185ad4"]}
-                            iconName="play"
-                            onMainButtonPress={() => { console.log("Play"); }}
-                        />
-                    </View>
-                    <View style={styles.heightSpacer20} />
-                    <View style={styles.row}>
+          <View style={styles.spacer16} />
 
-                        <ButtonCard
-                            title="Instructions"
-                            gradientColors={["#c7ad1c", "#c7ad1c", "#c7ad1c"]}
-                            iconName="wrench"
-                            onMainButtonPress={() => { console.log("Instructions"); }}
-                        />
-                    </View>
+          <ButtonCard
+            title="Instructions"
+            gradientColors={["#D2A8FF", "#B07BFF", "#9B5DE5"]}
+            iconLibrary="Ionicons"
+            iconName="book"
+            onMainButtonPress={() => {
+              console.log("Facts and Tips");
+            }}
+          />
 
-                    <View style={styles.heightSpacer20} />
+          <View style={styles.spacer16} />
 
-                    <View style={styles.row}>
-                        <ButtonCard
-                            title="Facts and Tips"
-                            gradientColors={["#5d0b6d", "#5d0b6d", "#5d0b6d"]}
-                            iconName="lightbulb"
-                            onMainButtonPress={() => { console.log("Facts and Tips"); }}
-                        />
-                    </View>
-
-                    <View style={styles.heightSpacer20} />
-
-                    <View style={styles.row}>
-                        <ButtonCard
-                            title="Settings"
-                            gradientColors={["#4cbe1f", "#4cbe1f", "#4cbe1f"]}
-                            iconName="cogs"
-                            onMainButtonPress={() => { console.log("Settings"); }}
-                        />
-                    </View>
-                </View>
-            </View>
-        </ScreenBackground>
-    );
+          <ButtonCard
+            title="Settings"
+            gradientColors={["#8EF0B3", "#5EDC95", "#2ECC71"]}
+            iconLibrary="FontAwesome"
+            iconName="cog"
+            onMainButtonPress={() => {
+              console.log("Settings");
+            }}
+          />
+        </View>
+      </View>
+    </ScreenBackground>
+  );
 }
 
-//Styles used for the home page
+
 const styles = StyleSheet.create({
-    mainview: { flex: 1, alignItems: "center", paddingTop: 24, backgroundColor: "transparent", borderWidth: 0, borderColor: "transparent", },
-    container: { width: "100%", paddingHorizontal: 16, marginTop: 12, },
-    row: { flexDirection: "row", },
-    widthSpacer12: { width: 12, },
-    heightSpacer12: { height: 12, },
-    heightSpacer20: { height: 20, },
+    page: {
+        flex: 1,
+        width: "100%",
+    },
+    container: {
+        width: "100%",
+        marginTop: 8,
+        padding: 16,
+    },
+
+    spacer16: {
+        height: 16,
+    },
+    spacer20: {
+        height: 20,
+    },
 });
