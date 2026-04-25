@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
 
     },
     cardPressed: {
+        transform: [{ scale: 0.95 }],
         backgroundColor: "rgba(58, 134, 255, 0.75)",
         borderWidth: 2,
         borderColor: "rgba(255, 255, 255, 0.5)",
