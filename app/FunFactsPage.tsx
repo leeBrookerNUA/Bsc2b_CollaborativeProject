@@ -8,7 +8,7 @@ import React, { useRef, useState } from "react";
 import { NativeScrollEvent, NativeSyntheticEvent, ScrollView, StyleSheet, View, useWindowDimensions } from "react-native";
 import { factData } from "../data/factData";
 
-export default function FunFactsScreen() {
+export default function FunFactsPage() {
   const [selectedPill, setSelectedPill] = useState("Solar");
   const [currentFactIndex, setCurrentFactIndex] = useState(0);
   const scrollRef = useRef<ScrollView>(null);
