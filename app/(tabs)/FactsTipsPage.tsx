@@ -1,5 +1,5 @@
 import BackHomeCard from "@/components/BackHomeCard";
-import BadgeCard from "@/components/BadgeCard";
+import NoIconBadgeCard from "@/components/BadgeCard";
 import ButtonCard from "@/components/ButtonCard";
 import Header from "@/components/Header";
 import ScreenBackground from "@/components/ScreenBackground";
@@ -23,8 +23,8 @@ export default function FactsTipsPageScreen() {
 
           <View style={styles.spacer16} />
 
-          <BadgeCard
-          title="Choose what you want to explore!"
+          <NoIconBadgeCard
+            title="Choose what you want to explore!"
           />
 
 
@@ -42,7 +42,7 @@ export default function FactsTipsPageScreen() {
             iconName="leaf"
             title="Energy Saving Tips"
             gradientColors={["#8ef0b3", "#5EDE92", "#2ecc71"]}
-             onMainButtonPress={() => console.log("Tips Button Pressed")}
+            onMainButtonPress={() => console.log("Tips Button Pressed")}
           />
 
           <View style={styles.spacer16} />
@@ -51,7 +51,7 @@ export default function FactsTipsPageScreen() {
             iconName="question"
             title="Quiz"
             gradientColors={["#D2A8FF", "#B782F2", "#9B5DE5"]}
-             onMainButtonPress={() => console.log("Quiz Button Pressed")}
+            onMainButtonPress={() => console.log("Quiz Button Pressed")}
           />
 
           <View style={styles.spacer16} />
@@ -70,7 +70,7 @@ export default function FactsTipsPageScreen() {
 }
 
 const styles = StyleSheet.create({
-    page: {
+  page: {
     flex: 1,
     justifyContent: "space-between",
   },

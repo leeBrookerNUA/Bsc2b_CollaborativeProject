@@ -1,10 +1,10 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import AppText from "./AppText";
 
 interface TipsCardProps {
-    iconName: React.ComponentProps<typeof FontAwesome>["name"];
+    iconName: React.ComponentProps<typeof FontAwesome5>["name"];
     title: string;
 };
 
