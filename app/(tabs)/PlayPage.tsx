@@ -2,11 +2,11 @@ import BadgeCard from "@/components/BadgeCard";
 import BatteryCard from "@/components/BatteryCard";
 import FunFactCard from "@/components/FunFactCard";
 import Header from "@/components/Header";
-import HelpTipCard from "@/components/HelpTipCard";
 import ScreenBackground from "@/components/ScreenBackground";
 import StatCard from "@/components/StatCard";
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import HelpTipCard from "../../components/HelpTipCard";
 
 
 export default function PlayPage() {
