@@ -1,8 +1,8 @@
+import ButtonCard from "@/components/ButtonCard";
+import Header from "@/components/Header";
+import ScreenBackground from "@components/ScreenBackground";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import ButtonCard from "../components/ButtonCard";
-import Header from "../components/Header";
-import ScreenBackground from "../components/ScreenBackground";
 
 export default function HomePage() {
   return (
@@ -10,8 +10,8 @@ export default function HomePage() {
       <View style={styles.page}>
         <Header
           title="Home"
-          onBackPress={() => {}}
-          onSettingsPress={() => {}}
+          onBackPress={() => { }}
+          onSettingsPress={() => { }}
         />
 
         <View style={styles.spacer20} />
@@ -70,20 +70,20 @@ export default function HomePage() {
 
 
 const styles = StyleSheet.create({
-    page: {
-        flex: 1,
-        width: "100%",
-    },
-    container: {
-        width: "100%",
-        marginTop: 8,
-        padding: 16,
-    },
+  page: {
+    flex: 1,
+    width: "100%",
+  },
+  container: {
+    width: "100%",
+    marginTop: 8,
+    padding: 16,
+  },
 
-    spacer16: {
-        height: 16,
-    },
-    spacer20: {
-        height: 20,
-    },
+  spacer16: {
+    height: 16,
+  },
+  spacer20: {
+    height: 20,
+  },
 });
