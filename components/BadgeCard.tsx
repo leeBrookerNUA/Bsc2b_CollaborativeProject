@@ -1,26 +1,26 @@
-import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import { FontAwesome } from "@expo/vector-icons";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import AppText from "./AppText";
 
-interface HelpTipCardProps {
-    iconName: React.ComponentProps<typeof FontAwesome5>["name"];
+interface BadgeCardProps {
     title: string;
-
+    iconName: React.ComponentProps<typeof FontAwesome>["name"];
 }
 
-export default function HelpTipCard(props: HelpTipCardProps) {
-    const { iconName, title } = props;
+export default function BadgeCard(props: BadgeCardProps) {
+    const { title, iconName } = props;
 
     return (
         <View style={styles.card}>
+
             <View style={styles.contentRow}>
 
-                <View style={styles.iconContainer}>
-                    <FontAwesome5 name={iconName} size={14} color="#FFFFFF" />
-                </View>
-
                 <AppText style={styles.title}>{title}</AppText>
+
+                <View style={styles.iconContainer}>
+                    <FontAwesome name={iconName} size={16} color="#FFFFFF" />
+                </View>
             </View>
         </View>
     );
@@ -34,33 +34,28 @@ const styles = StyleSheet.create({
         borderWidth: 1.5,
         borderColor: "rgba(255, 255, 255, 0.12)",
         paddingVertical: 6,
-        paddingHorizontal: 10,
+        paddingHorizontal: 12,
         alignItems: "center",
         flexDirection: "row",
         justifyContent: "center",
-        overflow: 'hidden',
-
+        overflow: "hidden",
     },
     contentRow: {
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "center",
-        width: "100%",
     },
 
     title: {
-        fontSize: 14,
-        flexShrink: 1,
-        lineHeight: 16,
+        fontSize: 16,
     },
 
     iconContainer: {
         backgroundColor: "rgba(255, 255, 255, 0.15)",
         borderRadius: 99,
-        width: 20,
-        height: 20,
+        width: 24,
+        height: 24,
         alignItems: "center",
         justifyContent: "center",
-        marginRight: 6,
+        marginLeft: 6,
     },
 });
