@@ -1,11 +1,11 @@
-import BackHomeCard from "@/components/BackHomeCard";
-import Header from "@/components/Header";
-import HelpTipCard from "@/components/HelpTipCard";
-import InfoCard from "@/components/InfoCard";
-import InstructionCard from "@/components/InstructionCard";
-import ScreenBackground from "@/components/ScreenBackground";
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import BackHomeCard from "../../components/BackHomeCard";
+import Header from "../../components/Header";
+import HelpTipCard from "../../components/HelpTipCard";
+import InfoCard from "../../components/InfoCard";
+import InstructionCard from "../../components/InstructionCard";
+import ScreenBackground from "../../components/ScreenBackground";
 
 
 export default function InstructionsScreen() {

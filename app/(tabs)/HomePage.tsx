@@ -1,8 +1,8 @@
-import ButtonCard from "@/components/ButtonCard";
-import Header from "@/components/Header";
-import ScreenBackground from "@components/ScreenBackground";
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import ButtonCard from "../../components/ButtonCard";
+import Header from "../../components/Header";
+import ScreenBackground from "../../components/ScreenBackground";
 
 export default function HomePage() {
   return (

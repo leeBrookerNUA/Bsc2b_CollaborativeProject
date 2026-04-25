@@ -1,10 +1,10 @@
-import BackHomeCard from "@/components/BackHomeCard";
-import ButtonCard from "@/components/ButtonCard";
-import Header from "@/components/Header";
-import NoIconBadgeCard from "@/components/NoIconBadgeCard";
-import ScreenBackground from "@/components/ScreenBackground";
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import BackHomeCard from "../../components/BackHomeCard";
+import ButtonCard from "../../components/ButtonCard";
+import Header from "../../components/Header";
+import NoIconBadgeCard from "../../components/NoIconBadgeCard";
+import ScreenBackground from "../../components/ScreenBackground";
 
 
 export default function FactsTipsPageScreen() {
