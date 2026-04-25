@@ -4,7 +4,7 @@ import ButtonCard from "../components/ButtonCard";
 import Header from "../components/Header";
 import ScreenBackground from "../components/ScreenBackground";
 
-export default function Index() {
+export default function HomePage() {
   return (
     <ScreenBackground>
       <View style={styles.page}>
