@@ -6,7 +6,7 @@ import PillButtonCard from "@/components/PillButtonCard";
 import ScreenBackground from "@/components/ScreenBackground";
 import React, { useRef, useState } from "react";
 import { NativeScrollEvent, NativeSyntheticEvent, ScrollView, StyleSheet, View, useWindowDimensions } from "react-native";
-import { factData } from "../data/factData";
+import { factData } from "../../data/factData";
 
 export default function FunFactsPage() {
   const [selectedPill, setSelectedPill] = useState("Solar");

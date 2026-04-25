@@ -8,7 +8,7 @@ import InstructionCard from "../../components/InstructionCard";
 import ScreenBackground from "../../components/ScreenBackground";
 
 
-export default function InstructionsScreen() {
+export default function InstructionsPage() {
   return (
 
     <ScreenBackground>
