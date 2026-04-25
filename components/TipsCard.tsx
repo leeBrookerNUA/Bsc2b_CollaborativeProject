@@ -1,15 +1,14 @@
-import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import AppText from "./AppText";
 
-interface HelpTipCardProps {
-    iconName: React.ComponentProps<typeof FontAwesome5>["name"];
+interface TipsCardProps {
+    iconName: React.ComponentProps<typeof FontAwesome>["name"];
     title: string;
+};
 
-}
-
-export default function HelpTipCard(props: HelpTipCardProps) {
+export default function TipsCard(props: TipsCardProps) {
     const { iconName, title } = props;
 
     return (
@@ -44,14 +43,12 @@ const styles = StyleSheet.create({
     contentRow: {
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "center",
-        width: "100%",
     },
 
     title: {
-        fontSize: 14,
+        fontSize: 16,
         flexShrink: 1,
-        lineHeight: 16,
+        lineHeight: 18,
     },
 
     iconContainer: {
