@@ -1,7 +1,7 @@
 import BackHomeCard from "@/components/BackHomeCard";
-import NoIconBadgeCard from "@/components/BadgeCard";
 import ButtonCard from "@/components/ButtonCard";
 import Header from "@/components/Header";
+import NoIconBadgeCard from "@/components/NoIconBadgeCard";
 import ScreenBackground from "@/components/ScreenBackground";
 import React from "react";
 import { StyleSheet, View } from "react-native";
@@ -23,10 +23,9 @@ export default function FactsTipsPageScreen() {
 
           <View style={styles.spacer16} />
 
-          <NoIconBadgeCard
+          <NoIconBadgeCard 
             title="Choose what you want to explore!"
           />
-
 
           <View style={styles.spacer16} />
 
