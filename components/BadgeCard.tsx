@@ -1,27 +1,19 @@
-import { FontAwesome } from "@expo/vector-icons";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import AppText from "./AppText";
 
 interface BadgeCardProps {
     title: string;
-    iconName: React.ComponentProps<typeof FontAwesome>["name"];
 }
 
 export default function BadgeCard(props: BadgeCardProps) {
-    const { title, iconName } = props;
+    const { title } = props;
 
     return (
         <View style={styles.card}>
 
-            <View style={styles.contentRow}>
+            <AppText style={styles.title}>{title}</AppText>
 
-                <AppText style={styles.title}>{title}</AppText>
-
-                <View style={styles.iconContainer}>
-                    <FontAwesome name={iconName} size={16} color="#FFFFFF" />
-                </View>
-            </View>
         </View>
     );
 }
@@ -39,10 +31,6 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "center",
         overflow: "hidden",
-    },
-    contentRow: {
-        flexDirection: "row",
-        alignItems: "center",
     },
 
     title: {
