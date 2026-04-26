@@ -1,6 +1,6 @@
 import BackHomeCard from "@/components/BackHomeCard";
-import BadgeCard from "@/components/BadgeCard";
 import Header from "@/components/Header";
+import NoIconBadgeCard from "@/components/NoIconBadgeCard";
 import QuizSelectCard from "@/components/QuizSelectCard";
 import ScreenBackground from "@/components/ScreenBackground";
 import React from "react";
@@ -26,7 +26,7 @@ export default function QuizSelectPage() {
 
           <View style={styles.spacer16} />
 
-          <BadgeCard
+          <NoIconBadgeCard
             title="Choose what you want to explore!"
           />
 
