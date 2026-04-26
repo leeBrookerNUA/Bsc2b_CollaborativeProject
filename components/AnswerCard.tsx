@@ -1,46 +1,87 @@
+import { FontAwesome } from "@expo/vector-icons";
 import React from "react";
-import { StyleSheet, View } from "react-native";
-import AppText from "./AppText";
+import { Pressable, StyleSheet, View } from "react-native";
+import AppHeading from "./AppHeading";
+
+type AnswerState = "default" | "correct" | "wrong";
 
 interface AnswerCardProps {
-    title: string;
-};
+  title: string;
+  state?: AnswerState;
+  disabled?: boolean;
+  onAnswerPress?: () => void;
+}
 
 export default function AnswerCard(props: AnswerCardProps) {
-    const { title } = props;
+  const { title, state = "default", disabled = false, onAnswerPress } = props;
 
-    return (
-        <View style={styles.card}>
-            <View style={styles.contentRow}>
+  return (
+    <View style={styles.shadowWrapper}>
+    <Pressable
+      onPress={onAnswerPress}
+      disabled={disabled}
+      style={({ pressed }) => [
+        styles.card,
+        state === "correct" && styles.correctCard,
+        state === "wrong" && styles.wrongCard,
+        pressed && !disabled && styles.cardPressed,
+      ]}
+    >
+      <AppHeading style={styles.title}>{title}</AppHeading>
 
-                <AppText style={styles.title}>{title}</AppText>
-            </View>
-        </View>
-    );
+      {state === "correct" && (
+  <FontAwesome style={styles.resultIcon} name="check" size={18} color="#FFFFFF" />
+)}
+
+{state === "wrong" && (
+  <FontAwesome style={styles.resultIcon} name="times" size={18} color="#FFFFFF" />
+)}
+    </Pressable>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    card: {
-        width: "100%",
-        minHeight: 60,
-        backgroundColor: "(rgba(46, 204, 113, 0.75)",
-        borderRadius: 16,
-        borderWidth: 3,
-        borderColor: "rgba(255, 255, 255, 0.1)",
-        paddingVertical: 8,
-        paddingHorizontal: 12,
-        justifyContent: "center",
-        overflow: 'hidden',
+shadowWrapper: {
+  width: "100%",
+  borderRadius: 40,
 
-    },
-    contentRow: {
-        flexDirection: "row",
-        alignItems: "center",
-    },
+  shadowColor: "#000",
+  shadowOffset: { width: 0, height: 3 },
+  shadowOpacity: 0.14,
+  shadowRadius: 6,
+  elevation: 3,
+},
 
-    title: {
-        fontSize: 16,
-        flexShrink: 1,
-        lineHeight: 18,
-    },
+card: {
+  width: "100%",
+  minHeight: 52,
+  backgroundColor: "rgba(155, 93, 229, 0.75)",
+  borderRadius: 40,
+  paddingVertical: 10,
+  paddingHorizontal: 18,
+  alignItems: "center",
+  justifyContent: "center",
+  flexDirection: "row",
+  overflow: "hidden",
+},
+  correctCard: {
+    backgroundColor: "#2ECC71",
+  },
+  wrongCard: {
+    backgroundColor: "#FF5C5C",
+  },
+  resultIcon: {
+  position: "absolute",
+  right: 18,
+},
+  cardPressed: {
+    transform: [{ scale: 0.98 }],
+    opacity: 0.9,
+  },
+  title: {
+    
+    fontSize: 16,
+    textAlign: "center",
+  },
 });
