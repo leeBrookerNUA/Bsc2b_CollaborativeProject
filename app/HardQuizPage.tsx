@@ -7,14 +7,14 @@ import Header from "../components/Header";
 import QuestionCard from "../components/QuestionCard";
 import QuizProgressBar from "../components/QuizProgressBar";
 import ScreenBackground from "../components/ScreenBackground";
-import { easyQuizData } from "../data/easyQuizData";
+import { hardQuizData } from "../data/hardQuizData";
 
-export default function EasyQuizPage() {
+export default function HardQuizPage() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
 
-  const currentQuestion = easyQuizData[currentQuestionIndex];
-  const totalQuestions = easyQuizData.length;
+  const currentQuestion = hardQuizData[currentQuestionIndex];
+  const totalQuestions = hardQuizData.length;
 
   const hasAnswered = selectedAnswer !== null;
 
@@ -56,7 +56,7 @@ export default function EasyQuizPage() {
       <View style={styles.page}>
         <View>
           <Header
-            title="Easy Quiz"
+            title="Hard Quiz"
             leftIconName="arrow-circle-left"
             rightIconName="cog"
             onBackPress={() => console.log("Back Pressed")}
