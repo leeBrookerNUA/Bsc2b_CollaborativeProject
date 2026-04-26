@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import AnswerCard from "../components/AnswerCard";
-import AppText from "../components/AppText";
-import BackHomeCard from "../components/BackHomeCard";
-import Header from "../components/Header";
-import QuestionCard from "../components/QuestionCard";
-import QuizProgressBar from "../components/QuizProgressBar";
-import ScreenBackground from "../components/ScreenBackground";
-import { hardQuizData } from "../data/hardQuizData";
+import AnswerCard from "../../components/AnswerCard";
+import AppText from "../../components/AppText";
+import BackHomeCard from "../../components/BackHomeCard";
+import Header from "../../components/Header";
+import QuestionCard from "../../components/QuestionCard";
+import QuizProgressBar from "../../components/QuizProgressBar";
+import ScreenBackground from "../../components/ScreenBackground";
+import { hardQuizData } from "../../data/hardQuizData";
 
 export default function HardQuizPage() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
