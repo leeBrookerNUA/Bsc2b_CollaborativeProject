@@ -56,7 +56,7 @@ export default function HardQuizPage() {
       <View style={styles.page}>
         <View>
           <Header
-            title="Hard Quiz"
+            title="Easy Quiz"
             leftIconName="arrow-circle-left"
             rightIconName="cog"
             onBackPress={() => console.log("Back Pressed")}
