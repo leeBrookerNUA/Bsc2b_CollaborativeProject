@@ -17,54 +17,61 @@ export default function AnswerCard(props: AnswerCardProps) {
 
   return (
     <View style={styles.shadowWrapper}>
-    <Pressable
-      onPress={onAnswerPress}
-      disabled={disabled}
-      style={({ pressed }) => [
-        styles.card,
-        state === "correct" && styles.correctCard,
-        state === "wrong" && styles.wrongCard,
-        pressed && !disabled && styles.cardPressed,
-      ]}
-    >
-      <AppHeading style={styles.title}>{title}</AppHeading>
+      <Pressable
+        onPress={onAnswerPress}
+        disabled={disabled}
+        style={({ pressed }) => [
+          styles.card,
+          state === "correct" && styles.correctCard,
+          state === "wrong" && styles.wrongCard,
+          pressed && !disabled && styles.cardPressed,
+        ]}
+      >
+        <AppHeading
+          style={[
+            styles.title,
+            state !== "default" && styles.titleWithIcon,
+          ]}
+        >
+          {title}
+        </AppHeading>
 
-      {state === "correct" && (
-  <FontAwesome style={styles.resultIcon} name="check" size={18} color="#FFFFFF" />
-)}
+        {state === "correct" && (
+          <FontAwesome style={styles.resultIcon} name="check" size={18} color="#FFFFFF" />
+        )}
 
-{state === "wrong" && (
-  <FontAwesome style={styles.resultIcon} name="times" size={18} color="#FFFFFF" />
-)}
-    </Pressable>
+        {state === "wrong" && (
+          <FontAwesome style={styles.resultIcon} name="times" size={18} color="#FFFFFF" />
+        )}
+      </Pressable>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-shadowWrapper: {
-  width: "100%",
-  borderRadius: 40,
+  shadowWrapper: {
+    width: "100%",
+    borderRadius: 40,
 
-  shadowColor: "#000",
-  shadowOffset: { width: 0, height: 3 },
-  shadowOpacity: 0.14,
-  shadowRadius: 6,
-  elevation: 3,
-},
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.14,
+    shadowRadius: 6,
+    elevation: 3,
+  },
 
-card: {
-  width: "100%",
-  minHeight: 52,
-  backgroundColor: "rgba(155, 93, 229, 0.75)",
-  borderRadius: 40,
-  paddingVertical: 10,
-  paddingHorizontal: 18,
-  alignItems: "center",
-  justifyContent: "center",
-  flexDirection: "row",
-  overflow: "hidden",
-},
+  card: {
+    width: "100%",
+    minHeight: 52,
+    backgroundColor: "rgba(155, 93, 229, 0.75)",
+    borderRadius: 40,
+    paddingVertical: 12,
+    paddingHorizontal: 18,
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+    overflow: "hidden",
+  },
   correctCard: {
     backgroundColor: "#2ECC71",
   },
@@ -72,16 +79,19 @@ card: {
     backgroundColor: "#FF5C5C",
   },
   resultIcon: {
-  position: "absolute",
-  right: 18,
-},
+    position: "absolute",
+    right: 18,
+  },
   cardPressed: {
     transform: [{ scale: 0.98 }],
     opacity: 0.9,
   },
+  titleWithIcon: {
+    paddingRight: 28,
+  },
   title: {
-    
     fontSize: 16,
     textAlign: "center",
-  },
+    lineHeight: 20,
+  }
 });
