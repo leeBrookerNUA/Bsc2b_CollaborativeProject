@@ -1,3 +1,4 @@
+import { useRouter } from 'expo-router';
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import ButtonCard from "../../components/ButtonCard";
@@ -5,6 +6,9 @@ import Header from "../../components/Header";
 import ScreenBackground from "../../components/ScreenBackground";
 
 export default function HomePage() {
+
+  const router = useRouter();
+
   return (
     <ScreenBackground>
       <View style={styles.page}>
@@ -23,7 +27,7 @@ export default function HomePage() {
             iconLibrary="Ionicons"
             iconName="play"
             onMainButtonPress={() => {
-              console.log("Play");
+              router.navigate('/pages/PlayPage')
             }}
           />
 
@@ -35,7 +39,8 @@ export default function HomePage() {
             iconLibrary="MaterialIcons"
             iconName="lightbulb"
             onMainButtonPress={() => {
-              console.log("Instructions");
+              router.navigate('/pages/FactsTipsPage')
+
             }}
           />
 
@@ -47,7 +52,7 @@ export default function HomePage() {
             iconLibrary="Ionicons"
             iconName="book"
             onMainButtonPress={() => {
-              console.log("Facts and Tips");
+              router.navigate('/pages/InstructionsPage')
             }}
           />
 
@@ -59,7 +64,7 @@ export default function HomePage() {
             iconLibrary="FontAwesome"
             iconName="cog"
             onMainButtonPress={() => {
-              console.log("Settings");
+              router.navigate('/pages/SettingsHubPage')
             }}
           />
         </View>

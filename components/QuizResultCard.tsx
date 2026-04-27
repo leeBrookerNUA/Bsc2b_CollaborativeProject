@@ -1,60 +1,64 @@
-import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { AntDesign, FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { ColorValue, Pressable, StyleSheet, View } from "react-native";
+import { ColorValue, StyleSheet, View } from "react-native";
 import AppHeading from "./AppHeading";
+import AppText from "./AppText";
 
-
-interface ButtonCardProps {
-  iconLibrary?: "FontAwesome" | "MaterialIcons" | "Ionicons" | "FontAwesome5";
-  iconName:
+interface QuizResultCardProps {
+  iconLibrary?: "FontAwesome" | "AntDesign" | "MaterialCommunityIcons";
+  iconName1:
   | React.ComponentProps<typeof FontAwesome>["name"]
-  | React.ComponentProps<typeof MaterialIcons>["name"]
-  | React.ComponentProps<typeof Ionicons>["name"];
+  | React.ComponentProps<typeof AntDesign>["name"]
+  | React.ComponentProps<typeof MaterialCommunityIcons>["name"]
+  iconName2?:
+  | React.ComponentProps<typeof FontAwesome>["name"]
+  | React.ComponentProps<typeof AntDesign>["name"]
+  | React.ComponentProps<typeof MaterialCommunityIcons>["name"]
 
   title: string;
+  subTitle: string,
+  subText: string,
   gradientColors?: readonly [ColorValue, ColorValue, ...ColorValue[]];
-  onMainButtonPress?: () => void;
 }
 
-export default function ButtonCard(props: ButtonCardProps) {
-
+export default function QuizResultCard(props: QuizResultCardProps) {
   const {
-    iconLibrary = "FontAwesome",
-    iconName,
-    title,
-    gradientColors = ["#FFF2A6", "#FFE066", "#E0C120"],
-    onMainButtonPress,
-  } = props;
+    iconLibrary = "FontAwesome", iconName1, iconName2, title, subTitle, subText, gradientColors = ["#FFF2A6", "#FFE066", "#E0C120"] } = props;
 
   const Icon =
-    iconLibrary === "MaterialIcons"
-      ? MaterialIcons
-      : iconLibrary === "Ionicons"
-        ? Ionicons
-
-        : FontAwesome;
-
+    iconLibrary === "AntDesign"
+      ? AntDesign
+      : iconLibrary === "MaterialCommunityIcons"
+      ? MaterialCommunityIcons
+      : FontAwesome;
 
   return (
     <View style={styles.shadowWrapper}>
-      <Pressable
-        onPress={onMainButtonPress}
-        style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}
-      >
-        <LinearGradient colors={gradientColors} style={styles.gradient} />
+
+      <View style={styles.card} >
+
+        <LinearGradient
+          colors={gradientColors}
+          style={styles.gradient}
+        />
 
         <View pointerEvents="none" style={styles.darkOverlay} />
         <View pointerEvents="none" style={styles.lightOverlay} />
 
         <View style={styles.content}>
           <View style={styles.iconContainer}>
-            <Icon name={iconName as any} size={40} color="#FFFFFF" />
+            <Icon name={iconName1 as any} size={32} color="#FFFFFF" />
           </View>
 
           <AppHeading style={styles.title}>{title}</AppHeading>
+          <AppText style={styles.subTitle}>{subTitle}</AppText>
+          <AppText style={styles.subText}>{subText}</AppText>
+
+            <Icon name={iconName2 as any} size={32} color="#FFFFFF" />
+          
         </View>
-      </Pressable>
+      </View>
     </View>
   );
 }
@@ -63,6 +67,7 @@ const styles = StyleSheet.create({
   shadowWrapper: {
     width: "100%",
     borderRadius: 24,
+
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.1,
@@ -73,16 +78,11 @@ const styles = StyleSheet.create({
   card: {
     position: "relative",
     width: "100%",
-    height: 140,
+    height: 240,
     borderRadius: 24,
     overflow: "hidden",
     justifyContent: "center",
     alignItems: "center",
-  },
-
-  cardPressed: {
-    transform: [{ scale: 0.98 }],
-    opacity: 0.95,
   },
 
   gradient: {
@@ -112,15 +112,26 @@ const styles = StyleSheet.create({
   iconContainer: {
     backgroundColor: "rgba(255,255,255,0.1)",
     borderRadius: 99,
-    width: 58,
-    height: 58,
+    width: 52,
+    height: 52,
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 6,
   },
 
   title: {
-    fontSize: 32,
+    fontSize: 24,
     textAlign: "center",
+  },
+  subTitle: {
+    fontSize: 16,
+    textAlign: "center",
+    lineHeight: 20,
+  },
+
+  subText: {
+    fontSize: 14,
+    textAlign: "center",
+    lineHeight: 20,
   },
 });

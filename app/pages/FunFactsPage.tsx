@@ -1,4 +1,5 @@
 import ScreenBackground from "@/components/ScreenBackground";
+import { useRouter } from 'expo-router';
 import React, { useRef, useState } from "react";
 import { NativeScrollEvent, NativeSyntheticEvent, ScrollView, StyleSheet, View, useWindowDimensions } from "react-native";
 import BackHomeCard from "../../components/BackHomeCard";
@@ -9,6 +10,7 @@ import PillButtonCard from "../../components/PillButtonCard";
 import { factData } from "../../data/factData";
 
 export default function FunFactsPage() {
+  const router = useRouter();
   const [selectedPill, setSelectedPill] = useState("Solar");
   const [currentFactIndex, setCurrentFactIndex] = useState(0);
   const scrollRef = useRef<ScrollView>(null);
@@ -29,8 +31,12 @@ export default function FunFactsPage() {
             title="Fun Facts"
             leftIconName="arrow-circle-left"
             rightIconName="cog"
-            onBackPress={() => console.log("Back Pressed")}
-            onSettingsPress={() => console.log("Settings Pressed")}
+            onBackPress={() => {
+              router.navigate('/pages/FactsTipsPage')
+            }}
+            onSettingsPress={() => {
+              router.navigate('/pages/SettingsHubPage')
+            }}
           />
 
           <View style={styles.spacer16} />
@@ -108,7 +114,9 @@ export default function FunFactsPage() {
 
         <BackHomeCard
           title="Back Home"
-          onBackHomePress={() => console.log("Back Home Pressed")}
+          onBackHomePress={() => {
+            router.navigate('/pages/HomePage')
+          }}
         />
 
 

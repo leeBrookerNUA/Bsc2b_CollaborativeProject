@@ -4,12 +4,15 @@ import FunFactCard from "@/components/FunFactCard";
 import Header from "@/components/Header";
 import ScreenBackground from "@/components/ScreenBackground";
 import StatCard from "@/components/StatCard";
+import { useRouter } from 'expo-router';
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import HelpTipCard from "../../components/HelpTipCard";
 
-
 export default function PlayPage() {
+
+  const router = useRouter();
+  
   return (
     <ScreenBackground>
 
@@ -17,8 +20,8 @@ export default function PlayPage() {
         title="Play"
         leftIconName="arrow-circle-left"
         rightIconName="cog"
-        onBackPress={() => console.log("Back Pressed")}
-        onSettingsPress={() => console.log("Settings Pressed")}
+        onBackPress={() => { router.navigate('/pages/HomePage')}}
+        onSettingsPress={() => { router.navigate('/pages/SettingsHubPage')}}
       />
 
       <View style={styles.spacer16} />
@@ -72,7 +75,7 @@ export default function PlayPage() {
         title="Live Fun Fact!"
         subtitle="It takes around 200 cranks to fully  charge one battery!"
         button="Learn More"
-        onMorePress={() => console.log("Learn More Pressed")}
+        onMorePress={() => { router.navigate('/pages/FunFactsPage')}}
       />
 
       <View style={styles.spacer16} />

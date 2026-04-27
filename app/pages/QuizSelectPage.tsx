@@ -3,12 +3,13 @@ import Header from "@/components/Header";
 import NoIconBadgeCard from "@/components/NoIconBadgeCard";
 import QuizSelectCard from "@/components/QuizSelectCard";
 import ScreenBackground from "@/components/ScreenBackground";
+import { useRouter } from 'expo-router';
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
 
 export default function QuizSelectPage() {
-
+  const router = useRouter();
 
   return (
     <ScreenBackground>
@@ -20,8 +21,12 @@ export default function QuizSelectPage() {
             title="Fun Facts"
             leftIconName="arrow-circle-left"
             rightIconName="cog"
-            onBackPress={() => console.log("Back Pressed")}
-            onSettingsPress={() => console.log("Settings Pressed")}
+            onBackPress={() => {
+              router.navigate('/pages/FactsTipsPage')
+            }}
+            onSettingsPress={() => {
+              router.navigate('/pages/SettingsHubPage')
+            }}
           />
 
           <View style={styles.spacer16} />
@@ -37,7 +42,9 @@ export default function QuizSelectPage() {
             title="Easy"
             subTitle="Simple questions to get started!"
             gradientColors={["#8EF0B3", "#5EDE92", "#2ECC71"]}
-            onQuizButtonPress={() => console.log("Easy Pressed")}
+            onQuizButtonPress={() => {
+              router.navigate('/pages/EasyQuizPage')
+            }}
           />
 
           <View style={styles.spacer16} />
@@ -47,7 +54,9 @@ export default function QuizSelectPage() {
             title="Hard"
             subTitle="Try a bigger challenge!"
             gradientColors={["#FFC27A", "#FFB14B", "#FF9F1C"]}
-            onQuizButtonPress={() => console.log("Hard Pressed")}
+            onQuizButtonPress={() => {
+              router.navigate('/pages/HardQuizPage')
+            }}
           />
 
           <View style={styles.spacer16} />
@@ -55,7 +64,9 @@ export default function QuizSelectPage() {
 
         <BackHomeCard
           title="Back Home"
-          onBackHomePress={() => console.log("Back Home Pressed")}
+          onBackHomePress={() => {
+            router.navigate('/pages/HomePage')
+          }}
         />
       </View>
     </ScreenBackground>

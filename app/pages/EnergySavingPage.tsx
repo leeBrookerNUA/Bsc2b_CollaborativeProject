@@ -3,11 +3,13 @@ import Header from "@/components/Header";
 import InfoCard from "@/components/InfoCard";
 import ScreenBackground from "@/components/ScreenBackground";
 import TipsCard from "@/components/TipsCard";
+import { useRouter } from 'expo-router';
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
 
 export default function EnergySavingPage() {
+  const router = useRouter();
   return (
 
     <ScreenBackground>
@@ -18,8 +20,12 @@ export default function EnergySavingPage() {
             title="Instructions"
             leftIconName="arrow-circle-left"
             rightIconName="cog"
-            onBackPress={() => console.log("Back Pressed")}
-            onSettingsPress={() => console.log("Settings Pressed")}
+            onBackPress={() => {
+              router.navigate('/pages/FactsTipsPage')
+            }}
+            onSettingsPress={() => {
+              router.navigate('/pages/SettingsHubPage')
+            }}
           />
           <View style={styles.padding16} >
 
@@ -63,7 +69,9 @@ export default function EnergySavingPage() {
         </View>
         <BackHomeCard
           title="Back Home"
-          onBackHomePress={() => console.log("Back Home Pressed")}
+          onBackHomePress={() => {
+            router.navigate('/pages/HomePage')
+          }}
         />
       </View>
 

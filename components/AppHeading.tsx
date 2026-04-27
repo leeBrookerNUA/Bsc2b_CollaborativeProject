@@ -16,7 +16,7 @@ export default function AppHeading({ children, style, ...rest }: AppHeadingProps
 
 const styles = StyleSheet.create({
     text: {
-        fontFamily: "Fredoka_700Bold",
+        fontFamily: "Fredoka_600SemiBold",
         color: "#FFFFFF",
         textShadowColor: "rgba(0, 0, 0, 0.2)",
         textShadowOffset: { width: 0, height: 4 },

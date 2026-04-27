@@ -1,6 +1,6 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { ColorValue, StyleSheet, View } from "react-native";
 import AppHeading from "./AppHeading";
 import AppText from "./AppText";
 
@@ -8,6 +8,7 @@ import AppText from "./AppText";
 interface InfoCardProps {
   title: string;
   subtitle: string;
+  gradientColors? : readonly [ColorValue, ColorValue, ...ColorValue[]];
 }
 
 
@@ -20,7 +21,7 @@ export default function InfoCard(props: InfoCardProps) {
 
     return (
     // Card container that holds the battery icon and text information, styled with a background color and padding
-    <LinearGradient style={styles.card} colors={["#5EDE92", "#2ecc71"]}>
+    <LinearGradient style={styles.card} colors={["#D2A8FF", "#B782F2", "#9B5DE5"]}>
       <View style={styles.darkOverlay} />
       <View style={styles.lightOverlay} />
 
