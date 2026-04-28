@@ -8,7 +8,7 @@ import ActionButton from "../../components/buttons/ActionButton";
 import QuizAnswerCard from "../../components/quiz/QuizAnswerCard";
 import QuizProgressBar from "../../components/quiz/QuizProgressBar";
 import QuizQuestionCard from "../../components/quiz/QuizQuestionCard";
-import { hardQuizData } from "../data/hardQuizData";
+import { hardQuizData } from "../../data/hardQuizData";
 
 export default function HardQuizPage() {
   const router = useRouter();

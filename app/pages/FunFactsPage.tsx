@@ -7,7 +7,7 @@ import PaginationDots from "../../components/base/PaginationDots";
 import ActionButton from "../../components/buttons/ActionButton";
 import PillButton from "../../components/buttons/PillButton";
 import FactCard from "../../components/cards/FactCard";
-import { factData } from "../data/factData";
+import { factData } from "../../data/factData";
 
 export default function FunFactsPage() {
   const router = useRouter();

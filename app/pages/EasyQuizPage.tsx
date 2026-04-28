@@ -8,7 +8,7 @@ import ActionButton from "../../components/buttons/ActionButton";
 import QuizAnswerCard from "../../components/quiz/QuizAnswerCard";
 import QuizProgressBar from "../../components/quiz/QuizProgressBar";
 import QuizQuestionCard from "../../components/quiz/QuizQuestionCard";
-import { easyQuizData } from "../data/easyQuizData";
+import { easyQuizData } from "../../data/easyQuizData";
 
 export default function EasyQuizPage() {
   const router = useRouter();
