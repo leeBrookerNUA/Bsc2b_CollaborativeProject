@@ -1,7 +1,7 @@
+import ActionButton from "@/components/ActionButton";
 import { useRouter } from 'expo-router';
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import BackHomeCard from "../../components/BackHomeCard";
 import Header from "../../components/Header";
 import HelpTipCard from "../../components/HelpTipCard";
 import InfoCard from "../../components/InfoCard";
@@ -32,51 +32,56 @@ export default function InstructionsPage() {
             }}
           />
           <View style={styles.container} >
-            <View style={styles.spacer12} />
+            <View style={styles.spacer16} />
 
             <InfoCard
               title="How to use the toy!"
               subtitle="Follow these steps to start charging your toy battery!"
+              gradientColors={["#D2A8FF", "#B97CFF", "#9B5DE5"]}
             />
 
-            <View style={styles.spacer12} />
+            <View style={styles.spacer16} />
 
             <InstructionCard
+            iconLibrary='MaterialIcons'
               iconName="bolt"
               title="Turn on the toy"
             />
-            <View style={styles.spacer12} />
+            <View style={styles.spacer16} />
 
             <InstructionCard
+            iconLibrary='Ionicons'
               iconName="wifi"
               title="Connect the toy to Wi-Fi"
             />
 
-            <View style={styles.spacer12} />
+            <View style={styles.spacer16} />
 
             <InstructionCard
-              iconName="refresh"
+            iconLibrary='Feather'
+              iconName="refresh-cw"
               title="Turn the hand crank or place it in sunlight"
             />
 
-            <View style={styles.spacer12} />
+            <View style={styles.spacer16} />
 
             <InstructionCard
+            iconLibrary='MaterialIcons'
               iconName="bolt"
               title="Watch the battery charge in the app"
             />
 
-            <View style={styles.spacer20} />
+            <View style={styles.spacer16} />
 
             <HelpTipCard
-              iconName="question-circle"
+              iconName="question"
               title="Ask an adult if you need help connecting the toy"
             />
 
           </View>
            </View>
 
-          <BackHomeCard
+          <ActionButton
             title="Back Home"
             onBackHomePress={() => {
               router.navigate('/pages/HomePage')
@@ -97,12 +102,8 @@ const styles = StyleSheet.create({
     width: "100%",
     marginTop: 8,
     padding: 16,
-
   },
-  spacer12: {
-    height: 12,
-  },
-  spacer20: {
-    height: 20,
+  spacer16: {
+    height: 16,
   },
 });

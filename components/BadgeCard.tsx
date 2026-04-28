@@ -1,11 +1,11 @@
-import { FontAwesome } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import AppText from "./AppText";
 
 interface BadgeCardProps {
     title: string;
-    iconName: React.ComponentProps<typeof FontAwesome>["name"];
+    iconName: React.ComponentProps<typeof Feather>["name"];
 }
 
 export default function BadgeCard(props: BadgeCardProps) {
@@ -19,7 +19,7 @@ export default function BadgeCard(props: BadgeCardProps) {
                 <AppText style={styles.title}>{title}</AppText>
 
                 <View style={styles.iconContainer}>
-                    <FontAwesome name={iconName} size={16} color="#FFFFFF" />
+                    <Feather name={iconName} size={16} color="#FFFFFF" />
                 </View>
             </View>
         </View>

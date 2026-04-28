@@ -6,12 +6,11 @@ import AppHeading from "./AppHeading";
 
 
 interface ButtonCardProps {
-  iconLibrary?: "FontAwesome" | "MaterialIcons" | "Ionicons" | "FontAwesome5";
+  iconLibrary?: "FontAwesome" | "MaterialIcons" | "Ionicons";
   iconName:
   | React.ComponentProps<typeof FontAwesome>["name"]
   | React.ComponentProps<typeof MaterialIcons>["name"]
   | React.ComponentProps<typeof Ionicons>["name"];
-
   title: string;
   gradientColors?: readonly [ColorValue, ColorValue, ...ColorValue[]];
   onMainButtonPress?: () => void;

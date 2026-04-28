@@ -1,4 +1,4 @@
-import BackHomeCard from '@/components/BackHomeCard';
+import ActionButton from '@/components/ActionButton';
 import { useRouter } from 'expo-router';
 import React from "react";
 import { StyleSheet, View } from "react-native";
@@ -66,7 +66,7 @@ export default function SettingsHubPage() {
 
                     </View>
                 </View>
-                <BackHomeCard
+                <ActionButton
                     title="Back Home"
                     onBackHomePress={() => {
                         router.navigate('/pages/HomePage')

@@ -1,4 +1,4 @@
-import BackHomeCard from "@/components/BackHomeCard";
+import ActionButton from "@/components/ActionButton";
 import Header from "@/components/Header";
 import QuizResultCard from "@/components/QuizResultCard";
 import ScreenBackground from "@/components/ScreenBackground";
@@ -43,7 +43,7 @@ export default function QuizPassPage() {
                     />
                     <View style={styles.spacer16} />
 
-                    <BackHomeCard
+                    <ActionButton
                         title="Try Another Quiz"
                         onBackHomePress={() => {
                             router.navigate('/pages/QuizSelectPage')
@@ -52,7 +52,7 @@ export default function QuizPassPage() {
 
                 </View>
 
-                <BackHomeCard
+                <ActionButton
                     title="Back Home"
                     onBackHomePress={() => {
                         router.navigate('/pages/HomePage')

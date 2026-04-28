@@ -1,4 +1,4 @@
-import BackHomeCard from "@/components/BackHomeCard";
+import ActionButton from "@/components/ActionButton";
 import Header from "@/components/Header";
 import NoIconBadgeCard from "@/components/NoIconBadgeCard";
 import QuizSelectCard from "@/components/QuizSelectCard";
@@ -64,7 +64,7 @@ export default function QuizSelectPage() {
           <View style={styles.spacer16} />
         </View>
 
-        <BackHomeCard
+        <ActionButton
           title="Back Home"
           onBackHomePress={() => {
             router.navigate('/pages/HomePage')

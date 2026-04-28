@@ -1,4 +1,4 @@
-import BackHomeCard from "@/components/BackHomeCard";
+import ActionButton from "@/components/ActionButton";
 import Header from "@/components/Header";
 import InfoCard from "@/components/InfoCard";
 import ScreenBackground from "@/components/ScreenBackground";
@@ -17,7 +17,7 @@ export default function EnergySavingPage() {
         <View>
 
           <Header
-            title="Instructions"
+            title="Energy Saving Tips"
             leftIconName="arrow-circle-left"
             rightIconName="cog"
             onBackPress={() => {
@@ -34,24 +34,28 @@ export default function EnergySavingPage() {
             <InfoCard
               title="What YOU can do to help!"
               subtitle="Small actions can gave energy everyday!"
+              gradientColors={["#8EF0B3", "#5EDC95", "#2ECC71"]}
             />
 
             <View style={styles.spacer16} />
 
             <TipsCard
-              iconName="power-off"
+            iconLibrary="AntDesign"
+              iconName="poweroff"
               title="Turn off toys when not in use"
             />
             <View style={styles.spacer16} />
 
             <TipsCard
-              iconName="sun-o"
+            iconLibrary="AntDesign"
+              iconName="sun"
               title="Use sunlight when possible"
             />
 
             <View style={styles.spacer16} />
 
             <TipsCard
+            iconLibrary="MaterialIcons"
               iconName="bolt"
               title="Charge only when needed"
             />
@@ -59,7 +63,8 @@ export default function EnergySavingPage() {
             <View style={styles.spacer16} />
 
             <TipsCard
-              iconName="plug"
+            iconLibrary="MaterialCommunityIcons"
+              iconName="power-plug-outline"
               title="Ask an adult to unplug chargers"
             />
 
@@ -67,7 +72,7 @@ export default function EnergySavingPage() {
 
           </View>
         </View>
-        <BackHomeCard
+        <ActionButton
           title="Back Home"
           onBackHomePress={() => {
             router.navigate('/pages/HomePage')
@@ -81,7 +86,7 @@ export default function EnergySavingPage() {
 
 const styles = StyleSheet.create({
   page: {
-    flex: 1,
+    flexGrow: 1,
     justifyContent: "space-between",
     
   },

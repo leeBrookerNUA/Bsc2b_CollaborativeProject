@@ -1,9 +1,9 @@
 import { useRouter } from 'expo-router';
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
+import ActionButton from "../../components/ActionButton";
 import AnswerCard from "../../components/AnswerCard";
 import AppText from "../../components/AppText";
-import BackHomeCard from "../../components/BackHomeCard";
 import Header from "../../components/Header";
 import QuestionCard from "../../components/QuestionCard";
 import QuizProgressBar from "../../components/QuizProgressBar";
@@ -120,7 +120,7 @@ function getAnswerState(answer: string) {
         </View>
       </View>
 
-      <BackHomeCard
+      <ActionButton
         title="Back Home"
         onBackHomePress={() => {
             router.navigate('/pages/HomePage')

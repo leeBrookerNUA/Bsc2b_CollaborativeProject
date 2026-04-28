@@ -2,7 +2,7 @@ import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import AccessibilitySettingRow from "../../components/AccessibilitySettingRow";
-import BackHomeCard from "../../components/BackHomeCard";
+import ActionButton from "../../components/ActionButton";
 import Header from "../../components/Header";
 import ScreenBackground from "../../components/ScreenBackground";
 import SettingsPanel from "../../components/SettingsPanel";
@@ -74,7 +74,7 @@ export default function AccessibilityPage() {
           </View>
         </View>
 
-        <BackHomeCard
+        <ActionButton
           title="Back Home"
           onBackHomePress={() => {
             router.navigate("/pages/HomePage");

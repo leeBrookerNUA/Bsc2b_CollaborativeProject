@@ -39,7 +39,7 @@ export default function ConnectionSettingRow(props: ConnectionSettingRowProps) {
             {type === "switch" && (
                 <AppSwitch
                     value={switchValue}
-                    onValueChange={onSwitchChange}
+                    onValueChange={onSwitchChange || (() => { })}
                 />
             )}
         </View>
@@ -76,10 +76,7 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
         paddingHorizontal: 12,
     },
-    switch: {
-        transform: [{ scaleX: 1.4 }, { scaleY: 1.4 }],
-        marginRight: 4,
-    },
+    
 
     statusText: {
         fontSize: 11,

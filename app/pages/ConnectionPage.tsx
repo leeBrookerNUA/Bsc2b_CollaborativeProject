@@ -1,7 +1,7 @@
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import BackHomeCard from "../../components/BackHomeCard";
+import ActionButton from "../../components/ActionButton";
 import ConnectionSettingRow from "../../components/ConnectionSettingRow";
 import Header from "../../components/Header";
 import ScreenBackground from "../../components/ScreenBackground";
@@ -49,7 +49,7 @@ export default function ConnectionPage() {
           </View>
         </View>
 
-        <BackHomeCard
+        <ActionButton
           title="Back Home"
           onBackHomePress={() => {
             router.navigate("/pages/HomePage");

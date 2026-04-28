@@ -2,7 +2,7 @@ import ScreenBackground from "@/components/ScreenBackground";
 import { useRouter } from 'expo-router';
 import React, { useRef, useState } from "react";
 import { NativeScrollEvent, NativeSyntheticEvent, ScrollView, StyleSheet, View, useWindowDimensions } from "react-native";
-import BackHomeCard from "../../components/BackHomeCard";
+import ActionButton from "../../components/ActionButton";
 import FactCard from "../../components/FactCard";
 import Header from "../../components/Header";
 import PaginationDots from "../../components/PaginationDots";
@@ -93,6 +93,7 @@ export default function FunFactsPage() {
             {currentFacts.map((fact, index) => (
               <View key={index} style={{ width: slideWidth, marginRight: slideGap }}>
                 <FactCard
+                  iconLibrary={fact.iconLibrary}
                   iconName={fact.iconName}
                   title={fact.title}
                   subText={fact.subText}
@@ -112,7 +113,7 @@ export default function FunFactsPage() {
         </View>
 
 
-        <BackHomeCard
+        <ActionButton
           title="Back Home"
           onBackHomePress={() => {
             router.navigate('/pages/HomePage')
@@ -127,7 +128,7 @@ export default function FunFactsPage() {
 
 const styles = StyleSheet.create({
   page: {
-    flex: 1,
+    flexGrow: 1,
     justifyContent: "space-between",
   },
   pillRow: {

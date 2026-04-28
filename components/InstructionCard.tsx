@@ -1,22 +1,35 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { Feather, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import AppText from "./AppText";
 
 interface InstructionCardProps {
-    iconName: React.ComponentProps<typeof FontAwesome>["name"];
+    iconLibrary?: "Feather" | "MaterialIcons" | "Ionicons" | "FontAwesome5";
+    iconName:
+    | React.ComponentProps<typeof Feather>["name"]
+    | React.ComponentProps<typeof MaterialIcons>["name"]
+    | React.ComponentProps<typeof Ionicons>["name"];
     title: string;
 };
 
 export default function InstructionCard(props: InstructionCardProps) {
-    const { iconName, title } = props;
+    const { iconLibrary = "FontAwesome", iconName, title } = props;
+
+
+    const Icon =
+        iconLibrary === "MaterialIcons"
+            ? MaterialIcons
+            : iconLibrary === "Ionicons"
+                ? Ionicons
+
+                : Feather;
 
     return (
         <View style={styles.card}>
             <View style={styles.contentRow}>
 
                 <View style={styles.iconContainer}>
-                    <FontAwesome name={iconName} size={24} color="#FFFFFF" />
+                    <Icon name={iconName as any} size={24} color="#FFFFFF" />
                 </View>
 
                 <AppText style={styles.title}>{title}</AppText>

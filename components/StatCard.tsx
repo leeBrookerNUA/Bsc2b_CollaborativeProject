@@ -1,25 +1,39 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { AntDesign, Feather, MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import AppText from "./AppText";
 
 
 interface StatCardProps {
-    iconName: React.ComponentProps<typeof FontAwesome>["name"];
+    iconLibrary?: "AntDesign" | "MaterialIcons" | "Feather" | "FontAwesome5";
+    iconName:
+    | React.ComponentProps<typeof AntDesign>["name"]
+    | React.ComponentProps<typeof MaterialIcons>["name"]
+    | React.ComponentProps<typeof Feather>["name"];
     value: string,
     title: string,
     iconColor: string,
     iconBgColor?: string,
 }
 
+
+
 export default function StatCard(props: StatCardProps) {
-    const { iconName, value, title, iconColor, iconBgColor = "rgba(255,255,255,0.55)" } = props;
+    const { iconLibrary = "AntDesign", iconName, value, title, iconColor, iconBgColor = "rgba(255,255,255,0.55)" } = props;
+
+    const Icon =
+        iconLibrary === "MaterialIcons"
+            ? MaterialIcons
+            : iconLibrary === "Feather"
+                ? Feather
+
+                : AntDesign;
 
     return (
         <View style={styles.card}>
 
             <View style={[styles.iconContainer, { backgroundColor: iconBgColor }]}>
-                <FontAwesome name={iconName} size={24} color={iconColor} />
+                <Icon name={iconName as any} size={24} color={iconColor} />
             </View>
 
             <AppText style={styles.value}>{value}</AppText>

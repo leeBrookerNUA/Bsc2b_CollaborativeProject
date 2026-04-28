@@ -1,6 +1,7 @@
 import { FontAwesome } from "@expo/vector-icons";
 import React from "react";
-import { StyleSheet, Switch, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import AppSwitch from "./AppSwitch";
 import AppText from "./AppText";
 
 interface AudioSettingRowProps {
@@ -29,16 +30,12 @@ export default function AudioSettingRow(props: AudioSettingRowProps) {
       )}
 
       {type === "switch" && (
-        <Switch
+        <AppSwitch
           value={switchValue}
-          onValueChange={onSwitchChange}
-          trackColor={{
-            false: "rgba(255,255,255,0.25)",
-            true: "#FFD60A",
-          }}
-          thumbColor="#FFFFFF"
+          onValueChange={onSwitchChange || (() => { })}
         />
       )}
+      
     </View>
   );
 }

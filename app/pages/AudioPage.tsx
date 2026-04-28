@@ -1,8 +1,8 @@
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
+import ActionButton from "../../components/ActionButton";
 import AudioSettingRow from "../../components/AudioSettingRow";
-import BackHomeCard from "../../components/BackHomeCard";
 import Header from "../../components/Header";
 import ScreenBackground from "../../components/ScreenBackground";
 import SettingsPanel from "../../components/SettingsPanel";
@@ -48,7 +48,7 @@ export default function AudioPage() {
           </View>
         </View>
 
-        <BackHomeCard
+        <ActionButton
           title="Back Home"
           onBackHomePress={() => {
             router.navigate("/pages/HomePage");

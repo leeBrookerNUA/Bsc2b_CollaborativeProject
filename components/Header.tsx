@@ -21,9 +21,18 @@ export default function Header(props: HeaderProps) {
             <View style={styles.iconSlot}>
                 {leftIconName ? (
                     <Pressable
-                    onPress={onBackPress}
-                    style={({ pressed }) => [styles.iconButton, pressed && styles.iconButtonPressed,]}>
-                        <FontAwesome5 name={leftIconName} size={32} color="#FFFFFF" />
+                        onPress={onBackPress}
+                        style={({ pressed }) => [
+                            styles.iconButton,
+                            pressed && styles.iconButtonPressed,
+                        ]}
+                    >
+                        <FontAwesome5
+                            name={leftIconName}
+                            size={28}
+                            color="#FFFFFF"
+                            style={styles.icon}
+                        />
                     </Pressable>
                 ) : null}
             </View>
@@ -32,10 +41,8 @@ export default function Header(props: HeaderProps) {
 
             <View style={styles.iconSlot}>
                 {rightIconName ? (
-                    <Pressable
-                        onPress={onSettingsPress}
-                        style={({ pressed }) => [styles.iconButton, pressed && styles.iconButtonPressed,]}>
-                        <FontAwesome5 name={rightIconName} size={32} color="#FFFFFF" />
+                    <Pressable onPress={onSettingsPress} style={({ pressed }) => [styles.iconButton, pressed && styles.iconButtonPressed,]}>
+                        <FontAwesome5 name={rightIconName} size={28} color="#FFFFFF" style={styles.icon} />
                     </Pressable>
                 ) : null}
             </View>
@@ -59,6 +66,10 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
+    icon: {
+        width: 32,
+        textAlign: "center",
+    },
 
     iconButton: {
         width: 38,
@@ -66,15 +77,19 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "rgba(255, 255, 255, 0.12)",
-        borderRadius: 18,
+        borderRadius: 19,
+
+        // Always reserve border space
+        borderWidth: 2,
+        borderColor: "transparent",
     },
-     iconButtonPressed: {
+
+    iconButtonPressed: {
         transform: [{ scale: 0.95 }],
         backgroundColor: "rgba(58, 134, 255, 0.75)",
-        borderWidth: 2,
         borderColor: "rgba(255, 255, 255, 0.5)",
     },
-    
+
     title: {
         fontSize: 32,
         textAlign: "center",

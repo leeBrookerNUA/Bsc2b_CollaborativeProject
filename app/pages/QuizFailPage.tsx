@@ -1,4 +1,4 @@
-import BackHomeCard from "@/components/BackHomeCard";
+import ActionButton from "@/components/ActionButton";
 import FunFactCard from "@/components/FunFactCard";
 import Header from "@/components/Header";
 import QuizResultCard from "@/components/QuizResultCard";
@@ -42,25 +42,28 @@ export default function QuizFailPage() {
                     />
                     <View style={styles.spacer16} />
 
-                       <FunFactCard
-                            title="Live Fun Fact!"
-                            subtitle="It takes around 200 cranks to fully  charge one battery!"
-                            button="Learn More"
-                            onMorePress={() => { router.navigate('/pages/FunFactsPage')}}
-                          />
-
-
-                    <View style={styles.spacer16} />
-                    <BackHomeCard
+                    <ActionButton
                         title="Try Again"
+                        backgroundColor="rgba(255, 159, 28, 0.75)"
+                        pressedBackgroundColor="rgba(230, 120, 0, 0.85)"
                         onBackHomePress={() => {
                             router.navigate('/pages/QuizSelectPage')
-                        }}
+
+                        }} />
+                         <View style={styles.spacer16} />
+
+                    <FunFactCard
+                        title="Live Fun Fact!"
+                        subtitle="It takes around 200 cranks to fully  charge one battery!"
+                        button="Learn More"
+                        onMorePress={() => { router.navigate('/pages/FunFactsPage') }}
                     />
+
+
 
                 </View>
 
-                <BackHomeCard
+                <ActionButton
                     title="Back Home"
                     onBackHomePress={() => {
                         router.navigate('/pages/HomePage')
