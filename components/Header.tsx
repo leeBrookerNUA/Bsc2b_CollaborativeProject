@@ -3,95 +3,95 @@ import React from "react";
 import { Pressable, StyleSheet, View } from "react-native";
 import AppHeading from "./AppHeading";
 
+type HeaderIconName = React.ComponentProps<typeof FontAwesome5>["name"];
+
 interface HeaderProps {
     title: string;
-    leftIconName?: React.ComponentProps<typeof FontAwesome5>["name"];
-    rightIconName?: React.ComponentProps<typeof FontAwesome5>["name"];
-    onBackPress: () => void;
-    onSettingsPress: () => void;
+    leftIconName?: HeaderIconName;
+    rightIconName?: HeaderIconName;
+    onBackPress?: () => void;
+    onSettingsPress?: () => void;
 }
 
-export default function Header(props: HeaderProps) {
-
-    const { title, leftIconName, rightIconName, onBackPress, onSettingsPress } = props;
+export default function Header({
+    title,
+    leftIconName,
+    rightIconName,
+    onBackPress,
+    onSettingsPress,
+}: HeaderProps) {
+    const renderIconButton = (
+        iconName?: HeaderIconName,
+        onPress?: () => void
+    ) => (
+        <View style={styles.iconSlot}>
+            {iconName && (
+                <Pressable
+                    onPress={onPress}
+                    disabled={!onPress}
+                    hitSlop={8}
+                    style={({ pressed }) => [
+                        styles.iconButton,
+                        pressed && onPress && styles.iconButtonPressed,
+                    ]}
+                >
+                    <FontAwesome5 name={iconName} size={28} color="#FFFFFF" />
+                </Pressable>
+            )}
+        </View>
+    );
 
     return (
         <View style={styles.header}>
+            {renderIconButton(leftIconName, onBackPress)}
 
-            <View style={styles.iconSlot}>
-                {leftIconName ? (
-                    <Pressable
-                        onPress={onBackPress}
-                        style={({ pressed }) => [
-                            styles.iconButton,
-                            pressed && styles.iconButtonPressed,
-                        ]}
-                    >
-                        <FontAwesome5
-                            name={leftIconName}
-                            size={28}
-                            color="#FFFFFF"
-                            style={styles.icon}
-                        />
-                    </Pressable>
-                ) : null}
-            </View>
+            <AppHeading style={styles.title} numberOfLines={1}>
+                {title}
+            </AppHeading>
 
-            <AppHeading style={styles.title}>{title}</AppHeading>
-
-            <View style={styles.iconSlot}>
-                {rightIconName ? (
-                    <Pressable onPress={onSettingsPress} style={({ pressed }) => [styles.iconButton, pressed && styles.iconButtonPressed,]}>
-                        <FontAwesome5 name={rightIconName} size={28} color="#FFFFFF" style={styles.icon} />
-                    </Pressable>
-                ) : null}
-            </View>
-
+            {renderIconButton(rightIconName, onSettingsPress)}
         </View>
-    )
-};
+    );
+}
 
 const styles = StyleSheet.create({
     header: {
         width: "100%",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
         paddingHorizontal: 4,
         paddingVertical: 8,
+        flexDirection: "row",
+        alignItems: "center",
     },
+
     iconSlot: {
-        width: 38,
-        height: 38,
+        width: 40,
+        height: 40,
         alignItems: "center",
         justifyContent: "center",
-    },
-    icon: {
-        width: 32,
-        textAlign: "center",
     },
 
     iconButton: {
         width: 38,
         height: 38,
+        borderRadius: 19,
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "rgba(255, 255, 255, 0.12)",
-        borderRadius: 19,
 
-        // Always reserve border space
-        borderWidth: 2,
-        borderColor: "transparent",
+        borderWidth: 1,
+        borderColor: "rgba(255, 255, 255, 0.14)",
     },
 
     iconButtonPressed: {
+        opacity: 0.9,
         transform: [{ scale: 0.95 }],
         backgroundColor: "rgba(58, 134, 255, 0.75)",
         borderColor: "rgba(255, 255, 255, 0.5)",
     },
 
     title: {
+        flex: 1,
         fontSize: 32,
         textAlign: "center",
-    }
+    },
 });

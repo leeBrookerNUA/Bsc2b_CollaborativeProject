@@ -1,4 +1,4 @@
-import { useRouter } from 'expo-router';
+import { useRouter } from "expo-router";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import ButtonCard from "../../components/ButtonCard";
@@ -6,7 +6,6 @@ import Header from "../../components/Header";
 import ScreenBackground from "../../components/ScreenBackground";
 
 export default function HomePage() {
-
   const router = useRouter();
 
   return (
@@ -18,7 +17,7 @@ export default function HomePage() {
           onSettingsPress={() => { }}
         />
 
-        <View style={styles.spacer20} />
+        <View style={styles.spacer16} />
 
         <View style={styles.container}>
           <ButtonCard
@@ -27,7 +26,7 @@ export default function HomePage() {
             iconLibrary="Ionicons"
             iconName="play"
             onMainButtonPress={() => {
-              router.navigate('/pages/PlayPage')
+              router.navigate("/pages/PlayPage");
             }}
           />
 
@@ -39,8 +38,7 @@ export default function HomePage() {
             iconLibrary="MaterialIcons"
             iconName="lightbulb"
             onMainButtonPress={() => {
-              router.navigate('/pages/FactsTipsPage')
-
+              router.navigate("/pages/FactsTipsPage");
             }}
           />
 
@@ -52,7 +50,7 @@ export default function HomePage() {
             iconLibrary="Ionicons"
             iconName="book"
             onMainButtonPress={() => {
-              router.navigate('/pages/InstructionsPage')
+              router.navigate("/pages/InstructionsPage");
             }}
           />
 
@@ -64,7 +62,7 @@ export default function HomePage() {
             iconLibrary="FontAwesome"
             iconName="cog"
             onMainButtonPress={() => {
-              router.navigate('/pages/SettingsHubPage')
+              router.navigate("/pages/SettingsHubPage");
             }}
           />
         </View>
@@ -73,12 +71,12 @@ export default function HomePage() {
   );
 }
 
-
 const styles = StyleSheet.create({
   page: {
-    flex: 1,
+    flexGrow: 1,
     width: "100%",
   },
+
   container: {
     width: "100%",
     marginTop: 8,
@@ -87,8 +85,5 @@ const styles = StyleSheet.create({
 
   spacer16: {
     height: 16,
-  },
-  spacer20: {
-    height: 20,
   },
 });

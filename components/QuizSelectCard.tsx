@@ -9,92 +9,81 @@ interface QuizSelectCardProps {
   iconName: React.ComponentProps<typeof AntDesign>["name"];
   iconCount?: number;
   title: string;
-  subTitle: string,
+  subTitle: string;
   gradientColors?: readonly [ColorValue, ColorValue, ...ColorValue[]];
   onQuizButtonPress?: () => void;
 }
 
-export default function QuizSelectCard(props: QuizSelectCardProps) {
-  const {
-    iconName, iconCount = 1, title, subTitle, gradientColors = ["#FFF2A6", "#FFE066", "#E0C120"], onQuizButtonPress, } = props;
+export default function QuizSelectCard({
+  iconName,
+  iconCount = 1,
+  title,
+  subTitle,
+  gradientColors = ["#FFF2A6", "#FFE066", "#E0C120"],
+  onQuizButtonPress,
+}: QuizSelectCardProps) {
+  const icons = Array.from({ length: Math.max(0, iconCount) });
 
   return (
-    <View style={styles.shadowWrapper}>
-      <Pressable
-        onPress={onQuizButtonPress}
-        style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}
-      >
-        <LinearGradient
-          colors={gradientColors}
-          style={styles.gradient}
-        />
+    <Pressable
+      onPress={onQuizButtonPress}
+      style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}
+    >
+      <LinearGradient colors={gradientColors} style={styles.gradient} />
 
-        <View pointerEvents="none" style={styles.darkOverlay} />
-        <View pointerEvents="none" style={styles.lightOverlay} />
+      <View pointerEvents="none" style={styles.overlay} />
 
-        <View style={styles.content}>
-
-          <View style={styles.iconRow}>
-            {Array.from({ length: iconCount }).map((_, index) => (
-              <AntDesign key={index} name={iconName} size={32} color="#FFFFFF" />
-            ))}
-          </View>
-
-          <AppHeading style={styles.title}>{title}</AppHeading>
-          <AppText style={styles.subTitle}>{subTitle}</AppText>
+      <View style={styles.content}>
+        <View style={styles.iconRow}>
+          {icons.map((_, index) => (
+            <AntDesign
+              key={`${iconName}-${index}`}
+              name={iconName}
+              size={32}
+              color="#FFFFFF"
+            />
+          ))}
         </View>
-      </Pressable>
-    </View>
+
+        <AppHeading style={styles.title}>{title}</AppHeading>
+        <AppText style={styles.subTitle}>{subTitle}</AppText>
+      </View>
+    </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
-  shadowWrapper: {
-    width: "100%",
-    borderRadius: 24,
-
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 3,
-  },
-
   card: {
-    position: "relative",
     width: "100%",
     height: 140,
     borderRadius: 24,
     overflow: "hidden",
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "center",
+
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.25)",
   },
 
   cardPressed: {
-    transform: [{ scale: 0.98 }],
     opacity: 0.95,
+    transform: [{ scale: 0.98 }],
   },
 
   gradient: {
     ...StyleSheet.absoluteFillObject,
   },
 
-  darkOverlay: {
+  overlay: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: "rgba(0, 0, 0, 0.1)",
   },
 
-  lightOverlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(255, 255, 255, 0.05)",
-  },
-
   content: {
-    zIndex: 1,
     width: "100%",
     height: "100%",
+    paddingHorizontal: 16,
     paddingVertical: 12,
-    paddingHorizontal: 14,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -111,9 +100,10 @@ const styles = StyleSheet.create({
     fontSize: 24,
     textAlign: "center",
   },
+
   subTitle: {
     fontSize: 16,
-    textAlign: "center",
     lineHeight: 20,
+    textAlign: "center",
   },
 });

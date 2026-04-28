@@ -3,73 +3,76 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import AppText from "./AppText";
 
+type IconLibrary = "Feather" | "MaterialIcons" | "Ionicons";
+
 interface InstructionCardProps {
-    iconLibrary?: "Feather" | "MaterialIcons" | "Ionicons" | "FontAwesome5";
-    iconName:
+  iconLibrary?: IconLibrary;
+  iconName:
     | React.ComponentProps<typeof Feather>["name"]
     | React.ComponentProps<typeof MaterialIcons>["name"]
     | React.ComponentProps<typeof Ionicons>["name"];
-    title: string;
+  title: string;
+}
+
+const iconLibraries = {
+  Feather,
+  MaterialIcons,
+  Ionicons,
 };
 
-export default function InstructionCard(props: InstructionCardProps) {
-    const { iconLibrary = "FontAwesome", iconName, title } = props;
+export default function InstructionCard({
+  iconLibrary = "Feather",
+  iconName,
+  title,
+}: InstructionCardProps) {
+  const Icon = iconLibraries[iconLibrary];
 
-
-    const Icon =
-        iconLibrary === "MaterialIcons"
-            ? MaterialIcons
-            : iconLibrary === "Ionicons"
-                ? Ionicons
-
-                : Feather;
-
-    return (
-        <View style={styles.card}>
-            <View style={styles.contentRow}>
-
-                <View style={styles.iconContainer}>
-                    <Icon name={iconName as any} size={24} color="#FFFFFF" />
-                </View>
-
-                <AppText style={styles.title}>{title}</AppText>
-            </View>
+  return (
+    <View style={styles.card}>
+      <View style={styles.contentRow}>
+        <View style={styles.iconContainer}>
+          <Icon name={iconName as any} size={24} color="#FFFFFF" />
         </View>
-    );
+
+        <AppText style={styles.title}>{title}</AppText>
+      </View>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    card: {
-        width: "100%",
-        minHeight: 52,
-        backgroundColor: "rgba(255, 255, 255, 0.3)",
-        borderRadius: 16,
-        borderWidth: 1.5,
-        borderColor: "rgba(255, 255, 255, 0.12)",
-        paddingVertical: 8,
-        paddingHorizontal: 12,
-        justifyContent: "center",
-        overflow: 'hidden',
+  card: {
+    width: "100%",
+    minHeight: 52,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 16,
+    overflow: "hidden",
+    justifyContent: "center",
+    backgroundColor: "rgba(255, 255, 255, 0.3)",
 
-    },
-    contentRow: {
-        flexDirection: "row",
-        alignItems: "center",
-    },
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.14)",
+  },
 
-    title: {
-        fontSize: 14,
-        flexShrink: 1,
-        lineHeight: 18,
-    },
+  contentRow: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
 
-    iconContainer: {
-        backgroundColor: "rgba(255, 255, 255, 0.15)",
-        borderRadius: 99,
-        width: 32,
-        height: 32,
-        alignItems: "center",
-        justifyContent: "center",
-        marginRight: 6,
-    },
+  iconContainer: {
+    width: 32,
+    height: 32,
+    marginRight: 8,
+    borderRadius: 16,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "rgba(255, 255, 255, 0.15)",
+  },
+
+  title: {
+    flex: 1,
+    fontSize: 14,
+    lineHeight: 18,
+  },
 });

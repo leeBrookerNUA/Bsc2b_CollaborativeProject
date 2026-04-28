@@ -1,143 +1,115 @@
-import AntDesign from "@expo/vector-icons/AntDesign";
-import Feather from "@expo/vector-icons/Feather";
-import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import {
+  AntDesign,
+  Feather,
+  FontAwesome5,
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { ColorValue, StyleSheet, View } from "react-native";
 import AppHeading from "./AppHeading";
 import AppText from "./AppText";
 
-interface FactCardProps {
-  iconLibrary?:
+type IconLibrary =
   | "FontAwesome5"
   | "AntDesign"
   | "MaterialIcons"
   | "MaterialCommunityIcons"
   | "Feather";
 
+interface FactCardProps {
+  iconLibrary?: IconLibrary;
   iconName:
-  | React.ComponentProps<typeof FontAwesome5>["name"]
-  | React.ComponentProps<typeof AntDesign>["name"]
-  | React.ComponentProps<typeof MaterialIcons>["name"]
-  | React.ComponentProps<typeof MaterialCommunityIcons>["name"]
-  | React.ComponentProps<typeof Feather>["name"];
-
+    | React.ComponentProps<typeof FontAwesome5>["name"]
+    | React.ComponentProps<typeof AntDesign>["name"]
+    | React.ComponentProps<typeof MaterialIcons>["name"]
+    | React.ComponentProps<typeof MaterialCommunityIcons>["name"]
+    | React.ComponentProps<typeof Feather>["name"];
   title: string;
   subText: string;
   gradientColors?: readonly [ColorValue, ColorValue, ...ColorValue[]];
 }
 
-export default function FactCard(props: FactCardProps) {
-  const {
-    iconLibrary = "FontAwesome5",
-    iconName,
-    title,
-    subText,
-    gradientColors = ["#FFF2A6", "#FFE066", "#E0C120"],
-  } = props;
+const iconLibraries = {
+  FontAwesome5,
+  AntDesign,
+  MaterialIcons,
+  MaterialCommunityIcons,
+  Feather,
+};
 
-  const Icon =
-    iconLibrary === "AntDesign"
-      ? AntDesign
-      : iconLibrary === "MaterialIcons"
-        ? MaterialIcons
-        : iconLibrary === "MaterialCommunityIcons"
-          ? MaterialCommunityIcons
-          : iconLibrary === "Feather"
-            ? Feather
-            : FontAwesome5;
+export default function FactCard({
+  iconLibrary = "FontAwesome5",
+  iconName,
+  title,
+  subText,
+  gradientColors = ["#FFF2A6", "#FFE066", "#E0C120"],
+}: FactCardProps) {
+  
+  const Icon = iconLibraries[iconLibrary];
 
   return (
-    <View style={styles.shadowWrapper}>
-      <View style={styles.card}>
-        <LinearGradient
-          colors={gradientColors}
-          style={styles.gradient}
-        />
+    <LinearGradient colors={gradientColors} style={styles.card}>
+      <View pointerEvents="none" style={styles.overlay} />
 
-        <View pointerEvents="none" style={styles.darkOverlay} />
-        <View pointerEvents="none" style={styles.lightOverlay} />
-
-        <View style={styles.content}>
-          <View style={styles.iconContainer}>
-            <Icon name={iconName as any} size={36} color="#FFFFFF" />
-          </View>
-
-          <AppHeading style={styles.title}>{title}</AppHeading>
-          <AppText style={styles.subText}>{subText}</AppText>
+      <View style={styles.content}>
+        <View style={styles.iconContainer}>
+          <Icon name={iconName as any} size={34} color="#FFFFFF" />
         </View>
+
+        <AppHeading style={styles.title}>{title}</AppHeading>
+        <AppText style={styles.subText}>{subText}</AppText>
       </View>
-    </View>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
-  shadowWrapper: {
-    width: "100%",
-    borderRadius: 30,
-
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 3,
-  },
-
   card: {
-    position: "relative",
     width: "100%",
     minHeight: 220,
+    paddingHorizontal: 20,
+    paddingVertical: 22,
     borderRadius: 24,
     overflow: "hidden",
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "center",
+
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.25)",
   },
 
-  gradient: {
-    ...StyleSheet.absoluteFillObject,
-  },
-
-  darkOverlay: {
+  overlay: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: "rgba(0, 0, 0, 0.1)",
   },
 
-  lightOverlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(255, 255, 255, 0.05)",
-  },
-
   content: {
-    zIndex: 1,
     width: "100%",
-    paddingTop: 10,
-    paddingBottom: 22,
-    paddingHorizontal: 20,
     alignItems: "center",
     justifyContent: "center",
   },
 
   iconContainer: {
-    backgroundColor: "rgba(255,255,255,0.1)",
-    borderRadius: 99,
     width: 60,
     height: 60,
+    marginBottom: 8,
+    borderRadius: 30,
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 6,
+    backgroundColor: "rgba(255, 255, 255, 0.12)",
   },
 
   title: {
     fontSize: 24,
-    textAlign: "center",
     marginBottom: 10,
+    textAlign: "center",
   },
 
   subText: {
     fontSize: 20,
+    lineHeight: 25,
     textAlign: "center",
-    lineHeight: 22,
   },
 });

@@ -1,5 +1,5 @@
-import ActionButton from '@/components/ActionButton';
-import { useRouter } from 'expo-router';
+import ActionButton from "@/components/ActionButton";
+import { useRouter } from "expo-router";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import ButtonCard from "../../components/ButtonCard";
@@ -13,29 +13,25 @@ export default function SettingsHubPage() {
         <ScreenBackground>
             <View style={styles.page}>
                 <View>
-
                     <Header
                         title="Settings"
                         leftIconName="arrow-circle-left"
-                        rightIconName="cog"
                         onBackPress={() => {
-                            router.navigate('/pages/HomePage')
+                            router.navigate("/pages/HomePage");
                         }}
-                        onSettingsPress={() => {
-                            router.navigate('/pages/SettingsHubPage')
-                        }}
+                        onSettingsPress={() => { }}
                     />
 
-                    <View style={styles.spacer16} />
-
                     <View style={styles.container}>
+                        <View style={styles.spacer16} />
+
                         <ButtonCard
                             title="Audio Settings"
                             gradientColors={["#8FC4FF", "#5FA8FF", "#3A86FF"]}
                             iconLibrary="Ionicons"
                             iconName="volume-medium"
                             onMainButtonPress={() => {
-                                router.navigate('/pages/AudioPage')
+                                router.navigate("/pages/AudioPage");
                             }}
                         />
 
@@ -47,8 +43,7 @@ export default function SettingsHubPage() {
                             iconLibrary="MaterialIcons"
                             iconName="settings-accessibility"
                             onMainButtonPress={() => {
-                                router.navigate('/pages/AccessibilityPage')
-
+                                router.navigate("/pages/AccessibilityPage");
                             }}
                         />
 
@@ -60,36 +55,38 @@ export default function SettingsHubPage() {
                             iconLibrary="MaterialIcons"
                             iconName="wifi"
                             onMainButtonPress={() => {
-                                router.navigate('/pages/ConnectionPage')
+                                router.navigate("/pages/ConnectionPage");
                             }}
                         />
-
                     </View>
                 </View>
+
                 <ActionButton
                     title="Back Home"
+                    backgroundColor="rgba(255, 255, 255, 0.22)"
+                    pressedBackgroundColor="rgba(255, 255, 255, 0.35)"
                     onBackHomePress={() => {
-                        router.navigate('/pages/HomePage')
+                        router.navigate("/pages/HomePage");
                     }}
                 />
-
             </View>
         </ScreenBackground>
     );
 }
 
-
 const styles = StyleSheet.create({
     page: {
-        flex: 1,
-
+        flexGrow: 1,
+        width: "100%",
         justifyContent: "space-between",
     },
+
     container: {
         width: "100%",
         marginTop: 8,
         padding: 16,
     },
+
     spacer16: {
         height: 16,
     },

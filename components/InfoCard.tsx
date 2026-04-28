@@ -10,20 +10,14 @@ interface InfoCardProps {
   gradientColors?: readonly [ColorValue, ColorValue, ...ColorValue[]];
 }
 
-export default function InfoCard(props: InfoCardProps) {
-  const {
-    title,
-    subtitle,
-    gradientColors = ["#FFF2A6", "#FFE066", "#E0C120"],
-  } = props;
-
+export default function InfoCard({
+  title,
+  subtitle,
+  gradientColors = ["#FFF2A6", "#FFE066", "#E0C120"],
+}: InfoCardProps) {
   return (
-    <LinearGradient
-      colors={gradientColors}
-      style={styles.card}
-    >
-      <View pointerEvents="none" style={styles.darkOverlay} />
-      <View pointerEvents="none" style={styles.lightOverlay} />
+    <LinearGradient colors={gradientColors} style={styles.card}>
+      <View pointerEvents="none" style={styles.overlay} />
 
       <AppHeading style={styles.title}>{title}</AppHeading>
       <AppText style={styles.subtitle}>{subtitle}</AppText>
@@ -33,43 +27,34 @@ export default function InfoCard(props: InfoCardProps) {
 
 const styles = StyleSheet.create({
   card: {
-    position: "relative",
     width: "100%",
-    borderRadius: 24,
-    paddingVertical: 14,
+    minHeight: 160,
     paddingHorizontal: 16,
+    paddingVertical: 14,
+    borderRadius: 24,
+    overflow: "hidden",
     alignItems: "center",
     justifyContent: "center",
-    minHeight: 160,
-    overflow: "hidden",
 
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 3,
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.25)",
   },
 
-  darkOverlay: {
+  overlay: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: "rgba(0, 0, 0, 0.1)",
   },
 
-  lightOverlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(255, 255, 255, 0.05)",
-  },
-
   title: {
     fontSize: 24,
-    textAlign: "center",
     marginBottom: 6,
+    textAlign: "center",
   },
 
   subtitle: {
-    opacity: 0.8,
     fontSize: 18,
-    textAlign: "center",
     marginBottom: 6,
+    opacity: 0.8,
+    textAlign: "center",
   },
 });

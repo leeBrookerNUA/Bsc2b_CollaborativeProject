@@ -4,29 +4,29 @@ import AppHeading from "./AppHeading";
 
 interface BackHomeCardProps {
   title: string;
-  onBackHomePress?: () => void;
   backgroundColor?: ColorValue;
   pressedBackgroundColor?: ColorValue;
+  onBackHomePress?: () => void;
 }
 
-export default function BackHomeCard(props: BackHomeCardProps) {
-  const {
-    title,
-    onBackHomePress,
-    backgroundColor = "rgba(255, 255, 255, 0.15)",
-    pressedBackgroundColor = "rgba(58, 134, 255, 0.75)",
-  } = props;
-
+export default function BackHomeCard({
+  title,
+  backgroundColor = "rgba(255, 255, 255, 0.15)",
+  pressedBackgroundColor = "rgba(58, 134, 255, 0.75)",
+  onBackHomePress,
+}: BackHomeCardProps) {
   return (
     <Pressable
       onPress={onBackHomePress}
+      disabled={!onBackHomePress}
       style={({ pressed }) => [
         styles.card,
         { backgroundColor },
-        pressed && [
-          styles.cardPressed,
-          { backgroundColor: pressedBackgroundColor },
-        ],
+        pressed &&
+          onBackHomePress && [
+            styles.cardPressed,
+            { backgroundColor: pressedBackgroundColor },
+          ],
       ]}
     >
       <AppHeading style={styles.title}>{title}</AppHeading>
@@ -38,24 +38,24 @@ const styles = StyleSheet.create({
   card: {
     width: "100%",
     height: 44,
-    borderRadius: 20,
-    borderWidth: 1.5,
-    borderColor: "rgba(255, 255, 255, 0.12)",
-    paddingVertical: 6,
     paddingHorizontal: 10,
-    alignItems: "center",
-    flexDirection: "row",
-    justifyContent: "center",
+    paddingVertical: 6,
+    borderRadius: 20,
     overflow: "hidden",
+    alignItems: "center",
+    justifyContent: "center",
+
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.14)",
   },
 
   cardPressed: {
     transform: [{ scale: 0.95 }],
-    borderWidth: 2,
     borderColor: "rgba(255, 255, 255, 0.5)",
   },
 
   title: {
     fontSize: 18,
+    textAlign: "center",
   },
 });

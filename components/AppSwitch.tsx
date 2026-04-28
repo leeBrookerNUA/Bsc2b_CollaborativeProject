@@ -6,23 +6,16 @@ interface AppSwitchProps {
   onValueChange: (value: boolean) => void;
 }
 
-export default function AppSwitch(props: AppSwitchProps) {
-  const { value, onValueChange } = props;
-
+export default function AppSwitch({ value, onValueChange }: AppSwitchProps) {
   return (
     <Pressable
       onPress={() => onValueChange(!value)}
-      style={[
-        styles.track,
-        value && styles.trackOn,
-      ]}
+      hitSlop={6}
+      accessibilityRole="switch"
+      accessibilityState={{ checked: value }}
+      style={[styles.track, value && styles.trackOn]}
     >
-      <View
-        style={[
-          styles.thumb,
-          value && styles.thumbOn,
-        ]}
-      />
+      <View style={[styles.thumb, value && styles.thumbOn]} />
     </Pressable>
   );
 }
@@ -31,10 +24,13 @@ const styles = StyleSheet.create({
   track: {
     width: 46,
     height: 26,
-    borderRadius: 99,
-    backgroundColor: "rgba(255,255,255,0.28)",
     padding: 3,
+    borderRadius: 13,
     justifyContent: "center",
+    backgroundColor: "rgba(255, 255, 255, 0.28)",
+
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.16)",
   },
 
   trackOn: {
@@ -44,7 +40,7 @@ const styles = StyleSheet.create({
   thumb: {
     width: 20,
     height: 20,
-    borderRadius: 99,
+    borderRadius: 10,
     backgroundColor: "#FFFFFF",
   },
 

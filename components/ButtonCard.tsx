@@ -4,118 +4,102 @@ import React from "react";
 import { ColorValue, Pressable, StyleSheet, View } from "react-native";
 import AppHeading from "./AppHeading";
 
+type IconLibrary = "FontAwesome" | "MaterialIcons" | "Ionicons";
 
 interface ButtonCardProps {
-  iconLibrary?: "FontAwesome" | "MaterialIcons" | "Ionicons";
+  iconLibrary?: IconLibrary;
   iconName:
-  | React.ComponentProps<typeof FontAwesome>["name"]
-  | React.ComponentProps<typeof MaterialIcons>["name"]
-  | React.ComponentProps<typeof Ionicons>["name"];
+    | React.ComponentProps<typeof FontAwesome>["name"]
+    | React.ComponentProps<typeof MaterialIcons>["name"]
+    | React.ComponentProps<typeof Ionicons>["name"];
   title: string;
   gradientColors?: readonly [ColorValue, ColorValue, ...ColorValue[]];
   onMainButtonPress?: () => void;
 }
 
-export default function ButtonCard(props: ButtonCardProps) {
+const iconLibraries = {
+  FontAwesome,
+  MaterialIcons,
+  Ionicons,
+};
 
-  const {
-    iconLibrary = "FontAwesome",
-    iconName,
-    title,
-    gradientColors = ["#FFF2A6", "#FFE066", "#E0C120"],
-    onMainButtonPress,
-  } = props;
-
-  const Icon =
-    iconLibrary === "MaterialIcons"
-      ? MaterialIcons
-      : iconLibrary === "Ionicons"
-        ? Ionicons
-
-        : FontAwesome;
-
+export default function ButtonCard({
+  iconLibrary = "FontAwesome",
+  iconName,
+  title,
+  gradientColors = ["#FFF2A6", "#FFE066", "#E0C120"],
+  onMainButtonPress,
+}: ButtonCardProps) {
+  const Icon = iconLibraries[iconLibrary];
 
   return (
-    <View style={styles.shadowWrapper}>
-      <Pressable
-        onPress={onMainButtonPress}
-        style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}
-      >
-        <LinearGradient colors={gradientColors} style={styles.gradient} />
+    <Pressable
+      onPress={onMainButtonPress}
+      disabled={!onMainButtonPress}
+      style={({ pressed }) => [
+        styles.card,
+        pressed && onMainButtonPress && styles.cardPressed,
+      ]}
+    >
+      <LinearGradient colors={gradientColors} style={styles.gradient} />
 
-        <View pointerEvents="none" style={styles.darkOverlay} />
-        <View pointerEvents="none" style={styles.lightOverlay} />
+      <View pointerEvents="none" style={styles.overlay} />
 
-        <View style={styles.content}>
-          <View style={styles.iconContainer}>
-            <Icon name={iconName as any} size={40} color="#FFFFFF" />
-          </View>
-
-          <AppHeading style={styles.title}>{title}</AppHeading>
+      <View style={styles.content}>
+        <View style={styles.iconContainer}>
+          <Icon name={iconName as any} size={38} color="#FFFFFF" />
         </View>
-      </Pressable>
-    </View>
+
+        <AppHeading style={styles.title}>{title}</AppHeading>
+      </View>
+    </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
-  shadowWrapper: {
-    width: "100%",
-    borderRadius: 24,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 3,
-  },
-
   card: {
-    position: "relative",
     width: "100%",
     height: 140,
     borderRadius: 24,
     overflow: "hidden",
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "center",
+
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.25)",
   },
 
   cardPressed: {
-    transform: [{ scale: 0.98 }],
     opacity: 0.95,
+    transform: [{ scale: 0.98 }],
   },
 
   gradient: {
     ...StyleSheet.absoluteFillObject,
   },
 
-  darkOverlay: {
+  overlay: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: "rgba(0, 0, 0, 0.1)",
   },
 
-  lightOverlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(255, 255, 255, 0.05)",
-  },
-
   content: {
-    zIndex: 1,
     width: "100%",
     height: "100%",
-    paddingVertical: 12,
     paddingHorizontal: 14,
+    paddingVertical: 12,
     alignItems: "center",
     justifyContent: "center",
   },
 
   iconContainer: {
-    backgroundColor: "rgba(255,255,255,0.1)",
-    borderRadius: 99,
     width: 58,
     height: 58,
+    marginBottom: 8,
+    borderRadius: 29,
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 6,
+    backgroundColor: "rgba(255, 255, 255, 0.12)",
   },
 
   title: {

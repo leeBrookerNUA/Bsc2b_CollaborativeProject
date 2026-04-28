@@ -12,8 +12,14 @@ interface AudioSettingRowProps {
   onSwitchChange?: (value: boolean) => void;
 }
 
-export default function AudioSettingRow(props: AudioSettingRowProps) {
-  const { iconName, title, type, switchValue = false, onSwitchChange } = props;
+export default function AudioSettingRow({
+  iconName,
+  title,
+  type,
+  switchValue = false,
+  onSwitchChange,
+}: AudioSettingRowProps) {
+  const handleSwitchChange = onSwitchChange ?? (() => {});
 
   return (
     <View style={styles.row}>
@@ -22,44 +28,44 @@ export default function AudioSettingRow(props: AudioSettingRowProps) {
         <AppText style={styles.title}>{title}</AppText>
       </View>
 
-      {type === "slider" && (
+      {type === "slider" ? (
         <View style={styles.sliderTrack}>
           <View style={styles.sliderFill} />
           <View style={styles.sliderThumb} />
         </View>
+      ) : (
+        <AppSwitch value={switchValue} onValueChange={handleSwitchChange} />
       )}
-
-      {type === "switch" && (
-        <AppSwitch
-          value={switchValue}
-          onValueChange={onSwitchChange || (() => { })}
-        />
-      )}
-      
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   row: {
-    minHeight: 54,
     width: "100%",
-    backgroundColor: "rgba(255, 255, 255, 0.16)",
-    borderRadius: 16,
+    minHeight: 54,
     paddingHorizontal: 12,
     paddingVertical: 8,
+    borderRadius: 16,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    backgroundColor: "rgba(255, 255, 255, 0.16)",
+
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.12)",
   },
 
   leftSide: {
+    flex: 1,
+    marginRight: 10,
     flexDirection: "row",
     alignItems: "center",
     gap: 10,
   },
 
   title: {
+    flexShrink: 1,
     fontSize: 16,
   },
 
@@ -67,8 +73,7 @@ const styles = StyleSheet.create({
     width: 96,
     height: 6,
     borderRadius: 99,
-    backgroundColor: "rgba(255,255,255,0.35)",
-    position: "relative",
+    backgroundColor: "rgba(255, 255, 255, 0.35)",
   },
 
   sliderFill: {
@@ -84,7 +89,7 @@ const styles = StyleSheet.create({
     top: -5,
     width: 16,
     height: 16,
-    borderRadius: 99,
+    borderRadius: 8,
     backgroundColor: "#FFFFFF",
   },
 });

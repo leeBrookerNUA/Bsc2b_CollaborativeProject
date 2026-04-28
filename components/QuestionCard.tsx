@@ -9,13 +9,13 @@ interface QuestionCardProps {
   subtitle: string;
 }
 
-export default function QuestionCard(props: QuestionCardProps) {
-  const { title, subtitle } = props;
-
+export default function QuestionCard({ title, subtitle }: QuestionCardProps) {
   return (
-    <LinearGradient style={styles.card} colors={["#D2A8FF", "#B07BFF", "#9B5DE5"]}>
-      <View pointerEvents="none" style={styles.darkOverlay} />
-      <View pointerEvents="none" style={styles.lightOverlay} />
+    <LinearGradient
+      colors={["#D2A8FF", "#B07BFF", "#9B5DE5"]}
+      style={styles.card}
+    >
+      <View pointerEvents="none" style={styles.overlay} />
 
       <AppHeading style={styles.title}>{title}</AppHeading>
       <AppText style={styles.subtitle}>{subtitle}</AppText>
@@ -26,38 +26,32 @@ export default function QuestionCard(props: QuestionCardProps) {
 const styles = StyleSheet.create({
   card: {
     width: "100%",
-    borderRadius: 24,
-    paddingVertical: 20,
+    minHeight: 130,
     paddingHorizontal: 18,
+    paddingVertical: 20,
+    borderRadius: 24,
+    overflow: "hidden",
     alignItems: "center",
     justifyContent: "center",
-    minHeight: 130,
-    overflow: "hidden",
 
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.12,
-    shadowRadius: 8,
-    elevation: 3,
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.25)",
   },
-  darkOverlay: {
+
+  overlay: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: "rgba(0, 0, 0, 0.08)",
-    borderRadius: 24,
   },
-  lightOverlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(255, 255, 255, 0.05)",
-    borderRadius: 24,
-  },
+
   title: {
     fontSize: 20,
-    textAlign: "center",
     marginBottom: 12,
+    textAlign: "center",
   },
+
   subtitle: {
-    opacity: 0.85,
     fontSize: 16,
+    opacity: 0.85,
     textAlign: "center",
   },
 });

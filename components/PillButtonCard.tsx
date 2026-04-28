@@ -1,90 +1,80 @@
 import React from "react";
 import { Pressable, StyleSheet, View } from "react-native";
-import AppHeading from './AppHeading';
+import AppHeading from "./AppHeading";
 
 interface PillButtonCardProps {
-    title: string;
-    selected?: boolean;
-    onPillPress?: () => void;
-    tintColor?: string;
+  title: string;
+  selected?: boolean;
+  tintColor?: string;
+  onPillPress?: () => void;
 }
 
-export default function PillButtonCard(props: PillButtonCardProps) {
-    const { title, selected = false, onPillPress, tintColor } = props;
+export default function PillButtonCard({
+  title,
+  selected = false,
+  tintColor = "#EBC50A",
+  onPillPress,
+}: PillButtonCardProps) {
+  return (
+    <Pressable
+      onPress={onPillPress}
+      style={({ pressed }) => [
+        styles.card,
+        selected && styles.cardSelected,
+        selected && { backgroundColor: tintColor },
+        pressed && styles.cardPressed,
+      ]}
+    >
+      <View style={[styles.topHighlight, selected && styles.topHighlightSelected]} />
 
-    return (
-        <Pressable
-            onPress={onPillPress}
-            style={[
-                styles.card,
-                selected && styles.cardSelected,
-                selected && { backgroundColor: tintColor || "#EBC50A" },
-            ]}
-        >
-            <View style={[styles.topHighlight, selected && styles.topHighlightSelected]} />
-            <View style={[selected && styles.innerShadowBandSelected]} />
-
-            <AppHeading style={styles.title}>{title}</AppHeading>
-        </Pressable>
-    );
+      <AppHeading style={styles.title}>{title}</AppHeading>
+    </Pressable>
+  );
 }
 
 const styles = StyleSheet.create({
-    card: {
-        flex: 1,
-        backgroundColor: "#F3CD11",
-        borderRadius: 99,
-        borderWidth: 1,
-        borderColor: "rgba(255, 255, 255, 0.18)",
-        paddingVertical: 6,
-        paddingHorizontal: 12,
-        minHeight: 36,
-        alignItems: "center",
-        justifyContent: "center",
-        overflow: "hidden",
+  card: {
+    flex: 1,
+    minHeight: 36,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 99,
+    overflow: "hidden",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#F3CD11",
 
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.2,
-        shadowRadius: 4,
-        elevation: 2,
-    },
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.22)",
+  },
 
-    cardSelected: {
-        backgroundColor: "#EBC50A",
-        shadowOpacity: 0.04,
-        shadowRadius: 3,
-        elevation: 5,
-        transform: [{ translateY: 1 }],
-    },
+  cardSelected: {
+    transform: [{ translateY: 1 }],
+    borderColor: "rgba(255, 255, 255, 0.12)",
+  },
 
-    innerShadowBandSelected: {
-        position: "absolute",
-        left: 3,
-        right: 3,
-        bottom: 32,
-        height: "30%",
-        backgroundColor: "rgba(0, 0, 0, 0.1)",
-        borderRadius: 99,
-    },
+  cardPressed: {
+    opacity: 0.9,
+    transform: [{ scale: 0.98 }],
+  },
 
-    topHighlight: {
-        position: "absolute",
-        top: -1,
-        left: 3,
-        right: 3,
-        height: "25%",
-        backgroundColor: "rgba(255, 255, 255, 0.3)",
-        borderRadius: 14,
-    },
+  topHighlight: {
+    position: "absolute",
+    top: 0,
+    left: 4,
+    right: 4,
+    height: "28%",
+    borderRadius: 99,
+    backgroundColor: "rgba(255, 255, 255, 0.28)",
+  },
 
-    topHighlightSelected: {
-        backgroundColor: "rgba(255, 255, 255, 0.04)",
-    },
+  topHighlightSelected: {
+    backgroundColor: "rgba(255, 255, 255, 0.08)",
+  },
 
-    title: {
-        fontSize: 20,
-        textAlign: "center",
-        zIndex: 2,
-    },
+  title: {
+    zIndex: 1,
+    fontSize: 20,
+    textAlign: "center",
+  },
 });

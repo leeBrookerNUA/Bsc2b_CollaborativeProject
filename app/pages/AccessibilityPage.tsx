@@ -33,18 +33,14 @@ export default function AccessibilityPage() {
           <Header
             title="Accessibility"
             leftIconName="arrow-circle-left"
-            rightIconName="cog"
             onBackPress={() => {
-              router.navigate("/pages/SettingsHubPage");
-            }}
-            onSettingsPress={() => {
               router.navigate("/pages/SettingsHubPage");
             }}
           />
 
-          <View style={styles.spacer16} />
-
           <View style={styles.container}>
+            <View style={styles.spacer16} />
+
             <SettingsPanel title="Visual">
               <AccessibilitySettingRow
                 iconType="text"
@@ -76,6 +72,8 @@ export default function AccessibilityPage() {
 
         <ActionButton
           title="Back Home"
+          backgroundColor="rgba(255, 255, 255, 0.22)"
+          pressedBackgroundColor="rgba(255, 255, 255, 0.35)"
           onBackHomePress={() => {
             router.navigate("/pages/HomePage");
           }}
@@ -87,7 +85,8 @@ export default function AccessibilityPage() {
 
 const styles = StyleSheet.create({
   page: {
-    flex: 1,
+    flexGrow: 1,
+    width: "100%",
     justifyContent: "space-between",
   },
 

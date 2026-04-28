@@ -18,18 +18,15 @@ export default function ConnectionPage() {
           <Header
             title="Connection"
             leftIconName="arrow-circle-left"
-            rightIconName="cog"
             onBackPress={() => {
               router.navigate("/pages/SettingsHubPage");
             }}
-            onSettingsPress={() => {
-              router.navigate("/pages/SettingsHubPage");
-            }}
+            
           />
 
-          <View style={styles.spacer16} />
-
           <View style={styles.container}>
+            <View style={styles.spacer16} />
+
             <SettingsPanel title="Connection">
               <ConnectionSettingRow
                 iconName="wifi"
@@ -51,6 +48,8 @@ export default function ConnectionPage() {
 
         <ActionButton
           title="Back Home"
+          backgroundColor="rgba(255, 255, 255, 0.22)"
+          pressedBackgroundColor="rgba(255, 255, 255, 0.35)"
           onBackHomePress={() => {
             router.navigate("/pages/HomePage");
           }}
@@ -62,7 +61,8 @@ export default function ConnectionPage() {
 
 const styles = StyleSheet.create({
   page: {
-    flex: 1,
+    flexGrow: 1,
+    width: "100%",
     justifyContent: "space-between",
   },
 

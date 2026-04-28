@@ -40,6 +40,7 @@ export default function FunFactsPage() {
           />
 
           <View style={styles.spacer16} />
+
           <View style={styles.pillRow}>
             <PillButtonCard
               title="Solar"
@@ -87,11 +88,19 @@ export default function FunFactsPage() {
             onMomentumScrollEnd={(event: NativeSyntheticEvent<NativeScrollEvent>) => {
               const offsetX = event.nativeEvent.contentOffset.x;
               const index = Math.round(offsetX / (slideWidth + slideGap));
-              setCurrentFactIndex(index);
+              const safeIndex = Math.max(0, Math.min(index, currentFacts.length - 1));
+
+              setCurrentFactIndex(safeIndex);
             }}
           >
             {currentFacts.map((fact, index) => (
-              <View key={index} style={{ width: slideWidth, marginRight: slideGap }}>
+              <View
+                key={index}
+                style={{
+                  width: slideWidth,
+                  marginRight: index === currentFacts.length - 1 ? 0 : slideGap,
+                }}
+              >
                 <FactCard
                   iconLibrary={fact.iconLibrary}
                   iconName={fact.iconName}
@@ -101,10 +110,12 @@ export default function FunFactsPage() {
                 />
               </View>
             ))}
+
           </ScrollView>
 
 
           <View style={styles.spacer16} />
+
           <PaginationDots
             total={currentFacts.length}
             activeIndex={currentFactIndex}
@@ -115,6 +126,8 @@ export default function FunFactsPage() {
 
         <ActionButton
           title="Back Home"
+          backgroundColor="rgba(255, 255, 255, 0.22)"
+          pressedBackgroundColor="rgba(255, 255, 255, 0.35)"
           onBackHomePress={() => {
             router.navigate('/pages/HomePage')
           }}
@@ -129,22 +142,16 @@ export default function FunFactsPage() {
 const styles = StyleSheet.create({
   page: {
     flexGrow: 1,
+    width: "100%",
     justifyContent: "space-between",
   },
-  pillRow: {
-    flexDirection: "row",
-    gap: 8,
-  },
-  cardPage: {
-    paddingHorizontal: 8,
-  },
-  spacer12: {
-    height: 12,
-  },
+
   spacer16: {
     height: 16,
   },
-  spacer24: {
-    height: 24,
+
+  pillRow: {
+    flexDirection: "row",
+    gap: 8,
   },
 });

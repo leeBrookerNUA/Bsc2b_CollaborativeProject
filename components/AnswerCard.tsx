@@ -1,6 +1,6 @@
 import { FontAwesome } from "@expo/vector-icons";
 import React from "react";
-import { Pressable, StyleSheet, View } from "react-native";
+import { Pressable, StyleSheet } from "react-native";
 import AppHeading from "./AppHeading";
 
 type AnswerState = "default" | "correct" | "wrong";
@@ -12,86 +12,97 @@ interface AnswerCardProps {
   onAnswerPress?: () => void;
 }
 
-export default function AnswerCard(props: AnswerCardProps) {
-  const { title, state = "default", disabled = false, onAnswerPress } = props;
+export default function AnswerCard({
+  title,
+  state = "default",
+  disabled = false,
+  onAnswerPress,
+}: AnswerCardProps) {
+  const isDisabled = disabled || !onAnswerPress;
+  const isAnswered = state !== "default";
+
+  const resultIconName =
+    state === "correct" ? "check" : state === "wrong" ? "times" : undefined;
 
   return (
-    <View style={styles.shadowWrapper}>
-      <Pressable
-        onPress={onAnswerPress}
-        disabled={disabled}
-        style={({ pressed }) => [
-          styles.card,
-          state === "correct" && styles.correctCard,
-          state === "wrong" && styles.wrongCard,
-          pressed && !disabled && styles.cardPressed,
-        ]}
+    <Pressable
+      onPress={onAnswerPress}
+      disabled={isDisabled}
+      style={({ pressed }) => [
+        styles.card,
+        state === "correct" && styles.correctCard,
+        state === "wrong" && styles.wrongCard,
+        isDisabled && styles.cardDisabled,
+        pressed && !isDisabled && styles.cardPressed,
+      ]}
+    >
+      <AppHeading
+        numberOfLines={1}
+        adjustsFontSizeToFit
+        style={[styles.title, isAnswered && styles.titleWithIcon]}
       >
-        <AppHeading
-          style={[
-            styles.title,
-            state !== "default" && styles.titleWithIcon,
-          ]}
-        >
-          {title}
-        </AppHeading>
+        {title}
+      </AppHeading>
 
-        {state === "correct" && (
-          <FontAwesome style={styles.resultIcon} name="check" size={18} color="#FFFFFF" />
-        )}
-
-        {state === "wrong" && (
-          <FontAwesome style={styles.resultIcon} name="times" size={18} color="#FFFFFF" />
-        )}
-      </Pressable>
-    </View>
+      {resultIconName && (
+        <FontAwesome
+          name={resultIconName}
+          size={18}
+          color="#FFFFFF"
+          style={styles.resultIcon}
+        />
+      )}
+    </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
-  shadowWrapper: {
-    width: "100%",
-    borderRadius: 40,
-
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.14,
-    shadowRadius: 6,
-    elevation: 3,
-  },
-
   card: {
     width: "100%",
-    minHeight: 52,
-    backgroundColor: "rgba(155, 93, 229, 0.75)",
-    borderRadius: 40,
-    paddingVertical: 12,
+    minHeight: 56,
     paddingHorizontal: 18,
+    paddingVertical: 14,
+    borderRadius: 40,
+    overflow: "hidden",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
-    overflow: "hidden",
+    backgroundColor: "rgba(155, 93, 229, 0.75)",
+
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.16)",
   },
+
   correctCard: {
     backgroundColor: "#2ECC71",
   },
+
   wrongCard: {
     backgroundColor: "#FF5C5C",
   },
+
+  cardPressed: {
+    opacity: 0.9,
+    transform: [{ scale: 0.98 }],
+  },
+
+  cardDisabled: {
+    opacity: 0.85,
+  },
+
+  title: {
+    width: "100%",
+    fontSize: 18,
+    lineHeight: 22,
+    textAlign: "center",
+  },
+
+  titleWithIcon: {
+    paddingRight: 28,
+  },
+
   resultIcon: {
     position: "absolute",
     right: 18,
   },
-  cardPressed: {
-    transform: [{ scale: 0.98 }],
-    opacity: 0.9,
-  },
-  titleWithIcon: {
-    paddingRight: 28,
-  },
-  title: {
-    fontSize: 16,
-    textAlign: "center",
-    lineHeight: 20,
-  }
 });

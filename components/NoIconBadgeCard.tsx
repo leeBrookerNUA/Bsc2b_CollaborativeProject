@@ -1,43 +1,36 @@
-
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import AppText from "./AppText";
 
-interface BadgeCardProps {
-    title: string;
-
+interface NoIconBadgeCardProps {
+  title: string;
 }
 
-export default function NoIconBadgeCard(props: BadgeCardProps) {
-    const { title } = props;
-
-    return (
-        <View style={styles.card}>
-            <AppText style={styles.title}>{title}</AppText>
-        </View>
-
-    );
+export default function NoIconBadgeCard({ title }: NoIconBadgeCardProps) {
+  return (
+    <View style={styles.card}>
+      <AppText style={styles.title}>{title}</AppText>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    card: {
-        width: "100%",
-        backgroundColor: "rgba(255, 255, 255, 0.15)",
-        borderRadius: 14,
-        borderWidth: 1.5,
-        borderColor: "rgba(255, 255, 255, 0.12)",
-        paddingVertical: 6,
-        paddingHorizontal: 12,
-        alignItems: "center",
-        flexDirection: "row",
-        justifyContent: "center",
-        overflow: "hidden",
-    },
+  card: {
+    width: "100%",
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 14,
+    overflow: "hidden",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "rgba(255, 255, 255, 0.15)",
 
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.14)",
+  },
 
-    title: {
-        fontSize: 16,
-    },
-
-
+  title: {
+    fontSize: 16,
+    textAlign: "center",
+  },
 });

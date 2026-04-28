@@ -5,29 +5,31 @@ import FunFactCard from "@/components/FunFactCard";
 import Header from "@/components/Header";
 import ScreenBackground from "@/components/ScreenBackground";
 import StatCard from "@/components/StatCard";
-import { useRouter } from 'expo-router';
+import { useRouter } from "expo-router";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import HelpTipCard from "../../components/HelpTipCard";
 
 export default function PlayPage() {
-
   const router = useRouter();
 
   return (
     <ScreenBackground>
       <View style={styles.page}>
         <View>
-
           <Header
             title="Play"
             leftIconName="arrow-circle-left"
             rightIconName="cog"
-            onBackPress={() => { router.navigate('/pages/HomePage') }}
-            onSettingsPress={() => { router.navigate('/pages/SettingsHubPage') }}
+            onBackPress={() => {
+              router.navigate("/pages/HomePage");
+            }}
+            onSettingsPress={() => {
+              router.navigate("/pages/SettingsHubPage");
+            }}
           />
 
-          <View style={styles.container} >
+          <View style={styles.container}>
             <View style={styles.spacer16} />
 
             <BatteryCard
@@ -40,10 +42,7 @@ export default function PlayPage() {
 
             <View style={styles.spacer16} />
 
-            <BadgeCard
-              title="Hand Crank Active!"
-              iconName="refresh-cw"
-            />
+            <BadgeCard title="Hand Crank Active!" iconName="refresh-cw" />
 
             <View style={styles.spacer16} />
 
@@ -82,7 +81,9 @@ export default function PlayPage() {
               title="Live Fun Fact!"
               subtitle="It takes around 200 cranks to fully charge one battery!"
               button="Learn More"
-              onMorePress={() => { router.navigate('/pages/FunFactsPage') }}
+              onMorePress={() => {
+                router.navigate("/pages/FunFactsPage");
+              }}
             />
 
             <View style={styles.spacer16} />
@@ -91,38 +92,40 @@ export default function PlayPage() {
               title="Keep turning steadily to charge faster!"
               iconName="question"
             />
-
           </View>
         </View>
 
-
         <ActionButton
           title="Back Home"
+          backgroundColor="rgba(255, 255, 255, 0.22)"
+          pressedBackgroundColor="rgba(255, 255, 255, 0.35)"
           onBackHomePress={() => {
-            router.navigate('/pages/HomePage')
+            router.navigate("/pages/HomePage");
           }}
         />
-
       </View>
-
-    </ScreenBackground >
+    </ScreenBackground>
   );
 }
 
 const styles = StyleSheet.create({
   page: {
     flexGrow: 1,
+    width: "100%",
     justifyContent: "space-between",
   },
+
   container: {
     width: "100%",
     marginTop: 8,
     padding: 16,
   },
+
   statsRow: {
     flexDirection: "row",
     gap: 8,
   },
+
   spacer16: {
     height: 16,
   },

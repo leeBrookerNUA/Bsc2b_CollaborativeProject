@@ -4,88 +4,100 @@ import { Pressable, StyleSheet, View } from "react-native";
 import AppHeading from "./AppHeading";
 import AppText from "./AppText";
 
-
 interface FunFactCardProps {
-    title: string;
-    subtitle: string;
-    button: string;
-    onMorePress?: () => void;
+  title: string;
+  subtitle: string;
+  button: string;
+  onMorePress?: () => void;
 }
 
-export default function FunFactCard(props: FunFactCardProps) {
+export default function FunFactCard({
+  title,
+  subtitle,
+  button,
+  onMorePress,
+}: FunFactCardProps) {
+  return (
+    <LinearGradient
+      colors={["#FFF2A6", "#FFE066", "#E0C120"]}
+      style={styles.card}
+    >
+      <View pointerEvents="none" style={styles.overlay} />
 
-    const { title, subtitle, button, onMorePress } = props;
+      <View style={styles.content}>
+        <AppHeading style={styles.title}>{title}</AppHeading>
+        <AppText style={styles.subtitle}>{subtitle}</AppText>
 
-    return (
-        <LinearGradient style={styles.card} colors={["#FFF2A6", "#FFE066", "#E0C120"]}>
-            <View style={styles.darkOverlay} />
-            <View style={styles.lightOverlay} />
-
-            <View style={styles.content}>
-                <AppHeading style={styles.title}>{title}</AppHeading>
-                <AppText style={styles.subtitle}>{subtitle}</AppText>
-
-                <Pressable style={styles.moreButton} onPress={onMorePress}>
-                    <AppHeading style={styles.button}>{button}</AppHeading>
-                </Pressable>
-            </View>
-        </LinearGradient >
-    )
+        <Pressable
+          onPress={onMorePress}
+          disabled={!onMorePress}
+          style={({ pressed }) => [
+            styles.moreButton,
+            pressed && onMorePress && styles.moreButtonPressed,
+          ]}
+        >
+          <AppHeading style={styles.buttonText}>{button}</AppHeading>
+        </Pressable>
+      </View>
+    </LinearGradient>
+  );
 }
 
 const styles = StyleSheet.create({
-    card: {
-        width: "100%",
-        borderRadius: 20,
-        paddingVertical: 14,
-        paddingHorizontal: 14,
-        alignItems: "stretch",
-        justifyContent: "center",
-        overflow: "hidden",
+  card: {
+    width: "100%",
+    paddingHorizontal: 14,
+    paddingVertical: 14,
+    borderRadius: 20,
+    overflow: "hidden",
+    justifyContent: "center",
 
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.1,
-        shadowRadius: 8,
-        elevation: 2,
-    },
-    darkOverlay: {
-        ...StyleSheet.absoluteFillObject,
-        backgroundColor: "rgba(0, 0, 0, 0.1)",
-        borderRadius: 20,
-    },
-    lightOverlay: {
-        ...StyleSheet.absoluteFillObject,
-        backgroundColor: "rgba(255, 255, 255, 0.05)",
-        borderRadius: 20,
-    },
-    content: {
-        width: "100%",
-        justifyContent: "center",
-        zIndex: 1,
-    },
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.25)",
+  },
 
-    title: {
-        fontSize: 20,
-        textAlign: "left",
-        marginBottom: 6,
-    },
-    subtitle: {
-        fontSize: 18,
-        textAlign: "center",
-        marginBottom: 6,
-    },
-    button: {
-        fontSize: 16,
-        textAlign: "center",
-    },
-    moreButton: {
-        width: "100%",
-        backgroundColor: "rgba(255, 255, 255, 0.2)",
-        borderRadius: 16,
-        alignItems: "center",
-        justifyContent: "center",
-        paddingVertical: 8,
-        marginTop: 4,
-    },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "rgba(0, 0, 0, 0.1)",
+  },
+
+  content: {
+    width: "100%",
+  },
+
+  title: {
+    fontSize: 20,
+    marginBottom: 6,
+    textAlign: "left",
+  },
+
+  subtitle: {
+    fontSize: 18,
+    lineHeight: 23,
+    marginBottom: 10,
+    textAlign: "left",
+  },
+
+  moreButton: {
+    width: "100%",
+    paddingVertical: 8,
+    borderRadius: 16,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
+
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.18)",
+  },
+
+  moreButtonPressed: {
+    transform: [{ scale: 0.98 }],
+    backgroundColor: "rgba(255, 255, 255, 0.35)",
+    borderColor: "rgba(255, 255, 255, 0.5)",
+  },
+
+  buttonText: {
+    fontSize: 16,
+    textAlign: "center",
+  },
 });
