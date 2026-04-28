@@ -1,9 +1,9 @@
 import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import React from "react";
 import { Pressable, StyleSheet, View } from "react-native";
-import AppHeading from "./AppHeading";
-import AppSwitch from "./AppSwitch";
-import AppText from "./AppText";
+import AppHeading from "../base/AppHeading";
+import AppSwitch from "../base/AppSwitch";
+import AppText from "../base/AppText";
 
 type IconType = "text" | "contrast" | "eye";
 

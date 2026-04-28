@@ -1,8 +1,8 @@
-import ActionButton from "@/components/ActionButton";
-import Header from "@/components/Header";
-import NoIconBadgeCard from "@/components/NoIconBadgeCard";
-import QuizSelectCard from "@/components/QuizSelectCard";
-import ScreenBackground from "@/components/ScreenBackground";
+import TextBadge from "@/components/badges/TextBadge";
+import Header from "@/components/base/Header";
+import ScreenBackground from "@/components/base/ScreenBackground";
+import ActionButton from "@/components/buttons/ActionButton";
+import QuizSelectCard from "@/components/quiz/QuizSelectCard";
 import { useRouter } from "expo-router";
 import React from "react";
 import { StyleSheet, View } from "react-native";
@@ -29,7 +29,7 @@ export default function QuizSelectPage() {
           <View style={styles.container}>
             <View style={styles.spacer16} />
 
-            <NoIconBadgeCard title="Choose what you want to explore!" />
+            <TextBadge title="Choose what you want to explore!" />
 
             <View style={styles.spacer16} />
 

@@ -1,11 +1,11 @@
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import ActionButton from "../../components/ActionButton";
-import AudioSettingRow from "../../components/AudioSettingRow";
-import Header from "../../components/Header";
-import ScreenBackground from "../../components/ScreenBackground";
-import SettingsPanel from "../../components/SettingsPanel";
+import Header from "../../components/base/Header";
+import ScreenBackground from "../../components/base/ScreenBackground";
+import ActionButton from "../../components/buttons/ActionButton";
+import AudioSettingRow from "../../components/settings/AudioSettingRow";
+import SettingsPanel from "../../components/settings/SettingsPanel";
 
 export default function AudioPage() {
   const router = useRouter();
@@ -21,7 +21,6 @@ export default function AudioPage() {
             onBackPress={() => {
               router.navigate("/pages/SettingsHubPage");
             }}
-          
           />
 
           <View style={styles.container}>

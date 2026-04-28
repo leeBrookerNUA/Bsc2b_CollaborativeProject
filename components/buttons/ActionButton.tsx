@@ -1,6 +1,6 @@
 import React from "react";
 import { ColorValue, Pressable, StyleSheet } from "react-native";
-import AppHeading from "./AppHeading";
+import AppHeading from "../base/AppHeading";
 
 interface BackHomeCardProps {
   title: string;

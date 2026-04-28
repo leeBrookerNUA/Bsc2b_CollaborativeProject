@@ -1,15 +1,15 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import AppHeading from "./AppHeading";
-import AppText from "./AppText";
+import AppHeading from "../base/AppHeading";
+import AppText from "../base/AppText";
 
-interface QuestionCardProps {
+interface QuizQuestionCardProps {
   title: string;
   subtitle: string;
 }
 
-export default function QuestionCard({ title, subtitle }: QuestionCardProps) {
+export default function QuizQuestionCard({ title, subtitle }: QuizQuestionCardProps) {
   return (
     <LinearGradient
       colors={["#D2A8FF", "#B07BFF", "#9B5DE5"]}

@@ -1,13 +1,13 @@
 import {
-  AntDesign,
-  FontAwesome,
-  MaterialCommunityIcons,
+    AntDesign,
+    FontAwesome,
+    MaterialCommunityIcons,
 } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { ColorValue, StyleSheet, View } from "react-native";
-import AppHeading from "./AppHeading";
-import AppText from "./AppText";
+import AppHeading from "../base/AppHeading";
+import AppText from "../base/AppText";
 
 type IconLibrary = "FontAwesome" | "AntDesign" | "MaterialCommunityIcons";
 

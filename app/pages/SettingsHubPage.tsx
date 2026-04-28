@@ -1,10 +1,10 @@
-import ActionButton from "@/components/ActionButton";
+import ActionButton from "@/components/buttons/ActionButton";
 import { useRouter } from "expo-router";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import ButtonCard from "../../components/ButtonCard";
-import Header from "../../components/Header";
-import ScreenBackground from "../../components/ScreenBackground";
+import Header from "../../components/base/Header";
+import ScreenBackground from "../../components/base/ScreenBackground";
+import MainButton from "../../components/buttons/MainButton";
 
 export default function SettingsHubPage() {
     const router = useRouter();
@@ -25,7 +25,7 @@ export default function SettingsHubPage() {
                     <View style={styles.container}>
                         <View style={styles.spacer16} />
 
-                        <ButtonCard
+                        <MainButton
                             title="Audio Settings"
                             gradientColors={["#8FC4FF", "#5FA8FF", "#3A86FF"]}
                             iconLibrary="Ionicons"
@@ -37,7 +37,7 @@ export default function SettingsHubPage() {
 
                         <View style={styles.spacer16} />
 
-                        <ButtonCard
+                        <MainButton
                             title="Visual & Accessibility"
                             gradientColors={["#D2A8FF", "#B07BFF", "#9B5DE5"]}
                             iconLibrary="MaterialIcons"
@@ -49,7 +49,7 @@ export default function SettingsHubPage() {
 
                         <View style={styles.spacer16} />
 
-                        <ButtonCard
+                        <MainButton
                             title="Connection Settings"
                             gradientColors={["#8EF0B3", "#5EDE92", "#2ECC71"]}
                             iconLibrary="MaterialIcons"

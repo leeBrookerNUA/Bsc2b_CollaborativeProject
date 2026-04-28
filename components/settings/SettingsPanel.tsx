@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import AppHeading from "./AppHeading";
+import AppHeading from "../base/AppHeading";
 
 interface SettingsPanelProps {
   title: string;

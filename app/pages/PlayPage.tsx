@@ -1,14 +1,14 @@
-import ActionButton from "@/components/ActionButton";
-import BadgeCard from "@/components/BadgeCard";
-import BatteryCard from "@/components/BatteryCard";
-import FunFactCard from "@/components/FunFactCard";
-import Header from "@/components/Header";
-import ScreenBackground from "@/components/ScreenBackground";
-import StatCard from "@/components/StatCard";
+import IconBadge from "@/components/badges/IconBadge";
+import Header from "@/components/base/Header";
+import ScreenBackground from "@/components/base/ScreenBackground";
+import ActionButton from "@/components/buttons/ActionButton";
+import BatteryCard from "@/components/cards/BatteryCard";
+import FunFactCard from "@/components/cards/FunFactCard";
+import StatCard from "@/components/cards/StatCard";
 import { useRouter } from "expo-router";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import HelpTipCard from "../../components/HelpTipCard";
+import HelpTipCard from "../../components/cards/HelpTipCard";
 
 export default function PlayPage() {
   const router = useRouter();
@@ -42,7 +42,7 @@ export default function PlayPage() {
 
             <View style={styles.spacer16} />
 
-            <BadgeCard title="Hand Crank Active!" iconName="refresh-cw" />
+            <IconBadge title="Hand Crank Active!" iconName="refresh-cw" />
 
             <View style={styles.spacer16} />
 

@@ -3,7 +3,7 @@ import Feather from "@expo/vector-icons/Feather";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import AppText from "./AppText";
+import AppText from "../base/AppText";
 
 type IconLibrary = "AntDesign" | "MaterialIcons" | "Feather";
 

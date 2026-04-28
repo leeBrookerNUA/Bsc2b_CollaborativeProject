@@ -1,26 +1,24 @@
 import { FontAwesome } from "@expo/vector-icons";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import AppSwitch from "./AppSwitch";
-import AppText from "./AppText";
+import AppSwitch from "../base/AppSwitch";
+import AppText from "../base/AppText";
 
-interface ConnectionSettingRowProps {
+interface AudioSettingRowProps {
   iconName: React.ComponentProps<typeof FontAwesome>["name"];
   title: string;
-  type: "status" | "switch";
-  statusText?: string;
+  type: "slider" | "switch";
   switchValue?: boolean;
   onSwitchChange?: (value: boolean) => void;
 }
 
-export default function ConnectionSettingRow({
+export default function AudioSettingRow({
   iconName,
   title,
   type,
-  statusText = "Searching",
   switchValue = false,
   onSwitchChange,
-}: ConnectionSettingRowProps) {
+}: AudioSettingRowProps) {
   const handleSwitchChange = onSwitchChange ?? (() => {});
 
   return (
@@ -30,9 +28,10 @@ export default function ConnectionSettingRow({
         <AppText style={styles.title}>{title}</AppText>
       </View>
 
-      {type === "status" ? (
-        <View style={styles.statusBadge}>
-          <AppText style={styles.statusText}>{statusText}</AppText>
+      {type === "slider" ? (
+        <View style={styles.sliderTrack}>
+          <View style={styles.sliderFill} />
+          <View style={styles.sliderThumb} />
         </View>
       ) : (
         <AppSwitch value={switchValue} onValueChange={handleSwitchChange} />
@@ -70,15 +69,27 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 
-  statusBadge: {
-    paddingHorizontal: 12,
-    paddingVertical: 5,
+  sliderTrack: {
+    width: 96,
+    height: 6,
     borderRadius: 99,
-    backgroundColor: "#FF9F1C",
+    backgroundColor: "rgba(255, 255, 255, 0.35)",
   },
 
-  statusText: {
-    fontSize: 11,
-    textAlign: "center",
+  sliderFill: {
+    width: "70%",
+    height: "100%",
+    borderRadius: 99,
+    backgroundColor: "#FFD60A",
+  },
+
+  sliderThumb: {
+    position: "absolute",
+    left: "68%",
+    top: -5,
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+    backgroundColor: "#FFFFFF",
   },
 });

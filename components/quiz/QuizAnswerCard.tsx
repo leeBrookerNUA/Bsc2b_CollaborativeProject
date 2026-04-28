@@ -1,23 +1,23 @@
 import { FontAwesome } from "@expo/vector-icons";
 import React from "react";
 import { Pressable, StyleSheet } from "react-native";
-import AppHeading from "./AppHeading";
+import AppHeading from "../base/AppHeading";
 
 type AnswerState = "default" | "correct" | "wrong";
 
-interface AnswerCardProps {
+interface QuizAnswerCardProps {
   title: string;
   state?: AnswerState;
   disabled?: boolean;
   onAnswerPress?: () => void;
 }
 
-export default function AnswerCard({
+export default function QuizAnswerCard({
   title,
   state = "default",
   disabled = false,
   onAnswerPress,
-}: AnswerCardProps) {
+}: QuizAnswerCardProps) {
   const isDisabled = disabled || !onAnswerPress;
   const isAnswered = state !== "default";
 

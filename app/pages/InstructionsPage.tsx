@@ -1,12 +1,12 @@
-import ActionButton from "@/components/ActionButton";
+import ActionButton from "@/components/buttons/ActionButton";
 import { useRouter } from "expo-router";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import Header from "../../components/Header";
-import HelpTipCard from "../../components/HelpTipCard";
-import InfoCard from "../../components/InfoCard";
-import InstructionCard from "../../components/InstructionCard";
-import ScreenBackground from "../../components/ScreenBackground";
+import Header from "../../components/base/Header";
+import ScreenBackground from "../../components/base/ScreenBackground";
+import HelpTipCard from "../../components/cards/HelpTipCard";
+import InfoCard from "../../components/cards/InfoCard";
+import InstructionCard from "../../components/cards/InstructionCard";
 
 export default function InstructionsPage() {
   const router = useRouter();

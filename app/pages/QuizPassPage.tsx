@@ -1,7 +1,7 @@
-import ActionButton from "@/components/ActionButton";
-import Header from "@/components/Header";
-import QuizResultCard from "@/components/QuizResultCard";
-import ScreenBackground from "@/components/ScreenBackground";
+import Header from "@/components/base/Header";
+import ScreenBackground from "@/components/base/ScreenBackground";
+import ActionButton from "@/components/buttons/ActionButton";
+import QuizResultCard from "@/components/quiz/QuizResultCard";
 import { useRouter } from "expo-router";
 import React from "react";
 import { StyleSheet, View } from "react-native";

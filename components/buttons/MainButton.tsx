@@ -1,76 +1,65 @@
-import {
-  AntDesign,
-  Feather,
-  FontAwesome5,
-  MaterialCommunityIcons,
-  MaterialIcons,
-} from "@expo/vector-icons";
+import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { ColorValue, StyleSheet, View } from "react-native";
-import AppHeading from "./AppHeading";
-import AppText from "./AppText";
+import { ColorValue, Pressable, StyleSheet, View } from "react-native";
+import AppHeading from "../base/AppHeading";
 
-type IconLibrary =
-  | "FontAwesome5"
-  | "AntDesign"
-  | "MaterialIcons"
-  | "MaterialCommunityIcons"
-  | "Feather";
+type IconLibrary = "FontAwesome" | "MaterialIcons" | "Ionicons";
 
-interface FactCardProps {
+interface MainButtonProps {
   iconLibrary?: IconLibrary;
   iconName:
-    | React.ComponentProps<typeof FontAwesome5>["name"]
-    | React.ComponentProps<typeof AntDesign>["name"]
+    | React.ComponentProps<typeof FontAwesome>["name"]
     | React.ComponentProps<typeof MaterialIcons>["name"]
-    | React.ComponentProps<typeof MaterialCommunityIcons>["name"]
-    | React.ComponentProps<typeof Feather>["name"];
+    | React.ComponentProps<typeof Ionicons>["name"];
   title: string;
-  subText: string;
   gradientColors?: readonly [ColorValue, ColorValue, ...ColorValue[]];
+  onMainButtonPress?: () => void;
 }
 
 const iconLibraries = {
-  FontAwesome5,
-  AntDesign,
+  FontAwesome,
   MaterialIcons,
-  MaterialCommunityIcons,
-  Feather,
+  Ionicons,
 };
 
-export default function FactCard({
-  iconLibrary = "FontAwesome5",
+export default function MainButton({
+  iconLibrary = "FontAwesome",
   iconName,
   title,
-  subText,
   gradientColors = ["#FFF2A6", "#FFE066", "#E0C120"],
-}: FactCardProps) {
-  
+  onMainButtonPress,
+}: MainButtonProps) {
   const Icon = iconLibraries[iconLibrary];
 
   return (
-    <LinearGradient colors={gradientColors} style={styles.card}>
+    <Pressable
+      onPress={onMainButtonPress}
+      disabled={!onMainButtonPress}
+      style={({ pressed }) => [
+        styles.card,
+        pressed && onMainButtonPress && styles.cardPressed,
+      ]}
+    >
+      <LinearGradient colors={gradientColors} style={styles.gradient} />
+
       <View pointerEvents="none" style={styles.overlay} />
 
       <View style={styles.content}>
         <View style={styles.iconContainer}>
-          <Icon name={iconName as any} size={34} color="#FFFFFF" />
+          <Icon name={iconName as any} size={38} color="#FFFFFF" />
         </View>
 
         <AppHeading style={styles.title}>{title}</AppHeading>
-        <AppText style={styles.subText}>{subText}</AppText>
       </View>
-    </LinearGradient>
+    </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   card: {
     width: "100%",
-    minHeight: 220,
-    paddingHorizontal: 20,
-    paddingVertical: 22,
+    height: 140,
     borderRadius: 24,
     overflow: "hidden",
     alignItems: "center",
@@ -80,6 +69,15 @@ const styles = StyleSheet.create({
     borderColor: "rgba(255, 255, 255, 0.25)",
   },
 
+  cardPressed: {
+    opacity: 0.95,
+    transform: [{ scale: 0.98 }],
+  },
+
+  gradient: {
+    ...StyleSheet.absoluteFillObject,
+  },
+
   overlay: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: "rgba(0, 0, 0, 0.1)",
@@ -87,29 +85,25 @@ const styles = StyleSheet.create({
 
   content: {
     width: "100%",
+    height: "100%",
+    paddingHorizontal: 14,
+    paddingVertical: 12,
     alignItems: "center",
     justifyContent: "center",
   },
 
   iconContainer: {
-    width: 60,
-    height: 60,
+    width: 58,
+    height: 58,
     marginBottom: 8,
-    borderRadius: 30,
+    borderRadius: 29,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "rgba(255, 255, 255, 0.12)",
   },
 
   title: {
-    fontSize: 24,
-    marginBottom: 10,
-    textAlign: "center",
-  },
-
-  subText: {
-    fontSize: 20,
-    lineHeight: 25,
+    fontSize: 32,
     textAlign: "center",
   },
 });

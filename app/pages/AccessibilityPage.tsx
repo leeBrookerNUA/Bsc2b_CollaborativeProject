@@ -1,11 +1,11 @@
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import AccessibilitySettingRow from "../../components/AccessibilitySettingRow";
-import ActionButton from "../../components/ActionButton";
-import Header from "../../components/Header";
-import ScreenBackground from "../../components/ScreenBackground";
-import SettingsPanel from "../../components/SettingsPanel";
+import Header from "../../components/base/Header";
+import ScreenBackground from "../../components/base/ScreenBackground";
+import ActionButton from "../../components/buttons/ActionButton";
+import AccessibilitySettingRow from "../../components/settings/AccessibilitySettingRow";
+import SettingsPanel from "../../components/settings/SettingsPanel";
 
 export default function AccessibilityPage() {
   const router = useRouter();

@@ -1,20 +1,20 @@
 import React from "react";
 import { Pressable, StyleSheet, View } from "react-native";
-import AppHeading from "./AppHeading";
+import AppHeading from "../base/AppHeading";
 
-interface PillButtonCardProps {
+interface PillButtonProps {
   title: string;
   selected?: boolean;
   tintColor?: string;
   onPillPress?: () => void;
 }
 
-export default function PillButtonCard({
+export default function PillButton({
   title,
   selected = false,
   tintColor = "#EBC50A",
   onPillPress,
-}: PillButtonCardProps) {
+}: PillButtonProps) {
   return (
     <Pressable
       onPress={onPillPress}

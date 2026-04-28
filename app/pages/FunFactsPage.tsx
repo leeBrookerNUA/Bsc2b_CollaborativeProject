@@ -1,13 +1,13 @@
-import ScreenBackground from "@/components/ScreenBackground";
+import ScreenBackground from "@/components/base/ScreenBackground";
 import { useRouter } from 'expo-router';
 import React, { useRef, useState } from "react";
 import { NativeScrollEvent, NativeSyntheticEvent, ScrollView, StyleSheet, View, useWindowDimensions } from "react-native";
-import ActionButton from "../../components/ActionButton";
-import FactCard from "../../components/FactCard";
-import Header from "../../components/Header";
-import PaginationDots from "../../components/PaginationDots";
-import PillButtonCard from "../../components/PillButtonCard";
-import { factData } from "../../data/factData";
+import Header from "../../components/base/Header";
+import PaginationDots from "../../components/base/PaginationDots";
+import ActionButton from "../../components/buttons/ActionButton";
+import PillButton from "../../components/buttons/PillButton";
+import FactCard from "../../components/cards/FactCard";
+import { factData } from "../data/factData";
 
 export default function FunFactsPage() {
   const router = useRouter();
@@ -42,7 +42,7 @@ export default function FunFactsPage() {
           <View style={styles.spacer16} />
 
           <View style={styles.pillRow}>
-            <PillButtonCard
+            <PillButton
               title="Solar"
               selected={selectedPill === "Solar"}
               tintColor="#EBC50A"
@@ -53,7 +53,7 @@ export default function FunFactsPage() {
               }}
             />
 
-            <PillButtonCard
+            <PillButton
               title="Wind"
               selected={selectedPill === "Wind"}
               tintColor="#4DDB7A"
@@ -64,7 +64,7 @@ export default function FunFactsPage() {
               }}
             />
 
-            <PillButtonCard
+            <PillButton
               title="Manual"
               selected={selectedPill === "Manual"}
               tintColor="#B97CFF"

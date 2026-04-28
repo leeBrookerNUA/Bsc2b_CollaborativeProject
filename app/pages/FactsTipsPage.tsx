@@ -1,11 +1,11 @@
 import { useRouter } from "expo-router";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import ActionButton from "../../components/ActionButton";
-import ButtonCard from "../../components/ButtonCard";
-import Header from "../../components/Header";
-import NoIconBadgeCard from "../../components/NoIconBadgeCard";
-import ScreenBackground from "../../components/ScreenBackground";
+import TextBadge from "../../components/badges/TextBadge";
+import Header from "../../components/base/Header";
+import ScreenBackground from "../../components/base/ScreenBackground";
+import ActionButton from "../../components/buttons/ActionButton";
+import MainButton from "../../components/buttons/MainButton";
 
 export default function FactsTipsPageScreen() {
   const router = useRouter();
@@ -29,11 +29,11 @@ export default function FactsTipsPageScreen() {
           <View style={styles.container}>
             <View style={styles.spacer16} />
 
-            <NoIconBadgeCard title="Choose what you want to explore!" />
+            <TextBadge title="Choose what you want to explore!" />
 
             <View style={styles.spacer16} />
 
-            <ButtonCard
+            <MainButton
               iconLibrary="MaterialIcons"
               iconName="lightbulb"
               title="Fun Facts"
@@ -45,7 +45,7 @@ export default function FactsTipsPageScreen() {
 
             <View style={styles.spacer16} />
 
-            <ButtonCard
+            <MainButton
               iconLibrary="MaterialIcons"
               iconName="energy-savings-leaf"
               title="Energy Saving Tips"
@@ -57,7 +57,7 @@ export default function FactsTipsPageScreen() {
 
             <View style={styles.spacer16} />
 
-            <ButtonCard
+            <MainButton
               iconLibrary="FontAwesome"
               iconName="question-circle"
               title="Quiz"

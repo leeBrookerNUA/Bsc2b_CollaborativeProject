@@ -1,7 +1,7 @@
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import AppText from "./AppText";
+import AppText from "../base/AppText";
 
 interface HelpTipCardProps {
   iconName: React.ComponentProps<typeof FontAwesome6>["name"];

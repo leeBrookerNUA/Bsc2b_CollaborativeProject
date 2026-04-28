@@ -1,14 +1,14 @@
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import ActionButton from "../../components/ActionButton";
-import AnswerCard from "../../components/AnswerCard";
-import AppText from "../../components/AppText";
-import Header from "../../components/Header";
-import QuestionCard from "../../components/QuestionCard";
-import QuizProgressBar from "../../components/QuizProgressBar";
-import ScreenBackground from "../../components/ScreenBackground";
-import { easyQuizData } from "../../data/easyQuizData";
+import AppText from "../../components/base/AppText";
+import Header from "../../components/base/Header";
+import ScreenBackground from "../../components/base/ScreenBackground";
+import ActionButton from "../../components/buttons/ActionButton";
+import QuizAnswerCard from "../../components/quiz/QuizAnswerCard";
+import QuizProgressBar from "../../components/quiz/QuizProgressBar";
+import QuizQuestionCard from "../../components/quiz/QuizQuestionCard";
+import { easyQuizData } from "../data/easyQuizData";
 
 export default function EasyQuizPage() {
   const router = useRouter();
@@ -99,7 +99,7 @@ export default function EasyQuizPage() {
 
             <View style={styles.spacer24} />
 
-            <QuestionCard
+            <QuizQuestionCard
               title={currentQuestion.question}
               subtitle="Pick the correct answer below!"
             />
@@ -108,7 +108,7 @@ export default function EasyQuizPage() {
 
             {currentQuestion.answers.map((answer) => (
               <View key={answer} style={styles.answerWrapper}>
-                <AnswerCard
+                <QuizAnswerCard
                   title={answer}
                   state={getAnswerState(answer)}
                   disabled={hasAnswered}
