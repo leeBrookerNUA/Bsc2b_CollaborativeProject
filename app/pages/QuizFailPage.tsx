@@ -23,7 +23,7 @@ export default function QuizFailPage() {
                         leftIconName="arrow-circle-left"
                         rightIconName="cog"
                         onBackPress={() => {
-                            router.navigate('/pages/HomePage')
+                            router.navigate('/pages/QuizSelectPage')
                         }}
                         onSettingsPress={() => {
                             router.navigate('/pages/SettingsHubPage')

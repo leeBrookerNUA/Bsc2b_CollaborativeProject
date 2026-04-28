@@ -15,7 +15,7 @@ interface QuizResultCardProps {
   | React.ComponentProps<typeof FontAwesome>["name"]
   | React.ComponentProps<typeof AntDesign>["name"]
   | React.ComponentProps<typeof MaterialCommunityIcons>["name"]
-
+  iconCount?: number;
   title: string;
   subTitle: string,
   subText: string,
@@ -24,14 +24,14 @@ interface QuizResultCardProps {
 
 export default function QuizResultCard(props: QuizResultCardProps) {
   const {
-    iconLibrary = "FontAwesome", iconName1, iconName2, title, subTitle, subText, gradientColors = ["#FFF2A6", "#FFE066", "#E0C120"] } = props;
+    iconLibrary = "FontAwesome", iconName1, iconName2, iconCount = 1, title, subTitle, subText, gradientColors = ["#FFF2A6", "#FFE066", "#E0C120"] } = props;
 
   const Icon =
     iconLibrary === "AntDesign"
       ? AntDesign
       : iconLibrary === "MaterialCommunityIcons"
-      ? MaterialCommunityIcons
-      : FontAwesome;
+        ? MaterialCommunityIcons
+        : FontAwesome;
 
   return (
     <View style={styles.shadowWrapper}>
@@ -55,8 +55,12 @@ export default function QuizResultCard(props: QuizResultCardProps) {
           <AppText style={styles.subTitle}>{subTitle}</AppText>
           <AppText style={styles.subText}>{subText}</AppText>
 
-            <Icon name={iconName2 as any} size={32} color="#FFFFFF" />
-          
+          <View style={styles.iconRow}>
+            {Array.from({ length: iconCount }).map((_, index) => (
+              <Icon key={index} name={iconName2 as any} size={32} color="#FFFFFF" />
+            ))}
+          </View>
+
         </View>
       </View>
     </View>
@@ -107,6 +111,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     alignItems: "center",
     justifyContent: "center",
+  },
+  iconRow: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 6,
+    marginTop: 8,
   },
 
   iconContainer: {

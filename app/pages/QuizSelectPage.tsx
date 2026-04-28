@@ -39,11 +39,12 @@ export default function QuizSelectPage() {
 
           <QuizSelectCard
             iconName="star"
+            iconCount={1}
             title="Easy"
             subTitle="Simple questions to get started!"
             gradientColors={["#8EF0B3", "#5EDE92", "#2ECC71"]}
             onQuizButtonPress={() => {
-              router.navigate('/pages/EasyQuizPage')
+              router.navigate("/pages/EasyQuizPage");
             }}
           />
 
@@ -51,11 +52,12 @@ export default function QuizSelectPage() {
 
           <QuizSelectCard
             iconName="star"
+            iconCount={3}
             title="Hard"
             subTitle="Try a bigger challenge!"
             gradientColors={["#FFC27A", "#FFB14B", "#FF9F1C"]}
             onQuizButtonPress={() => {
-              router.navigate('/pages/HardQuizPage')
+              router.navigate("/pages/HardQuizPage");
             }}
           />
 

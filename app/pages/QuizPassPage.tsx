@@ -22,7 +22,7 @@ export default function QuizPassPage() {
                         leftIconName="arrow-circle-left"
                         rightIconName="cog"
                         onBackPress={() => {
-                            router.navigate('/pages/HomePage')
+                            router.navigate('/pages/QuizSelectPage')
                         }}
                         onSettingsPress={() => {
                             router.navigate('/pages/SettingsHubPage')
@@ -39,6 +39,7 @@ export default function QuizPassPage() {
                         subText="You earned 3 stars!"
                         gradientColors={["#8EF0B3", "#5EDE92", "#2ECC71"]}
                         iconName2="star"
+                        iconCount={3}
                     />
                     <View style={styles.spacer16} />
 

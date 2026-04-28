@@ -16,43 +16,58 @@ export default function EasyQuizPage() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
 
+  const [score, setScore] = useState(0);
+
   const currentQuestion = easyQuizData[currentQuestionIndex];
   const totalQuestions = easyQuizData.length;
 
   const hasAnswered = selectedAnswer !== null;
 
   function handleAnswerPress(answer: string) {
-    if (hasAnswered) return;
+  if (hasAnswered) return;
 
-    setSelectedAnswer(answer);
+  setSelectedAnswer(answer);
 
-    setTimeout(() => {
-      const isLastQuestion = currentQuestionIndex === totalQuestions - 1;
+  const isCorrect = answer === currentQuestion.correctAnswer;
+  const updatedScore = isCorrect ? score + 1 : score;
 
-      if (isLastQuestion) {
-        console.log("Quiz finished");
-      } else {
-        setCurrentQuestionIndex(currentQuestionIndex + 1);
-        setSelectedAnswer(null);
-      }
-    }, 900);
+  if (isCorrect) {
+    setScore(updatedScore);
   }
 
-  function getAnswerState(answer: string) {
-    if (!selectedAnswer) {
-      return "default";
-    }
+  setTimeout(() => {
+    const isLastQuestion = currentQuestionIndex === totalQuestions - 1;
 
-    if (answer === currentQuestion.correctAnswer) {
-      return "correct";
-    }
+    if (isLastQuestion) {
+      const percentage = (updatedScore / totalQuestions) * 100;
 
-    if (answer === selectedAnswer && answer !== currentQuestion.correctAnswer) {
-      return "wrong";
+      if (percentage >= 70) {
+        router.navigate("/pages/QuizPassPage");
+      } else {
+        router.navigate("/pages/QuizFailPage");
+      }
+    } else {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setSelectedAnswer(null);
     }
+  }, 900);
+}
 
+function getAnswerState(answer: string) {
+  if (!selectedAnswer) {
     return "default";
   }
+
+  if (answer === currentQuestion.correctAnswer) {
+    return "correct";
+  }
+
+  if (answer === selectedAnswer && answer !== currentQuestion.correctAnswer) {
+    return "wrong";
+  }
+
+  return "default";
+}
 
   return (
     <ScreenBackground>
@@ -63,7 +78,7 @@ export default function EasyQuizPage() {
             leftIconName="arrow-circle-left"
             rightIconName="cog"
             onBackPress={() => {
-              router.navigate('/pages/HomePage')
+              router.navigate('/pages/QuizSelectPage')
             }}
             onSettingsPress={() => {
               router.navigate('/pages/SettingsHubPage')

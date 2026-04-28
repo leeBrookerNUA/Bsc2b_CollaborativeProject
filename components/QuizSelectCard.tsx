@@ -7,6 +7,7 @@ import AppText from "./AppText";
 
 interface QuizSelectCardProps {
   iconName: React.ComponentProps<typeof AntDesign>["name"];
+  iconCount?: number;
   title: string;
   subTitle: string,
   gradientColors?: readonly [ColorValue, ColorValue, ...ColorValue[]];
@@ -15,7 +16,7 @@ interface QuizSelectCardProps {
 
 export default function QuizSelectCard(props: QuizSelectCardProps) {
   const {
-    iconName, title, subTitle, gradientColors = ["#FFF2A6", "#FFE066", "#E0C120"], onQuizButtonPress, } = props;
+    iconName, iconCount = 1, title, subTitle, gradientColors = ["#FFF2A6", "#FFE066", "#E0C120"], onQuizButtonPress, } = props;
 
   return (
     <View style={styles.shadowWrapper}>
@@ -32,8 +33,11 @@ export default function QuizSelectCard(props: QuizSelectCardProps) {
         <View pointerEvents="none" style={styles.lightOverlay} />
 
         <View style={styles.content}>
-          <View style={styles.iconContainer}>
-            <AntDesign name={iconName} size={32} color="#FFFFFF" />
+
+          <View style={styles.iconRow}>
+            {Array.from({ length: iconCount }).map((_, index) => (
+              <AntDesign key={index} name={iconName} size={32} color="#FFFFFF" />
+            ))}
           </View>
 
           <AppHeading style={styles.title}>{title}</AppHeading>
@@ -95,13 +99,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
-  iconContainer: {
-    backgroundColor: "rgba(255,255,255,0.1)",
-    borderRadius: 99,
-    width: 52,
-    height: 52,
+  iconRow: {
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    gap: 4,
     marginBottom: 6,
   },
 
@@ -109,7 +111,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     textAlign: "center",
   },
-   subTitle: {
+  subTitle: {
     fontSize: 16,
     textAlign: "center",
     lineHeight: 20,
