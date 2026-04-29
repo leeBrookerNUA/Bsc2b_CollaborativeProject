@@ -10,13 +10,19 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import HelpTipCard from "../../components/cards/HelpTipCard";
 
+// This screen shows the main play area of the app. It displays the toy battery status, charging activity, useful stats, a live fun fact, and a helpful charging tip.
 export default function PlayPage() {
+
+  // Gives access to Expo Router so the user can move between pages.
   const router = useRouter();
 
   return (
     <ScreenBackground>
+
+      {/* Main page layout. The menu content is kept near the top, while the Back Home button stays near the bottom of the screen. */}
       <View style={styles.page}>
         <View>
+          
           <Header
             title="Play"
             leftIconName="arrow-circle-left"
@@ -29,9 +35,12 @@ export default function PlayPage() {
             }}
           />
 
+          {/* Container adds padding around the play screen content so the cards do not touch the edges of the screen. */}
           <View style={styles.container}>
+            
             <View style={styles.spacer16} />
 
+            {/* Battery card shows the current charging status. It displays the activity, battery percentage, and remaining cranks.*/}
             <BatteryCard
               title="Hand Crank is Turning!"
               subtitle="Charging Battery..."
@@ -42,11 +51,14 @@ export default function PlayPage() {
 
             <View style={styles.spacer16} />
 
+            {/* Status badge highlights the current charging method. In this case, it shows that the hand crank is active. */}
             <IconBadge title="Hand Crank Active!" iconName="refresh-cw" />
 
             <View style={styles.spacer16} />
 
+            {/* Stats row displays key charging information side by side. Each StatCard shows one small piece of data with its own icon. */}
             <View style={styles.statsRow}>
+            
               <StatCard
                 iconLibrary="AntDesign"
                 iconName="clock-circle"
@@ -77,6 +89,7 @@ export default function PlayPage() {
 
             <View style={styles.spacer16} />
 
+
             <FunFactCard
               title="Live Fun Fact!"
               subtitle="It takes around 200 cranks to fully charge one battery!"
@@ -92,9 +105,11 @@ export default function PlayPage() {
               title="Keep turning steadily to charge faster!"
               iconName="question"
             />
+
           </View>
         </View>
 
+        {/* Button used to return directly to the Home page. */}
         <ActionButton
           title="Back Home"
           backgroundColor="rgba(255, 255, 255, 0.22)"
@@ -103,24 +118,32 @@ export default function PlayPage() {
             router.navigate("/pages/HomePage");
           }}
         />
+
       </View>
     </ScreenBackground>
   );
 }
 
 const styles = StyleSheet.create({
+
+  // Main page container.
+  // flexGrow helps the screen fill the available height, while space-between separates the play content from the bottom button.
   page: {
     flexGrow: 1,
     width: "100%",
     justifyContent: "space-between",
   },
 
+  // Controls the spacing around the play content.
+  // The padding keeps the cards away from the screen edges.
   container: {
     width: "100%",
     marginTop: 8,
     padding: 16,
   },
 
+  // Places the stat cards in a horizontal row.
+  // The gap keeps equal spacing between each stat card.
   statsRow: {
     flexDirection: "row",
     gap: 8,

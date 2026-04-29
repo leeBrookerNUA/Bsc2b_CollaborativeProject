@@ -7,13 +7,19 @@ import { useRouter } from "expo-router";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
+// This screen is shown when the user does not pass the quiz. It gives encouragement, lets the user try again, and shows a fun fact to help them keep learning.
 export default function QuizFailPage() {
+
+  // Gives access to Expo Router so the user can move between pages.
   const router = useRouter();
 
   return (
     <ScreenBackground>
+
+      {/* Main page layout. The menu content is kept near the top, while the Back Home button stays near the bottom of the screen. */}
       <View style={styles.page}>
         <View>
+      
           <Header
             title="Quiz Complete"
             leftIconName="arrow-circle-left"
@@ -26,7 +32,9 @@ export default function QuizFailPage() {
             }}
           />
 
+          {/* Container adds padding around the result content so the cards and buttons do not touch the screen edges.*/}
           <View style={styles.container}>
+
             <View style={styles.spacer16} />
 
             <QuizResultCard
@@ -59,9 +67,11 @@ export default function QuizFailPage() {
                 router.navigate("/pages/FunFactsPage");
               }}
             />
+
           </View>
         </View>
 
+        {/* Button used to return directly to the Home page. */}
         <ActionButton
           title="Back Home"
           backgroundColor="rgba(255, 255, 255, 0.22)"
@@ -70,18 +80,24 @@ export default function QuizFailPage() {
             router.navigate("/pages/HomePage");
           }}
         />
+
       </View>
     </ScreenBackground>
   );
 }
 
 const styles = StyleSheet.create({
+
+  // Main page container.
+  // flexGrow helps the screen fill the available height, while space-between separates the result content from the bottom button.
   page: {
     flexGrow: 1,
     width: "100%",
     justifyContent: "space-between",
   },
 
+  // Controls the spacing around the result content.
+  // The padding keeps the cards and button away from the screen edges.
   container: {
     width: "100%",
     marginTop: 8,

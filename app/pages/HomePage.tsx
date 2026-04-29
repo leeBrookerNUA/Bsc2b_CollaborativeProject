@@ -5,21 +5,29 @@ import Header from "../../components/base/Header";
 import ScreenBackground from "../../components/base/ScreenBackground";
 import MainButton from "../../components/buttons/MainButton";
 
+// This is the main home screen of the app. It gives the user quick access to the main sections: Play, Facts & Tips, Instructions, and Settings.
 export default function HomePage() {
+
+  // Gives access to Expo Router so the user can move between pages.
   const router = useRouter();
 
   return (
     <ScreenBackground>
+      {/* Main page layout.This holds the header and the main navigation buttons for the app. */}
       <View style={styles.page}>
+      
         <Header
           title="Home"
-          onBackPress={() => { }}
-          onSettingsPress={() => { }}
+          onBackPress={() => {}}
+          onSettingsPress={() => {}}
         />
 
+        
         <View style={styles.spacer16} />
 
+        {/* Container adds padding around the menu buttons so they do not touch the edges of the screen. */}
         <View style={styles.container}>
+          
           <MainButton
             title="Play"
             gradientColors={["#8FC4FF", "#5FA8FF", "#3A86FF"]}
@@ -31,7 +39,7 @@ export default function HomePage() {
           />
 
           <View style={styles.spacer16} />
-
+          
           <MainButton
             title="Facts & Tips"
             gradientColors={["#FFF2A6", "#FFE066", "#E0C120"]}
@@ -41,9 +49,9 @@ export default function HomePage() {
               router.navigate("/pages/FactsTipsPage");
             }}
           />
-
+        
           <View style={styles.spacer16} />
-
+         
           <MainButton
             title="Instructions"
             gradientColors={["#D2A8FF", "#B07BFF", "#9B5DE5"]}
@@ -65,6 +73,7 @@ export default function HomePage() {
               router.navigate("/pages/SettingsHubPage");
             }}
           />
+
         </View>
       </View>
     </ScreenBackground>
@@ -72,11 +81,16 @@ export default function HomePage() {
 }
 
 const styles = StyleSheet.create({
+
+  // Main page container.
+  // flexGrow helps the screen content fill the available height.
   page: {
     flexGrow: 1,
     width: "100%",
   },
 
+  // Controls the spacing around the main menu buttons.
+  // The padding keeps the buttons away from the screen edges.
   container: {
     width: "100%",
     marginTop: 8,

@@ -3,12 +3,23 @@ import { Pressable, StyleSheet, View } from "react-native";
 import AppHeading from "../base/AppHeading";
 
 interface PillButtonProps {
+  // Text displayed inside the pill button.
   title: string;
+
+  // Controls whether this pill is currently selected.
+  // The selected pill is styled differently so the user can see the active category.
   selected?: boolean;
+
+  // Colour used when the pill is selected.
+  // This allows different categories to have different theme colours.
   tintColor?: string;
+
+  // Function called when the pill button is pressed.
   onPillPress?: () => void;
 }
 
+// PillButton is a reusable small rounded button.
+// It is mainly used for switching between categories, such as Solar, Wind, and Manual facts.
 export default function PillButton({
   title,
   selected = false,
@@ -17,7 +28,10 @@ export default function PillButton({
 }: PillButtonProps) {
   return (
     <Pressable
+      // Runs the press function when the user taps the pill.
       onPress={onPillPress}
+
+      // Applies the default pill style, then adds selected and pressed styles when needed.
       style={({ pressed }) => [
         styles.card,
         selected && styles.cardSelected,
@@ -25,14 +39,26 @@ export default function PillButton({
         pressed && styles.cardPressed,
       ]}
     >
-      <View style={[styles.topHighlight, selected && styles.topHighlightSelected]} />
+      {/*
+        Top highlight gives the pill a shiny button effect.
+        The highlight becomes softer when the pill is selected.
+      */}
+      <View
+        style={[
+          styles.topHighlight,
+          selected && styles.topHighlightSelected,
+        ]}
+      />
 
+      {/* Displays the pill text using the reusable heading style. */}
       <AppHeading style={styles.title}>{title}</AppHeading>
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
+  // Main pill button container.
+  // flex: 1 helps multiple pill buttons share the row space evenly.
   card: {
     flex: 1,
     minHeight: 36,
@@ -48,16 +74,22 @@ const styles = StyleSheet.create({
     borderColor: "rgba(255, 255, 255, 0.22)",
   },
 
+  // Style applied when this pill is the selected category.
+  // The small translateY effect makes it look pressed into place.
   cardSelected: {
     transform: [{ translateY: 1 }],
     borderColor: "rgba(255, 255, 255, 0.12)",
   },
 
+  // Style applied while the pill is being pressed.
+  // The opacity and scale make the button feel interactive.
   cardPressed: {
     opacity: 0.9,
     transform: [{ scale: 0.98 }],
   },
 
+  // Decorative highlight across the top of the pill.
+  // This helps create a glossy, child-friendly button style.
   topHighlight: {
     position: "absolute",
     top: 0,
@@ -68,10 +100,12 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255, 255, 255, 0.28)",
   },
 
+  // Softer highlight used when the pill is selected.
   topHighlightSelected: {
     backgroundColor: "rgba(255, 255, 255, 0.08)",
   },
 
+  // Styles the pill label and keeps it above the highlight layer.
   title: {
     zIndex: 1,
     fontSize: 20,
