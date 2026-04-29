@@ -8,12 +8,12 @@ import AppText from "../base/AppText";
 type IconLibrary = "Feather" | "MaterialIcons" | "Ionicons";
 
 interface InstructionCardProps {
+
   // Optional icon library used for the instruction icon.
   // If none is provided, Feather is used by default.
   iconLibrary?: IconLibrary;
 
   // Name of the icon displayed on the left side of the card.
-  // It accepts icon names from Feather, MaterialIcons, or Ionicons.
   iconName:
     | React.ComponentProps<typeof Feather>["name"]
     | React.ComponentProps<typeof MaterialIcons>["name"]
@@ -25,11 +25,7 @@ interface InstructionCardProps {
 
 // Stores the available icon libraries in one object.
 // The selected library is chosen using the iconLibrary prop.
-const iconLibraries = {
-  Feather,
-  MaterialIcons,
-  Ionicons,
-};
+const iconLibraries = { Feather, MaterialIcons, Ionicons };
 
 // InstructionCard is a reusable card component used to show one instruction step.
 // It displays an icon on the left and the instruction text beside it.
@@ -38,19 +34,17 @@ export default function InstructionCard({
   iconName,
   title,
 }: InstructionCardProps) {
+
   // Selects the correct icon component based on the iconLibrary prop.
   const Icon = iconLibraries[iconLibrary];
 
   return (
     <View style={styles.card}>
-      {/*
-        Row container places the icon and instruction text side by side.
-      */}
+
+      {/* Row container places the icon and instruction text side by side. */}
       <View style={styles.contentRow}>
-        {/*
-          Circular icon container.
-          It gives the icon a soft background so it stands out from the card.
-        */}
+
+        {/*  Circular icon container. It gives the icon a soft background so it stands out from the card. */}
         <View style={styles.iconContainer}>
           <Icon name={iconName as any} size={24} color="#FFFFFF" />
         </View>
@@ -63,9 +57,9 @@ export default function InstructionCard({
 }
 
 const styles = StyleSheet.create({
+
   // Main instruction card container.
-  // The rounded corners, border, and transparent background
-  // match the soft glass style used throughout the app.
+  // The rounded corners, border, and transparent background match the soft glass style used throughout the app.
   card: {
     width: "100%",
     minHeight: 52,

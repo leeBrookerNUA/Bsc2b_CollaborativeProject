@@ -4,8 +4,6 @@ import { StyleSheet, View } from "react-native";
 import AppText from "../base/AppText";
 
 interface HelpTipCardProps {
-  // Name of the FontAwesome6 icon displayed inside the help tip.
-  // This is typed to only allow valid FontAwesome6 icon names.
   iconName: React.ComponentProps<typeof FontAwesome6>["name"];
 
   // Help message displayed next to the icon.
@@ -17,15 +15,11 @@ interface HelpTipCardProps {
 export default function HelpTipCard({ iconName, title }: HelpTipCardProps) {
   return (
     <View style={styles.card}>
-      {/*
-        Row container keeps the icon and help text together
-        and centres them inside the card.
-      */}
+
+      {/* Row container keeps the icon and help text together and centres them inside the card. */}
       <View style={styles.contentRow}>
-        {/*
-          Circular icon container.
-          It gives the icon a soft background so it stands out from the card.
-        */}
+
+        {/* Circular icon container. It gives the icon a soft background so it stands out from the card. */}
         <View style={styles.iconContainer}>
           <FontAwesome6 name={iconName} size={16} color="#FFFFFF" />
         </View>
@@ -38,9 +32,9 @@ export default function HelpTipCard({ iconName, title }: HelpTipCardProps) {
 }
 
 const styles = StyleSheet.create({
+
   // Main help tip card container.
-  // The rounded corners, border, and transparent background
-  // match the soft glass style used throughout the app.
+  // The rounded corners, border, and transparent background match the soft glass style used throughout the app.
   card: {
     width: "100%",
     minHeight: 50,

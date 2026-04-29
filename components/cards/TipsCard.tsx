@@ -13,9 +13,6 @@ interface TipsCardProps {
   // Optional icon library used for the tip icon.
   // If none is provided, AntDesign is used by default.
   iconLibrary?: IconLibrary;
-
-  // Name of the icon displayed on the left side of the card.
-  // It accepts icon names from AntDesign, MaterialIcons, or MaterialCommunityIcons.
   iconName:
     | React.ComponentProps<typeof AntDesign>["name"]
     | React.ComponentProps<typeof MaterialIcons>["name"]
@@ -30,11 +27,7 @@ interface TipsCardProps {
 export default function TipsCard(props: TipsCardProps) {
   const { iconLibrary = "AntDesign", iconName, title } = props;
 
-  /*
-    Selects the correct icon component based on the iconLibrary prop.
-    If the library is not MaterialIcons or MaterialCommunityIcons,
-    it uses AntDesign by default.
-  */
+  /* Selects the correct icon component based on the iconLibrary prop. If the library is not MaterialIcons or MaterialCommunityIcons, it uses AntDesign by default. */
   const Icon =
     iconLibrary === "MaterialIcons"
       ? MaterialIcons
@@ -44,21 +37,13 @@ export default function TipsCard(props: TipsCardProps) {
 
   return (
     <View style={styles.card}>
-      {/*
-        Row container places the icon and tip text side by side.
-      */}
+
+      {/* Row container places the icon and tip text side by side. */}
       <View style={styles.contentRow}>
-        {/*
-          Circular icon container.
-          It gives the icon a soft background so it stands out from the card.
-        */}
+
+        {/* Circular icon container. It gives the icon a soft background so it stands out from the card. */}
         <View style={styles.iconContainer}>
-          <Icon
-            name={iconName as any}
-            size={20}
-            color="#FFFFFF"
-            style={styles.icon}
-          />
+          <Icon name={iconName as any} size={20} color="#FFFFFF" style={styles.icon} />
         </View>
 
         {/* Displays the tip text passed in through the title prop. */}
@@ -69,9 +54,9 @@ export default function TipsCard(props: TipsCardProps) {
 }
 
 const styles = StyleSheet.create({
+
   // Main tip card container.
-  // The rounded corners, border, and transparent background
-  // match the soft glass style used throughout the app.
+  // The rounded corners, border, and transparent background match the soft glass style used throughout the app.
   card: {
     width: "100%",
     minHeight: 46,

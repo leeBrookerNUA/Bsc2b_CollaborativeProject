@@ -13,18 +13,15 @@ interface StatCardProps {
   // Optional icon library used for the stat icon.
   // If none is provided, AntDesign is used by default.
   iconLibrary?: IconLibrary;
-
-  // Name of the icon displayed at the top of the card.
-  // It accepts icon names from AntDesign, MaterialIcons, or Feather.
   iconName:
     | React.ComponentProps<typeof AntDesign>["name"]
     | React.ComponentProps<typeof MaterialIcons>["name"]
     | React.ComponentProps<typeof Feather>["name"];
 
-  // Main stat value displayed on the card, such as "2" or "4.8W".
+  // Main stat value displayed on the card
   value: string;
 
-  // Label shown underneath the value, such as "hours" or "power".
+  // Label shown underneath the value
   title: string;
 
   // Colour used for the icon itself.
@@ -46,10 +43,7 @@ export default function StatCard(props: StatCardProps) {
     iconBgColor = "rgba(255, 255, 255, 0.55)",
   } = props;
 
-  /*
-    Selects the correct icon component based on the iconLibrary prop.
-    If the library is not MaterialIcons or Feather, it uses AntDesign by default.
-  */
+  /* Selects the correct icon component based on the iconLibrary prop. If the library is not MaterialIcons or Feather, it uses AntDesign by default.*/
   const Icon =
     iconLibrary === "MaterialIcons"
       ? MaterialIcons
@@ -59,10 +53,8 @@ export default function StatCard(props: StatCardProps) {
 
   return (
     <View style={styles.card}>
-      {/*
-        Circular icon container.
-        The background colour can be customised using the iconBgColor prop.
-      */}
+
+      {/* Circular icon container. The background colour can be customised using the iconBgColor prop. */}
       <View style={[styles.iconContainer, { backgroundColor: iconBgColor }]}>
         <Icon name={iconName as any} size={22} color={iconColor} />
       </View>
@@ -77,6 +69,7 @@ export default function StatCard(props: StatCardProps) {
 }
 
 const styles = StyleSheet.create({
+
   // Main stat card container.
   // flex: 1 allows multiple StatCards to share space evenly in a row.
   card: {

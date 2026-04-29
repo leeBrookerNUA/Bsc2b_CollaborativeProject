@@ -5,6 +5,7 @@ import AppHeading from "../base/AppHeading";
 import AppText from "../base/AppText";
 
 interface BatteryCardProps {
+
   // Main title displayed on the battery card.
   title: string;
 
@@ -39,10 +40,8 @@ export default function BatteryCard({
   remainingText,
   fillPercent,
 }: BatteryCardProps) {
-  /*
-    Keeps the battery percentage between 0 and 100.
-    This prevents the fill bar from becoming too small or overflowing the battery shape.
-  */
+
+  /* Keeps the battery percentage between 0 and 100. This prevents the fill bar from becoming too small or overflowing the battery shape.*/
   const safeFillPercent = Math.min(Math.max(fillPercent, 0), 100);
 
   // Gets the correct battery colour for the current charge level.
@@ -50,21 +49,14 @@ export default function BatteryCard({
 
   return (
     <LinearGradient colors={["#8FC4FF", "#3A86FF"]} style={styles.card}>
-      {/*
-        Overlay adds a slight dark layer on top of the gradient.
-        This helps the white text and battery outline stand out clearly.
-      */}
+
+      {/* Overlay adds a slight dark layer on top of the gradient. This helps the white text and battery outline stand out clearly. */}
       <View pointerEvents="none" style={styles.overlay} />
 
-      {/*
-        Battery wrapper holds the main battery body and the small battery tip.
-        The row direction places them side by side.
-      */}
+      {/* Battery wrapper holds the main battery body and the small battery tip. The row direction places them side by side. */}
       <View style={styles.batteryWrapper}>
-        {/*
-          Battery body creates the outline of the battery.
-          The fill view inside it changes width based on the charge percentage.
-        */}
+
+        {/* Battery body creates the outline of the battery The fill view inside it changes width based on the charge percentage. */}
         <View style={styles.batteryBody}>
           <View
             style={[
@@ -90,13 +82,14 @@ export default function BatteryCard({
       {/* Displays the current charge percentage text. */}
       <AppHeading style={styles.chargeText}>{chargeText}</AppHeading>
 
-      {/* Displays extra information, such as cranks remaining. */}
+      {/* Displays extra information .*/}
       <AppText style={styles.remainingText}>{remainingText}</AppText>
     </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
+
   // Main battery card container.
   // The gradient background, rounded corners, and border match the app's card style.
   card: {

@@ -6,7 +6,6 @@ import AppHeading from "../base/AppHeading";
 import AppText from "../base/AppText";
 
 interface QuizSelectCardProps {
-  // Name of the AntDesign icon displayed at the top of the card.
   iconName: React.ComponentProps<typeof AntDesign>["name"];
 
   // Number of icons to display.
@@ -22,9 +21,6 @@ interface QuizSelectCardProps {
   // Optional gradient colours for the card background.
   // This allows each quiz difficulty to have its own colour theme.
   gradientColors?: readonly [ColorValue, ColorValue, ...ColorValue[]];
-
-  // Function called when the quiz card is pressed.
-  // This is usually used to navigate to the selected quiz page.
   onQuizButtonPress?: () => void;
 }
 
@@ -38,41 +34,29 @@ export default function QuizSelectCard({
   gradientColors = ["#FFF2A6", "#FFE066", "#E0C120"],
   onQuizButtonPress,
 }: QuizSelectCardProps) {
-  /*
-    Creates an array used to render the number of icons needed.
-    Math.max prevents a negative iconCount from creating an invalid array length.
-  */
+  
+  /* Creates an array used to render the number of icons needed. Math.max prevents a negative iconCount from creating an invalid array length. */
   const icons = Array.from({ length: Math.max(0, iconCount) });
 
   return (
     <Pressable
+
       // Runs the quiz selection function when the user taps the card.
       onPress={onQuizButtonPress}
 
       // Applies the normal card style and adds a pressed style while tapped.
       style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}
     >
-      {/*
-        LinearGradient creates the colourful card background.
-        The colours can be changed through the gradientColors prop.
-      */}
+      {/* LinearGradient creates the colourful card background. The colours can be changed through the gradientColors prop. */}
       <LinearGradient colors={gradientColors} style={styles.gradient} />
 
-      {/*
-        Overlay adds a slight dark layer over the gradient.
-        This helps the white icons and text stand out more clearly.
-      */}
+      {/* Overlay adds a slight dark layer over the gradient. This helps the white icons and text stand out more clearly. */}
       <View pointerEvents="none" style={styles.overlay} />
 
-      {/*
-        Content container holds the icons, title, and subtitle
-        above the background layers.
-      */}
+      {/* Content container holds the icons, title, and subtitle above the background layers.*/}
       <View style={styles.content}>
-        {/*
-          Icon row displays one or more icons.
-          Multiple icons are used to visually show the quiz difficulty level.
-        */}
+
+        {/* Icon row displays one or more icons. Multiple icons are used to visually show the quiz difficulty level.*/}
         <View style={styles.iconRow}>
           {icons.map((_, index) => (
             <AntDesign
@@ -81,6 +65,7 @@ export default function QuizSelectCard({
               size={32}
               color="#FFFFFF"
             />
+
           ))}
         </View>
 
@@ -95,6 +80,7 @@ export default function QuizSelectCard({
 }
 
 const styles = StyleSheet.create({
+
   // Main quiz selection card.
   // The fixed height, rounded corners, and border create a large tappable card.
   card: {

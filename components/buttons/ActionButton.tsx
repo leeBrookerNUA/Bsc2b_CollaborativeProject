@@ -28,6 +28,7 @@ export default function BackHomeCard({
 }: BackHomeCardProps) {
   return (
     <Pressable
+
       // Runs the press function when the user taps the button.
       onPress={onBackHomePress}
 
@@ -53,6 +54,7 @@ export default function BackHomeCard({
 }
 
 const styles = StyleSheet.create({
+
   // Main button container.
   // The rounded corners, border, and background colour match the app's soft card style.
   card: {

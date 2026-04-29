@@ -21,6 +21,7 @@ type IconLibrary =
   | "Feather";
 
 interface FactCardProps {
+
   // Optional icon library used for the fact icon.
   // If none is provided, FontAwesome5 is used by default.
   iconLibrary?: IconLibrary;
@@ -64,26 +65,19 @@ export default function FactCard({
   subText,
   gradientColors = ["#FFF2A6", "#FFE066", "#E0C120"],
 }: FactCardProps) {
+
   // Selects the correct icon component based on the iconLibrary prop.
   const Icon = iconLibraries[iconLibrary];
 
   return (
     <LinearGradient colors={gradientColors} style={styles.card}>
-      {/*
-        Overlay adds a slight dark layer on top of the gradient.
-        This helps the white text and icon stand out clearly.
-      */}
+      {/* Overlay adds a slight dark layer on top of the gradient This helps the white text and icon stand out clearly.*/}
       <View pointerEvents="none" style={styles.overlay} />
 
-      {/*
-        Content container keeps the icon, title, and fact text
-        centred inside the card.
-      */}
+      {/* Content container keeps the icon, title, and fact text centred inside the card.*/}
       <View style={styles.content}>
-        {/*
-          Circular icon container.
-          It gives the icon a soft background so it stands out from the gradient.
-        */}
+
+        {/* Circular icon container. It gives the icon a soft background so it stands out from the gradient. */}
         <View style={styles.iconContainer}>
           <Icon name={iconName as any} size={34} color="#FFFFFF" />
         </View>
@@ -99,6 +93,7 @@ export default function FactCard({
 }
 
 const styles = StyleSheet.create({
+
   // Main fact card container.
   // The gradient background, rounded corners, and border match the app's card style.
   card: {

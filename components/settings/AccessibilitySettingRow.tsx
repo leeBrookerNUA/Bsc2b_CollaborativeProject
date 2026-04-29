@@ -1,17 +1,17 @@
 import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import React from "react";
 import { Pressable, StyleSheet, View } from "react-native";
-import AppHeading from "../base/AppHeading";
 import AppSwitch from "../base/AppSwitch";
 import AppText from "../base/AppText";
 
-// Lists the icon types this accessibility row can display.
-// Each type is matched to a different icon inside renderIcon.
-type IconType = "text" | "contrast" | "eye";
+type IconLibrary = "FontAwesome" | "FontAwesome5";
 
 interface AccessibilitySettingRowProps {
-  // Controls which icon is shown on the left side of the row.
-  iconType: IconType;
+  // Controls which icon library is used for the left icon.
+  iconLibrary?: IconLibrary;
+  iconName:
+    | React.ComponentProps<typeof FontAwesome>["name"]
+    | React.ComponentProps<typeof FontAwesome5>["name"];
 
   // Text label for the setting.
   title: string;
@@ -26,20 +26,21 @@ interface AccessibilitySettingRowProps {
   // Current text size value when the row is being used for text size controls.
   textSize?: number;
 
-  // Function called when the switch value changes.
   onValueChange?: (value: boolean) => void;
-
-  // Function called when the minus button is pressed.
   onDecrease?: () => void;
-
-  // Function called when the plus button is pressed.
   onIncrease?: () => void;
 }
+
+const iconLibraries = {
+  FontAwesome,
+  FontAwesome5,
+};
 
 // AccessibilitySettingRow is a reusable row component for accessibility settings.
 // It can display either text size controls or an on/off switch depending on the type prop.
 export default function AccessibilitySettingRow({
-  iconType,
+  iconLibrary = "FontAwesome",
+  iconName,
   title,
   type,
   value = false,
@@ -48,32 +49,23 @@ export default function AccessibilitySettingRow({
   onDecrease,
   onIncrease,
 }: AccessibilitySettingRowProps) {
+
+  // Chooses the correct icon component based on the iconLibrary prop.
+  const Icon = iconLibraries[iconLibrary];
+
   // Provides a safe fallback function so AppSwitch always receives a function.
   const handleValueChange = onValueChange ?? (() => {});
 
-  // Chooses the correct icon based on the iconType prop.
-  // The text size option uses styled text, while the others use icon components.
-  const renderIcon = () => {
-    if (iconType === "text") {
-      return <AppHeading style={styles.textIcon}>aA</AppHeading>;
-    }
-
-    if (iconType === "contrast") {
-      return <FontAwesome5 name="adjust" size={20} color="#FFFFFF" />;
-    }
-
-    return <FontAwesome name="eye" size={20} color="#FFFFFF" />;
-  };
-
   return (
     <View style={styles.row}>
-      {/*
-        Left side of the row.
-        This contains the setting icon and the setting title.
-      */}
+
+      {/* Left side of the row. This contains the setting icon and the setting title. */}
       <View style={styles.leftSide}>
+
         {/* Holds the icon in a fixed-size space so all rows align neatly. */}
-        <View style={styles.iconSlot}>{renderIcon()}</View>
+        <View style={styles.iconSlot}>
+          <Icon name={iconName as any} size={20} color="#FFFFFF" />
+        </View>
 
         {/* Displays the setting name. */}
         <AppText style={styles.title}>{title}</AppText>
@@ -81,10 +73,8 @@ export default function AccessibilitySettingRow({
 
       {type === "textSize" ? (
         <View style={styles.textSizeControls}>
-          {/*
-            Minus button used to decrease the text size.
-            It is disabled if no onDecrease function is provided.
-          */}
+
+          {/* Minus button used to decrease the text size. It is disabled if no onDecrease function is provided. */}
           <Pressable
             onPress={onDecrease}
             disabled={!onDecrease}
@@ -100,10 +90,7 @@ export default function AccessibilitySettingRow({
           {/* Shows the current text size value between the two controls. */}
           <AppText style={styles.sizeNumber}>{textSize}</AppText>
 
-          {/*
-            Plus button used to increase the text size.
-            It is disabled if no onIncrease function is provided.
-          */}
+          {/* Plus button used to increase the text size. It is disabled if no onIncrease function is provided. */}
           <Pressable
             onPress={onIncrease}
             disabled={!onIncrease}
@@ -117,6 +104,7 @@ export default function AccessibilitySettingRow({
           </Pressable>
         </View>
       ) : (
+
         // Switch control appears when the row type is switch.
         <AppSwitch value={value} onValueChange={handleValueChange} />
       )}
@@ -125,6 +113,7 @@ export default function AccessibilitySettingRow({
 }
 
 const styles = StyleSheet.create({
+  
   // Main setting row container.
   // The row layout places the label on the left and the control on the right.
   row: {
@@ -159,15 +148,6 @@ const styles = StyleSheet.create({
     height: 24,
     alignItems: "center",
     justifyContent: "center",
-  },
-
-  // Styles the custom aA text icon used for the text size setting.
-  textIcon: {
-    fontSize: 18,
-    lineHeight: 24,
-    textAlign: "center",
-    textAlignVertical: "center",
-    includeFontPadding: false,
   },
 
   // Styles the setting title.

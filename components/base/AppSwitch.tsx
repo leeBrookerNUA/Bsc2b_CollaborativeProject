@@ -12,8 +12,7 @@ interface AppSwitchProps {
 }
 
 // AppSwitch is a reusable custom switch component.
-// It is used instead of the default switch so the app can keep
-// a consistent visual style across all settings screens.
+// It is used instead of the default switch so the app can keep a consistent visual style across all settings screens.
 export default function AppSwitch({ value, onValueChange }: AppSwitchProps) {
   return (
     <Pressable
@@ -30,16 +29,14 @@ export default function AppSwitch({ value, onValueChange }: AppSwitchProps) {
       // Applies the default track style, then adds the "on" style when value is true.
       style={[styles.track, value && styles.trackOn]}
     >
-      {/*
-        Switch thumb.
-        It moves to the right when the switch is on.
-      */}
+      {/* Switch thumb. It moves to the right when the switch is on. */}
       <View style={[styles.thumb, value && styles.thumbOn]} />
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
+
   // Main switch track.
   // This creates the rounded background that the thumb sits inside.
   track: {

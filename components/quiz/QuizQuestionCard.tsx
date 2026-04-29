@@ -5,6 +5,7 @@ import AppHeading from "../base/AppHeading";
 import AppText from "../base/AppText";
 
 interface QuizQuestionCardProps {
+
   // Main quiz question displayed on the card.
   title: string;
 
@@ -19,14 +20,9 @@ export default function QuizQuestionCard({
   subtitle,
 }: QuizQuestionCardProps) {
   return (
-    <LinearGradient
-      colors={["#D2A8FF", "#B07BFF", "#9B5DE5"]}
-      style={styles.card}
-    >
-      {/*
-        Overlay adds a subtle dark layer on top of the gradient.
-        This improves contrast so the white text is easier to read.
-      */}
+    <LinearGradient colors={["#D2A8FF", "#B07BFF", "#9B5DE5"]} style={styles.card} >
+
+      {/* Overlay adds a subtle dark layer on top of the gradient. This improves contrast so the white text is easier to read. */}
       <View pointerEvents="none" style={styles.overlay} />
 
       {/* Displays the main quiz question using the reusable heading style. */}
@@ -39,6 +35,7 @@ export default function QuizQuestionCard({
 }
 
 const styles = StyleSheet.create({
+
   // Main quiz question card container.
   // The gradient background, rounded corners, and border match the app's card style.
   card: {

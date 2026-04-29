@@ -18,13 +18,11 @@ interface QuizResultCardProps {
   // If none is provided, FontAwesome is used by default.
   iconLibrary?: IconLibrary;
 
-  // Main icon displayed at the top of the card, such as a trophy or thought bubble.
   iconName1:
     | React.ComponentProps<typeof FontAwesome>["name"]
     | React.ComponentProps<typeof AntDesign>["name"]
     | React.ComponentProps<typeof MaterialCommunityIcons>["name"];
 
-  // Optional extra icon displayed in a row, such as stars for a reward.
   iconName2?:
     | React.ComponentProps<typeof FontAwesome>["name"]
     | React.ComponentProps<typeof AntDesign>["name"]
@@ -67,38 +65,26 @@ export default function QuizResultCard({
   subText,
   gradientColors = ["#FFF2A6", "#FFE066", "#E0C120"],
 }: QuizResultCardProps) {
+
   // Selects the correct icon component based on the iconLibrary prop.
   const Icon = iconLibraries[iconLibrary];
 
-  /*
-    Creates an array used to render the optional extra icons.
-    Math.max prevents a negative iconCount from creating an invalid array length.
-  */
+  /* Creates an array used to render the optional extra icons. Math.max prevents a negative iconCount from creating an invalid array length. */
   const extraIcons = Array.from({ length: Math.max(0, iconCount) });
 
   return (
     <View style={styles.card}>
-      {/*
-        LinearGradient creates the colourful background for the result card.
-        The gradient colours can be changed depending on the quiz result.
-      */}
+
+      {/* LinearGradient creates the colourful background for the result card. The gradient colours can be changed depending on the quiz result. */}
       <LinearGradient colors={gradientColors} style={styles.gradient} />
 
-      {/*
-        Overlay adds a subtle dark layer over the gradient.
-        This helps the white text and icons stand out more clearly.
-      */}
+      {/* Overlay adds a subtle dark layer over the gradient This helps the white text and icons stand out more clearly. */}
       <View pointerEvents="none" style={styles.overlay} />
 
-      {/*
-        Content container keeps the icon, text, and optional reward icons
-        centred above the background layers.
-      */}
+      {/* Content container keeps the icon, text, and optional reward icons centred above the background layers. */}
       <View style={styles.content}>
-        {/*
-          Circular icon container for the main result icon.
-          This makes the result icon stand out from the card background.
-        */}
+
+        {/* Circular icon container for the main result icon. This makes the result icon stand out from the card background. */}
         <View style={styles.iconContainer}>
           <Icon name={iconName1 as any} size={32} color="#FFFFFF" />
         </View>
@@ -112,10 +98,7 @@ export default function QuizResultCard({
         {/* Displays extra feedback text underneath the subtitle. */}
         <AppText style={styles.subText}>{subText}</AppText>
 
-        {/*
-          Optional icon row.
-          This only appears when iconName2 is provided and iconCount is greater than 0.
-        */}
+        {/* Optional icon row. This only appears when iconName2 is provided and iconCount is greater than 0. */}
         {iconName2 && extraIcons.length > 0 && (
           <View style={styles.iconRow}>
             {extraIcons.map((_, index) => (
@@ -125,6 +108,7 @@ export default function QuizResultCard({
                 size={28}
                 color="#FFFFFF"
               />
+
             ))}
           </View>
         )}
@@ -134,6 +118,7 @@ export default function QuizResultCard({
 }
 
 const styles = StyleSheet.create({
+
   // Main result card container.
   // The rounded corners, border, and hidden overflow match the app's card style.
   card: {

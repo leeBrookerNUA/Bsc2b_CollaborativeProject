@@ -26,28 +26,19 @@ interface HeaderProps {
 
 // Header is a reusable component used at the top of app screens.
 // It can show a title, an optional left icon, and an optional right icon.
-export default function Header({
-  title,
-  leftIconName,
-  rightIconName,
-  onBackPress,
-  onSettingsPress,
-}: HeaderProps) {
-  /*
-    Helper function used to create an icon button.
-    This avoids repeating the same Pressable icon code for the left and right icons.
-  */
+export default function Header({ 
+    title, leftIconName, rightIconName, onBackPress, onSettingsPress,}: HeaderProps) {
+
+  /* Helper function used to create an icon button. This avoids repeating the same Pressable icon code for the left and right icons. */
   const renderIconButton = (
     iconName?: HeaderIconName,
     onPress?: () => void
   ) => (
     <View style={styles.iconSlot}>
-      {/*
-        Only renders the icon button if an icon name has been provided.
-        If no icon is passed in, the empty slot still keeps the title centred.
-      */}
+      {/* Only renders the icon button if an icon name has been provided. If no icon is passed in, the empty slot still keeps the title centred.*/}
       {iconName && (
         <Pressable
+
           // Runs the icon's press function if one has been provided.
           onPress={onPress}
 
@@ -71,13 +62,11 @@ export default function Header({
 
   return (
     <View style={styles.header}>
+
       {/* Renders the optional left icon, usually used as a back button. */}
       {renderIconButton(leftIconName, onBackPress)}
 
-      {/*
-        Displays the screen title in the centre.
-        numberOfLines prevents long titles from wrapping onto another line.
-      */}
+      {/* Displays the screen title in the centre. numberOfLines prevents long titles from wrapping onto another line.*/}
       <AppHeading style={styles.title} numberOfLines={1}>
         {title}
       </AppHeading>
@@ -89,6 +78,7 @@ export default function Header({
 }
 
 const styles = StyleSheet.create({
+
   // Main header container.
   // The row layout places the left icon, title, and right icon on one line.
   header: {

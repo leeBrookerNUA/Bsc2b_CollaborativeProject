@@ -5,7 +5,6 @@ import AppSwitch from "../base/AppSwitch";
 import AppText from "../base/AppText";
 
 interface AudioSettingRowProps {
-  // Name of the FontAwesome icon shown on the left side of the row.
   iconName: React.ComponentProps<typeof FontAwesome>["name"];
 
   // Text label for the audio setting.
@@ -31,15 +30,13 @@ export default function AudioSettingRow({
   switchValue = false,
   onSwitchChange,
 }: AudioSettingRowProps) {
+
   // Provides a safe fallback function so AppSwitch always receives a function.
   const handleSwitchChange = onSwitchChange ?? (() => {});
 
   return (
     <View style={styles.row}>
-      {/*
-        Left side of the row.
-        This contains the audio icon and the setting title.
-      */}
+      {/* Left side of the row. This contains the audio icon and the setting title. */}
       <View style={styles.leftSide}>
         <FontAwesome name={iconName} size={22} color="#FFFFFF" />
         <AppText style={styles.title}>{title}</AppText>
@@ -47,18 +44,14 @@ export default function AudioSettingRow({
 
       {type === "slider" ? (
         <View style={styles.sliderTrack}>
-          {/*
-            Slider fill shows the current volume level visually.
-            This is currently set as a static display rather than an interactive slider.
-          */}
+          {/* Slider fill shows the current volume level visually. This is currently set as a static display rather than an interactive slider. */}
           <View style={styles.sliderFill} />
 
-          {/*
-            Slider thumb marks the current position on the volume track.
-          */}
+          {/* Slider thumb marks the current position on the volume track. */}
           <View style={styles.sliderThumb} />
         </View>
       ) : (
+
         // Switch control appears when the row type is switch.
         <AppSwitch value={switchValue} onValueChange={handleSwitchChange} />
       )}
@@ -67,6 +60,7 @@ export default function AudioSettingRow({
 }
 
 const styles = StyleSheet.create({
+
   // Main setting row container.
   // The row layout places the label on the left and the control on the right.
   row: {

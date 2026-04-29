@@ -3,12 +3,11 @@ import React from "react";
 import { Pressable, StyleSheet } from "react-native";
 import AppHeading from "../base/AppHeading";
 
-// Controls the visual state of an answer card.
-// default is used before answering, correct is used for the right answer,
-// and wrong is used for an incorrect selected answer.
+// Controls the visual state of an answer card. default is used before answering, correct is used for the right answer and wrong is used for an incorrect selected answer.
 type AnswerState = "default" | "correct" | "wrong";
 
 interface QuizAnswerCardProps {
+
   // Answer text displayed inside the card.
   title: string;
 
@@ -30,6 +29,7 @@ export default function QuizAnswerCard({
   disabled = false,
   onAnswerPress,
 }: QuizAnswerCardProps) {
+
   // The card is disabled if disabled is true or if no press function is provided.
   const isDisabled = disabled || !onAnswerPress;
 
@@ -44,14 +44,14 @@ export default function QuizAnswerCard({
 
   return (
     <Pressable
+
       // Runs the answer press function when the user taps the card.
       onPress={onAnswerPress}
 
       // Stops the user pressing the card when it is disabled.
       disabled={isDisabled}
 
-      // Applies the default card style, then adds correct, wrong,
-      // disabled, or pressed styles when needed.
+      // Applies the default card style, then adds correct, wrong, disabled, or pressed styles when needed.
       style={({ pressed }) => [
         styles.card,
         state === "correct" && styles.correctCard,
@@ -60,10 +60,7 @@ export default function QuizAnswerCard({
         pressed && !isDisabled && styles.cardPressed,
       ]}
     >
-      {/*
-        Displays the answer text.
-        numberOfLines and adjustsFontSizeToFit help longer answers fit on one line.
-      */}
+      {/* Displays the answer text. numberOfLines and adjustsFontSizeToFit help longer answers fit on one line. */}
       <AppHeading
         numberOfLines={1}
         adjustsFontSizeToFit
@@ -72,10 +69,7 @@ export default function QuizAnswerCard({
         {title}
       </AppHeading>
 
-      {/*
-        Shows a feedback icon after the user has answered.
-        No icon is shown while the card is still in its default state.
-      */}
+      {/* Shows a feedback icon after the user has answered. No icon is shown while the card is still in its default state. */}
       {resultIconName && (
         <FontAwesome
           name={resultIconName}
@@ -89,6 +83,7 @@ export default function QuizAnswerCard({
 }
 
 const styles = StyleSheet.create({
+
   // Main answer card style.
   // The rounded shape, purple background, and border make it look like a large button.
   card: {

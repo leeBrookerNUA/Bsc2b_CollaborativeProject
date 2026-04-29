@@ -5,7 +5,6 @@ import AppSwitch from "../base/AppSwitch";
 import AppText from "../base/AppText";
 
 interface ConnectionSettingRowProps {
-  // Name of the FontAwesome icon shown on the left side of the row.
   iconName: React.ComponentProps<typeof FontAwesome>["name"];
 
   // Text label for the connection setting.
@@ -36,29 +35,25 @@ export default function ConnectionSettingRow({
   switchValue = false,
   onSwitchChange,
 }: ConnectionSettingRowProps) {
+
   // Provides a safe fallback function so AppSwitch always receives a function.
   const handleSwitchChange = onSwitchChange ?? (() => {});
 
   return (
     <View style={styles.row}>
-      {/*
-        Left side of the row.
-        This contains the connection icon and the setting title.
-      */}
+      {/* Left side of the row. This contains the connection icon and the setting title. */}
       <View style={styles.leftSide}>
         <FontAwesome name={iconName} size={22} color="#FFFFFF" />
         <AppText style={styles.title}>{title}</AppText>
       </View>
 
       {type === "status" ? (
-        /*
-          Status badge appears when the row type is status.
-          It displays text such as "Searching" for WiFi connection state.
-        */
+        /* Status badge appears when the row type is status. It displays text such as "Searching" for WiFi connection state. */
         <View style={styles.statusBadge}>
           <AppText style={styles.statusText}>{statusText}</AppText>
         </View>
       ) : (
+
         // Switch control appears when the row type is switch.
         <AppSwitch value={switchValue} onValueChange={handleSwitchChange} />
       )}
@@ -67,6 +62,7 @@ export default function ConnectionSettingRow({
 }
 
 const styles = StyleSheet.create({
+
   // Main setting row container.
   // The row layout places the label on the left and the control on the right.
   row: {

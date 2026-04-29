@@ -4,17 +4,16 @@ import React from "react";
 import { ColorValue, Pressable, StyleSheet, View } from "react-native";
 import AppHeading from "../base/AppHeading";
 
-// Lists the icon libraries that this button can use.
-// This makes the component reusable across different pages with different icon styles.
+// Lists the icon libraries that this button can use. This makes the component reusable across different pages with different icon styles.
 type IconLibrary = "FontAwesome" | "MaterialIcons" | "Ionicons";
 
 interface MainButtonProps {
+
   // Optional icon library used for the button icon.
   // If none is provided, FontAwesome is used by default.
   iconLibrary?: IconLibrary;
 
   // Name of the icon displayed inside the button.
-  // It accepts icon names from FontAwesome, MaterialIcons, or Ionicons.
   iconName:
     | React.ComponentProps<typeof FontAwesome>["name"]
     | React.ComponentProps<typeof MaterialIcons>["name"]
@@ -27,8 +26,7 @@ interface MainButtonProps {
   // This allows each button to have its own theme colour.
   gradientColors?: readonly [ColorValue, ColorValue, ...ColorValue[]];
 
-  // Function called when the button is pressed.
-  // This is usually used to navigate to another page.
+  // Function called when the button is pressed. This is usually used to navigate to another page.
   onMainButtonPress?: () => void;
 }
 
@@ -41,8 +39,7 @@ const iconLibraries = {
 };
 
 // MainButton is a reusable large button component.
-// It is used on menu screens to show a colourful navigation button
-// with an icon, title, gradient background, and pressed animation.
+// It is used on menu screens to show a colourful navigation button with an icon, title, gradient background, and pressed animation.
 export default function MainButton({
   iconLibrary = "FontAwesome",
   iconName,
@@ -55,6 +52,7 @@ export default function MainButton({
 
   return (
     <Pressable
+
       // Runs the button action when the user taps it.
       onPress={onMainButtonPress}
 
@@ -67,26 +65,16 @@ export default function MainButton({
         pressed && onMainButtonPress && styles.cardPressed,
       ]}
     >
-      {/*
-        LinearGradient creates the colourful background of the button.
-        The colours can be changed through the gradientColors prop.
-      */}
+      {/* LinearGradient creates the colourful background of the button. The colours can be changed through the gradientColors prop. */}
       <LinearGradient colors={gradientColors} style={styles.gradient} />
 
-      {/*
-        Overlay adds a slight dark layer on top of the gradient.
-        This helps the white icon and text stand out more clearly.
-      */}
+      {/* Overlay adds a slight dark layer on top of the gradient. This helps the white icon and text stand out more clearly. */}
       <View pointerEvents="none" style={styles.overlay} />
 
-      {/*
-        Content container holds the icon and title above the background layers.
-      */}
+      {/* Content container holds the icon and title above the background layers. */}
       <View style={styles.content}>
-        {/*
-          Circular icon container.
-          It gives the icon a soft background so it stands out from the gradient.
-        */}
+
+        {/* Circular icon container. It gives the icon a soft background so it stands out from the gradient. */}
         <View style={styles.iconContainer}>
           <Icon name={iconName as any} size={38} color="#FFFFFF" />
         </View>
@@ -99,6 +87,7 @@ export default function MainButton({
 }
 
 const styles = StyleSheet.create({
+
   // Main button card.
   // The fixed height, rounded corners, and border create a large tappable menu card.
   card: {

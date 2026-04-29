@@ -20,8 +20,7 @@ export default function TextBadge({ title }: TextBadgeProps) {
 
 const styles = StyleSheet.create({
   // Main badge container.
-  // The padding, rounded corners, border, and transparent background
-  // help it match the soft glass style used across the app.
+  // The padding, rounded corners, border, and transparent background help it match the soft glass style used across the app.
   card: {
     width: "100%",
     paddingHorizontal: 12,

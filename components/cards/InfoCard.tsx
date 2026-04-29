@@ -25,10 +25,8 @@ export default function InfoCard({
 }: InfoCardProps) {
   return (
     <LinearGradient colors={gradientColors} style={styles.card}>
-      {/*
-        Overlay adds a subtle dark layer on top of the gradient.
-        This helps the white text stand out more clearly.
-      */}
+
+      {/* Overlay adds a subtle dark layer on top of the gradient. This helps the white text stand out more clearly. */}
       <View pointerEvents="none" style={styles.overlay} />
 
       {/* Displays the main card heading using the reusable heading style. */}
@@ -41,6 +39,7 @@ export default function InfoCard({
 }
 
 const styles = StyleSheet.create({
+
   // Main information card container.
   // The gradient background, rounded corners, and border match the app's card style.
   card: {

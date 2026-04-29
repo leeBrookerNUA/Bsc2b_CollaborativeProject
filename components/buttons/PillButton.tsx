@@ -3,6 +3,7 @@ import { Pressable, StyleSheet, View } from "react-native";
 import AppHeading from "../base/AppHeading";
 
 interface PillButtonProps {
+
   // Text displayed inside the pill button.
   title: string;
 
@@ -28,6 +29,7 @@ export default function PillButton({
 }: PillButtonProps) {
   return (
     <Pressable
+
       // Runs the press function when the user taps the pill.
       onPress={onPillPress}
 
@@ -39,10 +41,7 @@ export default function PillButton({
         pressed && styles.cardPressed,
       ]}
     >
-      {/*
-        Top highlight gives the pill a shiny button effect.
-        The highlight becomes softer when the pill is selected.
-      */}
+      {/* Top highlight gives the pill a shiny button effect. The highlight becomes softer when the pill is selected. */}
       <View
         style={[
           styles.topHighlight,
@@ -57,6 +56,7 @@ export default function PillButton({
 }
 
 const styles = StyleSheet.create({
+
   // Main pill button container.
   // flex: 1 helps multiple pill buttons share the row space evenly.
   card: {

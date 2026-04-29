@@ -1,13 +1,11 @@
 import React from "react";
 import { StyleSheet, Text, TextProps } from "react-native";
 
-// AppTextProps allows this component to accept normal React Native Text props,
-// while also allowing text or elements to be placed inside the component.
+// AppTextProps allows this component to accept normal React Native Text props, while also allowing text or elements to be placed inside the component.
 type AppTextProps = React.PropsWithChildren<TextProps>;
 
 // AppText is a reusable text component for standard body text.
-// It keeps text styling consistent across the app by applying the same font,
-// colour, letter spacing, and text shadow wherever it is used.
+// It keeps text styling consistent across the app by applying the same font, colour, letter spacing, and text shadow wherever it is used.
 export default function AppText({ children, style, ...rest }: AppTextProps) {
   return (
     <Text style={[styles.text, style]} {...rest}>

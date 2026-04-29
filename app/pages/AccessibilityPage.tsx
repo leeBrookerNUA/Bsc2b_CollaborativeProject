@@ -67,7 +67,8 @@ export default function AccessibilityPage() {
 
               {/*  Text Size setting row. This row uses the textSize type so the user can increase or decrease the text size value. */}
               <AccessibilitySettingRow
-                iconType="text"
+                iconLibrary="FontAwesome"
+                iconName="font"
                 title="Text Size"
                 type="textSize"
                 textSize={textSize}
@@ -77,16 +78,18 @@ export default function AccessibilityPage() {
 
               {/* High Contrast setting row. This row uses a switch and updates the highContrast state whenever the user turns the setting on or off.*/}
               <AccessibilitySettingRow
-                iconType="contrast"
+                iconLibrary="FontAwesome5"
+                iconName="adjust"
                 title="High Contrast"
                 type="switch"
                 value={highContrast}
                 onValueChange={setHighContrast}
               />
-
+              
               {/* Colour Blind setting row. This row also uses a switch and stores its value in the colourBlind state. */}
               <AccessibilitySettingRow
-                iconType="eye"
+                iconLibrary="FontAwesome"
+                iconName="eye"
                 title="Colour Blind"
                 type="switch"
                 value={colourBlind}
@@ -112,7 +115,7 @@ export default function AccessibilityPage() {
 }
 
 const styles = StyleSheet.create({
-  
+
   // Main page container.
   // flexGrow helps the page fill the available height, while space-between separates the main content from the bottom button.
   page: {

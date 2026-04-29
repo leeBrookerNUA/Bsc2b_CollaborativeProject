@@ -15,19 +15,18 @@ interface SettingsPanelProps {
 export default function SettingsPanel({ title, children }: SettingsPanelProps) {
   return (
     <View style={styles.card}>
+
       {/* Displays the panel heading using the reusable heading style. */}
       <AppHeading style={styles.title}>{title}</AppHeading>
 
-      {/*
-        Content area for the settings rows.
-        The children prop allows different settings screens to reuse this same panel.
-      */}
+      {/* Content area for the settings rows. The children prop allows different settings screens to reuse this same panel. */}
       <View style={styles.content}>{children}</View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+
   // Main panel container.
   // The transparent background, rounded corners, and border create the app's glass-card style.
   card: {

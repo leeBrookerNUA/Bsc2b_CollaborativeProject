@@ -1,13 +1,11 @@
 import React from "react";
 import { StyleSheet, Text, TextProps } from "react-native";
 
-// AppHeadingProps allows this component to accept normal React Native Text props,
-// while also allowing it to display children inside the component.
+// AppHeadingProps allows this component to accept normal React Native Text props, while also allowing it to display children inside the component.
 type AppHeadingProps = React.PropsWithChildren<TextProps>;
 
 // AppHeading is a reusable text component for headings.
-// It keeps heading styles consistent across the app by using the same font,
-// colour, letter spacing, and text shadow wherever it is used.
+// It keeps heading styles consistent across the app by using the same font, colour, letter spacing, and text shadow wherever it is used.
 export default function AppHeading({
   children,
   style,
