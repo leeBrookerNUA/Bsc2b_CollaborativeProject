@@ -2,7 +2,6 @@ import { Audio } from "expo-av";
 
 let clickSound: Audio.Sound | null = null;
 
-
 // Loads the click sound into memory
 export const loadSound = async () => {
   // Unloads the previous sound if there is one
@@ -13,7 +12,7 @@ export const loadSound = async () => {
 
   // Loads the sound file
   const result = await Audio.Sound.createAsync(
-    require("../assets/audio/testSound2.wav")
+    require("../assets/audio/testSound2.wav"),
   );
 
   clickSound = result.sound;
