@@ -1,6 +1,7 @@
 import { FontAwesome } from "@expo/vector-icons";
 import React from "react";
 import { Pressable, StyleSheet } from "react-native";
+import { playLoadedSound } from "../../audio/audio";
 import AppHeading from "../base/AppHeading";
 
 // Controls the visual state of an answer card. default is used before answering, correct is used for the right answer and wrong is used for an incorrect selected answer.
@@ -45,8 +46,12 @@ export default function QuizAnswerCard({
   return (
     <Pressable
 
-      // Runs the answer press function when the user taps the card.
-      onPress={onAnswerPress}
+      // Runs the answer press function and plays a sound effect when the user taps the card.
+      onPress={() => {
+        playLoadedSound();
+        onAnswerPress?.();
+      }}
+      android_disableSound={true} // Disables the default Android button sound as we have our own custom button sound effect.
 
       // Stops the user pressing the card when it is disabled.
       disabled={isDisabled}

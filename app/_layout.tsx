@@ -1,6 +1,7 @@
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
-import React from "react";
+import React, { useEffect } from "react";
+import { loadSound } from "../audio/audio";
 
 import {
   Fredoka_400Regular,
@@ -30,6 +31,14 @@ export default function RootLayout() {
     Quicksand_600SemiBold,
     Quicksand_700Bold,
   });
+ /*Loads the custom sound effect used for button presses. Done in the main layout so that the sound is ready to play immediately when any button is pressed.*/
+  useEffect(() => { 
+    const init = async () => {
+      await loadSound();
+    };
+
+    init();
+  }, []);
 
   /* Stops the app from rendering before the fonts are ready. This prevents text from briefly appearing in the wrong default font. */
   if (!fontsLoaded) {

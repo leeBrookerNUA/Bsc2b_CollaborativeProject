@@ -1,6 +1,7 @@
 import { FontAwesome5 } from "@expo/vector-icons";
 import React from "react";
 import { Pressable, StyleSheet, View } from "react-native";
+import { playLoadedSound } from "../../audio/audio";
 import AppHeading from "./AppHeading";
 
 // Creates a type that only allows valid FontAwesome5 icon names.
@@ -26,8 +27,8 @@ interface HeaderProps {
 
 // Header is a reusable component used at the top of app screens.
 // It can show a title, an optional left icon, and an optional right icon.
-export default function Header({ 
-    title, leftIconName, rightIconName, onBackPress, onSettingsPress,}: HeaderProps) {
+export default function Header({
+  title, leftIconName, rightIconName, onBackPress, onSettingsPress, }: HeaderProps) {
 
   /* Helper function used to create an icon button. This avoids repeating the same Pressable icon code for the left and right icons. */
   const renderIconButton = (
@@ -40,7 +41,12 @@ export default function Header({
         <Pressable
 
           // Runs the icon's press function if one has been provided.
-          onPress={onPress}
+          onPress={async () => {
+            await playLoadedSound();
+            onPress?.();
+          }}
+
+          android_disableSound={true} // Disables the default Android button sound as we have our own custom button sound effect.
 
           // Disables the button if there is no press function.
           disabled={!onPress}

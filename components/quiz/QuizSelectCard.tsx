@@ -2,6 +2,7 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { ColorValue, Pressable, StyleSheet, View } from "react-native";
+import { playLoadedSound } from "../../audio/audio";
 import AppHeading from "../base/AppHeading";
 import AppText from "../base/AppText";
 
@@ -34,15 +35,19 @@ export default function QuizSelectCard({
   gradientColors = ["#FFF2A6", "#FFE066", "#E0C120"],
   onQuizButtonPress,
 }: QuizSelectCardProps) {
-  
+
   /* Creates an array used to render the number of icons needed. Math.max prevents a negative iconCount from creating an invalid array length. */
   const icons = Array.from({ length: Math.max(0, iconCount) });
 
   return (
     <Pressable
 
-      // Runs the quiz selection function when the user taps the card.
-      onPress={onQuizButtonPress}
+      // Runs the quiz selection function and plays a sound effect when the user taps the card.
+      onPress={() => {
+        playLoadedSound();
+        onQuizButtonPress?.();
+      }}
+      android_disableSound={true} // Disables the default Android button sound as we have our own custom button sound effect.
 
       // Applies the normal card style and adds a pressed style while tapped.
       style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}

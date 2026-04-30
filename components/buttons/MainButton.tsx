@@ -2,6 +2,7 @@ import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { ColorValue, Pressable, StyleSheet, View } from "react-native";
+import { playLoadedSound } from "../../audio/audio";
 import AppHeading from "../base/AppHeading";
 
 // Lists the icon libraries that this button can use. This makes the component reusable across different pages with different icon styles.
@@ -15,9 +16,9 @@ interface MainButtonProps {
 
   // Name of the icon displayed inside the button.
   iconName:
-    | React.ComponentProps<typeof FontAwesome>["name"]
-    | React.ComponentProps<typeof MaterialIcons>["name"]
-    | React.ComponentProps<typeof Ionicons>["name"];
+  | React.ComponentProps<typeof FontAwesome>["name"]
+  | React.ComponentProps<typeof MaterialIcons>["name"]
+  | React.ComponentProps<typeof Ionicons>["name"];
 
   // Text displayed underneath the icon.
   title: string;
@@ -53,8 +54,12 @@ export default function MainButton({
   return (
     <Pressable
 
-      // Runs the button action when the user taps it.
-      onPress={onMainButtonPress}
+      // Runs the button action and plays a sound effect when the user taps it.
+      onPress={() => {
+        playLoadedSound();
+        onMainButtonPress?.();
+      }}
+      android_disableSound={true} // Disables the default Android button sound as we have our own custom button sound effect.
 
       // Disables the button if no press function has been provided.
       disabled={!onMainButtonPress}

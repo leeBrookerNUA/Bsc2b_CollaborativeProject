@@ -15,19 +15,19 @@ export default function HomePage() {
     <ScreenBackground>
       {/* Main page layout.This holds the header and the main navigation buttons for the app. */}
       <View style={styles.page}>
-      
+
         <Header
           title="Home"
-          onBackPress={() => {}}
-          onSettingsPress={() => {}}
+          onBackPress={() => { }}
+          onSettingsPress={() => { }}
         />
 
-        
+
         <View style={styles.spacer16} />
 
         {/* Container adds padding around the menu buttons so they do not touch the edges of the screen. */}
         <View style={styles.container}>
-          
+
           <MainButton
             title="Play"
             gradientColors={["#8FC4FF", "#5FA8FF", "#3A86FF"]}
@@ -39,7 +39,7 @@ export default function HomePage() {
           />
 
           <View style={styles.spacer16} />
-          
+
           <MainButton
             title="Facts & Tips"
             gradientColors={["#FFF2A6", "#FFE066", "#E0C120"]}
@@ -49,9 +49,9 @@ export default function HomePage() {
               router.navigate("/pages/FactsTipsPage");
             }}
           />
-        
+
           <View style={styles.spacer16} />
-         
+
           <MainButton
             title="Instructions"
             gradientColors={["#D2A8FF", "#B07BFF", "#9B5DE5"]}

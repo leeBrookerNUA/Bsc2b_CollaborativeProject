@@ -1,3 +1,4 @@
+import { playLoadedSound } from "@/audio/audio";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { Pressable, StyleSheet, View } from "react-native";
@@ -46,7 +47,11 @@ export default function FunFactCard({
 
         {/* Learn More button. It is disabled if no onMorePress function is provided.*/}
         <Pressable
-          onPress={onMorePress}
+          onPress={() => {
+            playLoadedSound();
+            onMorePress?.();
+          }}
+          android_disableSound={true} // Disables the default Android button sound as we have our own custom button sound effect.
           disabled={!onMorePress}
           style={({ pressed }) => [
             styles.moreButton,

@@ -1,5 +1,6 @@
 import React from "react";
 import { Pressable, StyleSheet, View } from "react-native";
+import { playLoadedSound } from "../../audio/audio";
 import AppHeading from "../base/AppHeading";
 
 interface PillButtonProps {
@@ -30,8 +31,13 @@ export default function PillButton({
   return (
     <Pressable
 
-      // Runs the press function when the user taps the pill.
-      onPress={onPillPress}
+      // Runs the press function and plays a sound effect when the user taps the pill.
+      onPress={() => {
+        playLoadedSound();
+        onPillPress?.();
+      }}
+
+      android_disableSound={true} // Disables the default Android button sound as we have our own custom button sound effect.
 
       // Applies the default pill style, then adds selected and pressed styles when needed.
       style={({ pressed }) => [

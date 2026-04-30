@@ -1,5 +1,6 @@
 import React from "react";
 import { ColorValue, Pressable, StyleSheet } from "react-native";
+import { playLoadedSound } from "../../audio/audio";
 import AppHeading from "../base/AppHeading";
 
 interface BackHomeCardProps {
@@ -29,8 +30,12 @@ export default function BackHomeCard({
   return (
     <Pressable
 
-      // Runs the press function when the user taps the button.
-      onPress={onBackHomePress}
+      // Runs the press function and plays a sound effect when the user taps the button.
+      onPress={() => {
+        playLoadedSound();
+        onBackHomePress?.();
+      }}
+      android_disableSound={true} // Disables the default Android button sound as we have our own custom button sound effect.
 
       // Disables the button if no press function has been provided.
       disabled={!onBackHomePress}
@@ -41,10 +46,10 @@ export default function BackHomeCard({
         styles.card,
         { backgroundColor },
         pressed &&
-          onBackHomePress && [
-            styles.cardPressed,
-            { backgroundColor: pressedBackgroundColor },
-          ],
+        onBackHomePress && [
+          styles.cardPressed,
+          { backgroundColor: pressedBackgroundColor },
+        ],
       ]}
     >
       {/* Displays the button text using the reusable heading style. */}
