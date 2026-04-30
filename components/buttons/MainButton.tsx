@@ -48,6 +48,7 @@ export default function MainButton({
   gradientColors = ["#FFF2A6", "#FFE066", "#E0C120"],
   onMainButtonPress,
 }: MainButtonProps) {
+
   // Selects the correct icon component based on the iconLibrary prop.
   const Icon = iconLibraries[iconLibrary];
 
@@ -59,7 +60,9 @@ export default function MainButton({
         playLoadedSound();
         onMainButtonPress?.();
       }}
-      android_disableSound={true} // Disables the default Android button sound as we have our own custom button sound effect.
+
+      // Disables the default Android button sound as we have our own custom button sound effect.
+      android_disableSound={true} 
 
       // Disables the button if no press function has been provided.
       disabled={!onMainButtonPress}
