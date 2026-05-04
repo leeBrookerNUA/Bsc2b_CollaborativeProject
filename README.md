@@ -3,7 +3,7 @@
 ## Overview
 
 This project is a mobile app built with **React Native**, **Expo**, and **Expo Router**. The app is designed to support an interactive educational toy that helps children learn about renewable energy, battery charging, and energy-saving habits.
-The app uses a bright, child-friendly interface with large buttons, colourful cards, quizzes, facts, tips, and simple setting screens. It is designed to be easy to navigate and suitable for younger users.
+The app uses a bright, child-friendly interface with large buttons, colourful cards, quizzes, facts, tips, and simple settings screens. It is designed to be easy to navigate and suitable for younger users.
 
 ---
 
@@ -52,7 +52,7 @@ The instructions page explains how to use the toy step by step. It includes guid
 
 - Turning on the toy
 - Connecting the toy to Wi-Fi
-- Using thr hand crank or sunlight
+- Using the hand crank or sunlight
 - Watching the battery charge in the app
 
 ---
@@ -77,7 +77,7 @@ This encourages learning through feedback and repetition.
 
 ### Settings Screen
 
-The setttings section includes
+The settings section includes
 
 #### Audio Settings
 
@@ -153,13 +153,13 @@ assets/
 
 Follow these steps to set up and run the project on your computer.
 
-### 1.Clone the project:
+### 1. Clone the project:
 
 ```bash
 git clone <your repo-link>
 ```
 
-### 2.Open the project folder
+### 2. Open the project folder
 
 ```bash
 cd <project-folder-name>
@@ -177,23 +177,23 @@ npm install
 npx expo start
 ```
 
-### 5.Run the app
+### 5. Run the app
 
 After running the start command, Expo will open a development menu.
 
 You can run the app using one of these options:
 
-- Scan the QR code with the ExpoGo app on your phone
+- Scan the QR code with the Expo Go app on your phone
 - Press `a` to open the app on an Android emulator
 - Press `i` to open the app on an iOS simulator
 - Press `w` to open the app in a web browser
 
-### 6.Stop the server
+### 6. Stop the server
 
 To stop the Expo development server press:
 
 ```bash
-Ctrl + c
+Ctrl + C
 ```
 
 ---
@@ -211,7 +211,7 @@ These fonts are loaded in the root layout before the app screens are shown. This
 
 ## Navigation
 
-Navigation us handled using **Expo Router**.
+Navigation is handled using **Expo Router**.
 
 The `index.tsx` file redirects the user straight to the Home page:
 
@@ -229,7 +229,7 @@ router.navigate("/pages/HomePage");
 
 ## Reusable Components
 
-The app is built using reuable components to keep the code organised and consistent.
+The app is built using reusable components to keep the code organised and consistent.
 
 For Example:
 
@@ -245,7 +245,7 @@ Using reusable components makes the project easier to maintain and helps keep th
 
 ## Future Improvements
 
-Possible furture improvements could include:
+Possible future improvements could include:
 
 - Connecting the app fully to the toy
 - Making the volume slider interactive
