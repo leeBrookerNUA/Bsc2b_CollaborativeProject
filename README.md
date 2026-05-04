@@ -1,50 +1,263 @@
-# Welcome to your Expo app 👋
+# Energy Learning Toy App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Overview
 
-## Get started
+This project is a mobile app built with **React Native**, **Expo**, and **Expo Router**. The app is designed to support an interactive educational toy that helps children learn about renewable energy, battery charging, and energy-saving habits.
+The app uses a bright, child-friendly interface with large buttons, colourful cards, quizzes, facts, tips, and simple setting screens. It is designed to be easy to navigate and suitable for younger users.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## Main Features
 
-2. Start the app
+### Home Screen
 
-   ```bash
-   npx expo start
-   ```
+The home screen acts as the main menu of the app. From here, users can access:
 
-In the output, you'll find options to open the app in a
+- Play
+- Facts & Tips
+- Instructions
+- Settings
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Play Screen
 
-## Get a fresh project
+The play screen shows the toy's charging progress and live activity. It includes:
 
-When you're ready, run:
+- Battery charge display
+- Hand crank status
+- Charging stats
+- Live fun fact
+- Helpful charging tip
 
-```bash
-npm run reset-project
+This screen helps users understand how their actions, such as turning a hand crank, can generate energy.
+
+---
+
+### Facts & Tips Screen
+
+The fun facts page contains swipeable fact cards. Users can choose between different categories.
+
+- Solar
+- Wind
+- Manual
+
+Each fact is displayed using colourful cards with icons and short explanations.
+
+---
+
+### Instructions Page
+
+The instructions page explains how to use the toy step by step. It includes guidance such as:
+
+- Turning on the toy
+- Connecting the toy to Wi-Fi
+- Using thr hand crank or sunlight
+- Watching the battery charge in the app
+
+---
+
+### Quiz Screen
+
+The app includes an educational quiz section with two difficulty levels:
+
+- Easy quiz
+- Hard quiz
+
+The quizzes show one question at a time, track the user's score, and give instant feedback when an answer is selected
+
+At the end of the quiz , the user is taken to either:
+
+- A pass screen
+- A fail screen
+
+This encourages learning through feedback and repetition.
+
+---
+
+### Settings Screen
+
+The setttings section includes
+
+#### Audio Settings
+
+- Volume Display
+- Voice on/off switch
+
+#### Visual & Accessibility Settings
+
+- Text size controls
+- High contrast switch
+- Colour blind mode switch
+
+#### Connection Settings
+
+- Wi-Fi status
+- Bluetooth Switch
+
+These settings are designed to make the app easier to use and more accessible.
+
+---
+
+## Technologies Used
+
+- React Native
+- React
+- Expo
+- Expo Router
+- TypeScript
+- Expo Linear Gradient
+- Expo Audio
+- Expo Vector Icons
+- Expo Google Fonts
+- React Native Safe Area Context
+- React Native Gesture Handler
+
+---
+
+## Project Structure
+
+```txt
+app/
+   _layout.tsx
+   index.tsx
+   pages/
+      HomePage.tsx
+      PlayPage.tsx
+      FactsTipsPage.tsx
+      ...
+
+components/
+   badges/
+   base/
+   buttons/
+   cards/
+   quiz/
+   settings/
+
+data/
+   easyQuizData.ts
+   hardQuizData.ts
+   factData.ts
+
+assets/
+   audio/
+      audio.ts
+   stars-bg.png
+
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+## Installation
 
-To learn more about developing your project with Expo, look at the following resources:
+Follow these steps to set up and run the project on your computer.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### 1.Clone the project:
 
-## Join the community
+```bash
+git clone <your repo-link>
+```
 
-Join our community of developers creating universal apps.
+### 2.Open the project folder
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+cd <project-folder-name>
+```
+
+### 3. Install the project dependencies
+
+```bash
+npm install
+```
+
+### 4. Start the Expo development server
+
+```bash
+npx expo start
+```
+
+### 5.Run the app
+
+After running the start command, Expo will open a development menu.
+
+You can run the app using one of these options:
+
+- Scan the QR code with the ExpoGo app on your phone
+- Press `a` to open the app on an Android emulator
+- Press `i` to open the app on an iOS simulator
+- Press `w` to open the app in a web browser
+
+### 6.Stop the server
+
+To stop the Expo development server press:
+
+```bash
+Ctrl + c
+```
+
+---
+
+## Fonts
+
+The app uses custom Google Fonts:
+
+- Fredoka
+- Quicksand
+
+These fonts are loaded in the root layout before the app screens are shown. This prevents the app from displaying text in the wrong default font while loading.
+
+---
+
+## Navigation
+
+Navigation us handled using **Expo Router**.
+
+The `index.tsx` file redirects the user straight to the Home page:
+
+```ts
+<Redirect href="/pages/HomePage" />
+```
+
+Each page uses `useRouter()` to navigate between screens.
+
+```ts
+router.navigate("/pages/HomePage");
+```
+
+---
+
+## Reusable Components
+
+The app is built using reuable components to keep the code organised and consistent.
+
+For Example:
+
+- Header
+- ScreenBackground
+- Main Button
+- Action Button
+  ...
+
+Using reusable components makes the project easier to maintain and helps keep the design consistent across all screens.
+
+---
+
+## Future Improvements
+
+Possible furture improvements could include:
+
+- Connecting the app fully to the toy
+- Making the volume slider interactive
+- Saving quiz scores
+- Adding more quiz questions
+- Adding more fact categories
+- Adding animations to the charging screen
+- Storing accessibility settings permanently
+- Adding voice feedback to the mascot
+
+---
+
+## Project Status
+
+This project is currently a working prototype. It demonstrates the main app screens, navigation, reusable components, quiz system , and user interface design for an educational energy toy app.
