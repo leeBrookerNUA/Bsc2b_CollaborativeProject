@@ -11,7 +11,7 @@ import { StyleSheet, View } from "react-native";
 import HelpTipCard from "../../components/cards/HelpTipCard";
 
 // This screen shows the main play area of the app. It displays the toy battery status, charging activity, useful stats, a live fun fact, and a helpful charging tip.
-export default function PlayPage() {
+export default function StartPage() {
 
   // Gives access to Expo Router so the user can move between pages.
   const router = useRouter();

@@ -20,7 +20,7 @@ export default function InstructionsPage() {
       {/* Main page layout. The menu content is kept near the top, while the Back Home button stays near the bottom of the screen. */}
       <View style={styles.page}>
         <View>
-         
+
           <Header
             title="Instructions"
             leftIconName="arrow-circle-left"
@@ -40,16 +40,25 @@ export default function InstructionsPage() {
 
             <InfoCard
               title="How to use the toy!"
-              subtitle="Follow these steps to start charging your toy battery!"
+              subtitle="Follow these steps to start charging Wattson!"
               gradientColors={["#D2A8FF", "#B97CFF", "#9B5DE5"]}
             />
 
             <View style={styles.spacer16} />
 
             <InstructionCard
+              iconLibrary="FontAwesome"
+              iconName="question-circle"
+              title="Learn & Explore!"
+              subTitle="• Explore the facts and tips to learn, and then test your knowledge with the quiz"
+            />
+            <View style={styles.spacer16} />
+
+            <InstructionCard
               iconLibrary="MaterialIcons"
               iconName="bolt"
-              title="Turn on the toy"
+              title="Activate Wattson"
+              subTitle="• Wake up Wattson by turning the hand crank"
             />
 
             <View style={styles.spacer16} />
@@ -57,7 +66,13 @@ export default function InstructionsPage() {
             <InstructionCard
               iconLibrary="Ionicons"
               iconName="wifi"
-              title="Connect the toy to Wi-Fi"
+              title="Connect Wattson"
+              subTitle={
+                "• Ask an adult if you need help!\n" +
+                "• Go to the settings by clicking the cog in the top right corner\n." +
+                "• Choose either Wi-Fi or Bluetooth\n" +
+                "• Click the matching button on Wattson\n" +
+                "• Wait for it to connect"}
             />
 
             <View style={styles.spacer16} />
@@ -65,7 +80,11 @@ export default function InstructionsPage() {
             <InstructionCard
               iconLibrary="Feather"
               iconName="refresh-cw"
-              title="Turn the hand crank or place it in sunlight"
+              title="Generate Power"
+              subTitle={
+                "• Turn the hand crank to charge the battery\n" +
+                "OR\n" +
+                "• Place Wattson in bright sunlight to charge the battery\n"}
             />
 
             <View style={styles.spacer16} />
@@ -73,7 +92,8 @@ export default function InstructionsPage() {
             <InstructionCard
               iconLibrary="MaterialIcons"
               iconName="bolt"
-              title="Watch the battery charge in the app"
+              title="Watch Wattson charge"
+              subTitle="• Go to the start page to see the battery charging in real time, and how long is left until Wattson is fully charged"
             />
 
             <View style={styles.spacer16} />
@@ -86,7 +106,7 @@ export default function InstructionsPage() {
           </View>
         </View>
 
-       {/* Button used to return directly to the Home page. */}
+        {/* Button used to return directly to the Home page. */}
         <ActionButton
           title="Back Home"
           backgroundColor="rgba(255, 255, 255, 0.22)"

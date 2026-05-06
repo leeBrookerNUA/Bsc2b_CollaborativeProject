@@ -68,20 +68,7 @@ export default function FactsTipsPageScreen() {
               onMainButtonPress={() => {
                 router.navigate("/pages/EnergySavingPage");
               }}
-            />
-
-            
-            <View style={styles.spacer16} />
-
-            {/* Button that takes the user to the quiz selection page */}
-            <MainButton
-              iconLibrary="FontAwesome"
-              iconName="question-circle"
-              title="Quiz"
-              gradientColors={["#D2A8FF", "#B782F2", "#9B5DE5"]}
-              onMainButtonPress={() => {
-                router.navigate("/pages/QuizSelectPage");
-              }}
+              
             />
           </View>
         </View>

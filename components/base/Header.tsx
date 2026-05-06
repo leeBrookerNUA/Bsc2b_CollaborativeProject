@@ -60,7 +60,7 @@ export default function Header({
             pressed && onPress && styles.iconButtonPressed,
           ]}
         >
-          <FontAwesome5 name={iconName} size={28} color="#FFFFFF" />
+          <FontAwesome5 name={iconName} size={36} color="#FFFFFF" />
         </Pressable>
       )}
     </View>
@@ -107,9 +107,9 @@ const styles = StyleSheet.create({
   // Default circular icon button style.
   // The transparent background and border match the glass style of the app.
   iconButton: {
-    width: 38,
-    height: 38,
-    borderRadius: 19,
+    width: 48,
+    height: 48,
+    borderRadius: 99,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "rgba(255, 255, 255, 0.12)",
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
   // flex: 1 lets the title take the remaining space between the icon slots.
   title: {
     flex: 1,
-    fontSize: 32,
+    fontSize: 30,
     textAlign: "center",
   },
 });

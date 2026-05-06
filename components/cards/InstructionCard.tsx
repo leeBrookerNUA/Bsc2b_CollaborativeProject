@@ -1,11 +1,12 @@
-import { Feather, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { Feather, FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import AppHeading from "../base/AppHeading";
 import AppText from "../base/AppText";
 
 // Lists the icon libraries that this card can use.
 // This makes the component reusable for different instruction steps.
-type IconLibrary = "Feather" | "MaterialIcons" | "Ionicons";
+type IconLibrary = "Feather" | "MaterialIcons" | "Ionicons" | "FontAwesome";
 
 interface InstructionCardProps {
 
@@ -15,17 +16,21 @@ interface InstructionCardProps {
 
   // Name of the icon displayed on the left side of the card.
   iconName:
-    | React.ComponentProps<typeof Feather>["name"]
-    | React.ComponentProps<typeof MaterialIcons>["name"]
-    | React.ComponentProps<typeof Ionicons>["name"];
+  | React.ComponentProps<typeof Feather>["name"]
+  | React.ComponentProps<typeof MaterialIcons>["name"]
+  | React.ComponentProps<typeof Ionicons>["name"]
+  | React.ComponentProps<typeof FontAwesome>["name"];
 
   // Instruction text displayed beside the icon.
   title: string;
+
+  // Instruction text displayed below title.
+  subTitle: string;
 }
 
 // Stores the available icon libraries in one object.
 // The selected library is chosen using the iconLibrary prop.
-const iconLibraries = { Feather, MaterialIcons, Ionicons };
+const iconLibraries = { Feather, MaterialIcons, Ionicons, FontAwesome };
 
 // InstructionCard is a reusable card component used to show one instruction step.
 // It displays an icon on the left and the instruction text beside it.
@@ -33,6 +38,7 @@ export default function InstructionCard({
   iconLibrary = "Feather",
   iconName,
   title,
+  subTitle,
 }: InstructionCardProps) {
 
   // Selects the correct icon component based on the iconLibrary prop.
@@ -48,11 +54,13 @@ export default function InstructionCard({
         <View style={styles.iconContainer}>
           <Icon name={iconName as any} size={24} color="#FFFFFF" />
         </View>
-
+        <View style={styles.instructions}>
         {/* Displays the instruction text passed in through the title prop. */}
-        <AppText style={styles.title}>{title}</AppText>
+        <AppHeading style={styles.title}>{title}</AppHeading>
+        <AppText style={styles.subTitle}>{subTitle}</AppText>
       </View>
     </View>
+    </View >
   );
 }
 
@@ -92,11 +100,26 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255, 255, 255, 0.15)",
   },
 
+  instructions: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "flex-start"
+  },
+
   // Styles the instruction text.
   // flex: 1 lets the text use the remaining space next to the icon.
   title: {
     flex: 1,
-    fontSize: 14,
+    fontSize: 16,
     lineHeight: 18,
+  },
+
+  // Styles the supporting text below the heading.
+  // opacity makes it slightly softer than the main title.
+  subTitle: {
+    fontSize: 12,
+    marginBottom: 6,
+    opacity: 0.8,
+    textAlign: "left",
   },
 });

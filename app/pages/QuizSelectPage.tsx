@@ -25,7 +25,7 @@ export default function QuizSelectPage() {
             leftIconName="arrow-circle-left"
             rightIconName="cog"
             onBackPress={() => {
-              router.navigate("/pages/FactsTipsPage");
+              router.navigate("/pages/HomePage");
             }}
             onSettingsPress={() => {
               router.navigate("/pages/SettingsHubPage");

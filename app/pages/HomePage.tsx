@@ -28,13 +28,14 @@ export default function HomePage() {
         {/* Container adds padding around the menu buttons so they do not touch the edges of the screen. */}
         <View style={styles.container}>
 
+
           <MainButton
-            title="Play"
-            gradientColors={["#8FC4FF", "#5FA8FF", "#3A86FF"]}
+            title="Instructions"
+            gradientColors={["#8EF0B3", "#5EDC95", "#2ECC71"]}
             iconLibrary="Ionicons"
-            iconName="play"
+            iconName="book"
             onMainButtonPress={() => {
-              router.navigate("/pages/PlayPage");
+              router.navigate("/pages/InstructionsPage");
             }}
           />
 
@@ -53,24 +54,23 @@ export default function HomePage() {
           <View style={styles.spacer16} />
 
           <MainButton
-            title="Instructions"
+            title="Quiz"
             gradientColors={["#D2A8FF", "#B07BFF", "#9B5DE5"]}
-            iconLibrary="Ionicons"
-            iconName="book"
+            iconLibrary="FontAwesome"
+            iconName="question-circle"
             onMainButtonPress={() => {
-              router.navigate("/pages/InstructionsPage");
+              router.navigate("/pages/QuizSelectPage");
             }}
           />
-
           <View style={styles.spacer16} />
 
           <MainButton
-            title="Settings"
-            gradientColors={["#8EF0B3", "#5EDC95", "#2ECC71"]}
-            iconLibrary="FontAwesome"
-            iconName="cog"
+            title="Start"
+            gradientColors={["#8FC4FF", "#5FA8FF", "#3A86FF"]}
+            iconLibrary="Ionicons"
+            iconName="play"
             onMainButtonPress={() => {
-              router.navigate("/pages/SettingsHubPage");
+              router.navigate("/pages/StartPage");
             }}
           />
 
