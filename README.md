@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a mobile app built with **React Native**, **Expo**, and **Expo Router**. The app is designed to support an interactive educational toy that helps children learn about renewable energy, battery charging, and energy-saving habits.
+This project is a mobile app built with [React Native](https://reactnative.dev/docs/getting-started), [Expo](https://docs.expo.dev/), and [Expo Router](https://docs.expo.dev/router/introduction/). The app is designed to support an interactive educational toy that helps children learn about renewable energy, battery charging, and energy-saving habits.
 The app uses a bright, child-friendly interface with large buttons, colourful cards, quizzes, facts, tips, and simple settings screens. It is designed to be easy to navigate and suitable for younger users.
 
 ---
@@ -13,24 +13,21 @@ The app uses a bright, child-friendly interface with large buttons, colourful ca
 
 The home screen acts as the main menu of the app. From here, users can access:
 
-- Play
-- Facts & Tips
 - Instructions
-- Settings
+- Facts & Tips
+- Quiz
+- Play
 
 ---
 
-### Play Screen
+### Instructions Page
 
-The play screen shows the toy's charging progress and live activity. It includes:
+The instructions page explains how to use the toy step by step. It includes guidance such as:
 
-- Battery charge display
-- Hand crank status
-- Charging stats
-- Live fun fact
-- Helpful charging tip
-
-This screen helps users understand how their actions, such as turning a hand crank, can generate energy.
+- Turning on the toy
+- Connecting the toy to Wi-Fi
+- Using the hand crank or sunlight
+- Watching the battery charge in the app
 
 ---
 
@@ -43,17 +40,6 @@ The fun facts page contains swipeable fact cards. Users can choose between diffe
 - Manual
 
 Each fact is displayed using colourful cards with icons and short explanations.
-
----
-
-### Instructions Page
-
-The instructions page explains how to use the toy step by step. It includes guidance such as:
-
-- Turning on the toy
-- Connecting the toy to Wi-Fi
-- Using the hand crank or sunlight
-- Watching the battery charge in the app
 
 ---
 
@@ -72,6 +58,20 @@ At the end of the quiz , the user is taken to either:
 - A fail screen
 
 This encourages learning through feedback and repetition.
+
+---
+
+### Play Screen
+
+The play screen shows the toy's charging progress and live activity. It includes:
+
+- Battery charge display
+- Hand crank status
+- Charging stats
+- Live fun fact
+- Helpful charging tip
+
+This screen helps users understand how their actions, such as turning a hand crank, can generate energy.
 
 ---
 
@@ -101,17 +101,23 @@ These settings are designed to make the app easier to use and more accessible.
 
 ## Technologies Used
 
-- React Native
-- React
-- Expo
-- Expo Router
-- TypeScript
-- Expo Linear Gradient
-- Expo Audio
-- Expo Vector Icons
-- Expo Google Fonts
-- React Native Safe Area Context
-- React Native Gesture Handler
+- [React Native](https://reactnative.dev/docs/getting-started)
+- [React](https://react.dev/)
+- [Expo](https://docs.expo.dev/)
+- [Expo Router](https://docs.expo.dev/router/introduction/)
+- [TypeScript](https://www.typescriptlang.org/docs/)
+- [Expo Linear Gradient](https://docs.expo.dev/versions/latest/sdk/linear-gradient/)
+- [Expo Audio](https://docs.expo.dev/versions/latest/sdk/audio/)
+- [Expo Vector Icons](https://docs.expo.dev/guides/icons/)
+- [Expo Google Fonts](https://docs.expo.dev/develop/user-interface/fonts/)
+- [React Native Safe Area Context](https://docs.expo.dev/versions/latest/sdk/safe-area-context/)
+- [React Native Gesture Handler](https://docs.expo.dev/versions/latest/sdk/gesture-handler/)
+
+This project was created using the following command:
+
+```bash
+npx create-expo-app@latest --template default@sdk-55
+```
 
 ---
 
