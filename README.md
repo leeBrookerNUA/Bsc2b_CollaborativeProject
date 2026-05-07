@@ -129,7 +129,7 @@ app/
    index.tsx
    pages/
       HomePage.tsx
-      PlayPage.tsx
+      StartPage.tsx
       FactsTipsPage.tsx
       ...
 

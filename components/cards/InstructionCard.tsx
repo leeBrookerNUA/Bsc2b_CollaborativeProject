@@ -10,6 +10,9 @@ type IconLibrary = "Feather" | "MaterialIcons" | "Ionicons" | "FontAwesome";
 
 interface InstructionCardProps {
 
+  // Optional number used to show the order of the instruction step.
+  stepNumber?: number;
+
   // Optional icon library used for the instruction icon.
   // If none is provided, Feather is used by default.
   iconLibrary?: IconLibrary;
@@ -21,24 +24,29 @@ interface InstructionCardProps {
   | React.ComponentProps<typeof Ionicons>["name"]
   | React.ComponentProps<typeof FontAwesome>["name"];
 
-  // Instruction text displayed beside the icon.
+  // Main instruction heading.
   title: string;
 
-  // Instruction text displayed below title.
-  subTitle: string;
+  // List of short instruction points shown below the title.
+  items: readonly string[];
 }
 
 // Stores the available icon libraries in one object.
 // The selected library is chosen using the iconLibrary prop.
 const iconLibraries = { Feather, MaterialIcons, Ionicons, FontAwesome };
 
+// Controls the size of the small numbered badge.
+// Keeping this as a variable makes the badge easier to adjust.
+const BADGE_SIZE = 20;
+
 // InstructionCard is a reusable card component used to show one instruction step.
 // It displays an icon on the left and the instruction text beside it.
 export default function InstructionCard({
+  stepNumber,
   iconLibrary = "Feather",
   iconName,
   title,
-  subTitle,
+  items,
 }: InstructionCardProps) {
 
   // Selects the correct icon component based on the iconLibrary prop.
@@ -46,80 +54,146 @@ export default function InstructionCard({
 
   return (
     <View style={styles.card}>
-
-      {/* Row container places the icon and instruction text side by side. */}
       <View style={styles.contentRow}>
 
-        {/*  Circular icon container. It gives the icon a soft background so it stands out from the card. */}
-        <View style={styles.iconContainer}>
-          <Icon name={iconName as any} size={24} color="#FFFFFF" />
+        {/* Icon wrapper allows the number badge to sit on top of the icon circle. */}
+        <View style={styles.iconWrapper}>
+
+          {/* Circular icon container. It gives the icon a soft background so it stands out from the card. */}
+          <View style={styles.iconContainer}>
+            <Icon name={iconName as any} size={24} color="#FFFFFF" />
+          </View>
+
+          {/* Step number badge.*/}
+          {stepNumber !== undefined && (
+            <View style={styles.stepBadge}>
+              <AppHeading style={styles.stepText}>{stepNumber}</AppHeading>
+            </View>
+          )}
         </View>
+
+        {/* Text section contains the heading and each instruction item. */}
         <View style={styles.instructions}>
-        {/* Displays the instruction text passed in through the title prop. */}
-        <AppHeading style={styles.title}>{title}</AppHeading>
-        <AppText style={styles.subTitle}>{subTitle}</AppText>
+          <AppHeading style={styles.title}>{title}</AppHeading>
+
+          {items.map((item, index) => (
+            <View key={`${title}-${index}`} style={styles.bulletRow}>
+
+              <AppText style={styles.bullet}>•</AppText>
+              <AppText style={styles.itemText}>{item}</AppText>
+
+            </View>
+          ))}
+        </View>
       </View>
     </View>
-    </View >
   );
 }
 
 const styles = StyleSheet.create({
-
   // Main instruction card container.
-  // The rounded corners, border, and transparent background match the soft glass style used throughout the app.
   card: {
     width: "100%",
-    minHeight: 52,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderRadius: 16,
-    overflow: "hidden",
-    justifyContent: "center",
-    backgroundColor: "rgba(255, 255, 255, 0.3)",
+    paddingHorizontal: 14,
+    paddingVertical: 14,
+    borderRadius: 20,
+    backgroundColor: "rgba(255, 255, 255, 0.45)",
 
     borderWidth: 1,
-    borderColor: "rgba(255, 255, 255, 0.14)",
+    borderColor: "rgba(255, 255, 255, 0.45)",
   },
 
   // Places the icon and instruction text in a horizontal row.
+  // flex-start keeps longer instruction cards aligned neatly from the top.
   contentRow: {
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "flex-start",
+  },
+
+  // Wraps the icon and lets the badge be positioned relative to it.
+  iconWrapper: {
+    position: "relative",
+    marginRight: 12,
   },
 
   // Circular background behind the instruction icon.
-  // Equal width and height with borderRadius creates the circle shape.
   iconContainer: {
-    width: 32,
-    height: 32,
-    marginRight: 8,
-    borderRadius: 16,
+    width: 42,
+    height: 42,
+    borderRadius: 21,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "rgba(255, 255, 255, 0.15)",
+    backgroundColor: "rgba(255, 255, 255, 0.22)",
   },
 
+  // Small numbered badge shown over the icon.
+  // alignItems and justifyContent centre the number inside the circle.
+  stepBadge: {
+    position: "absolute",
+    top: -7,
+    left: -7,
+    width: BADGE_SIZE,
+    height: BADGE_SIZE,
+    borderRadius: BADGE_SIZE / 2,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "rgba(255, 255, 255, 0.95)",
+    overflow: "hidden",
+  },
+
+  // Number inside the badge. Solidifys that theres an order to follow as its for kids.
+  stepText: {
+    width: BADGE_SIZE,
+    height: BADGE_SIZE,
+    fontSize: 12,
+    lineHeight: BADGE_SIZE,
+    textAlign: "center",
+    textAlignVertical: "center",
+    color: "#7B4BD8",
+    includeFontPadding: false,
+
+    // Removes the default AppHeading shadow for the small badge number.
+    textShadowColor: "transparent",
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 0,
+  },
+
+  // Allows the text section to take up the remaining space beside the icon.
   instructions: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "flex-start"
   },
 
-  // Styles the instruction text.
-  // flex: 1 lets the text use the remaining space next to the icon.
+  // Main heading for each instruction.
+  // Slightly larger text makes the step title clear and easy for children to read.
   title: {
+    fontSize: 18,
+    lineHeight: 22,
+    marginBottom: 6,
+  },
+
+  // Places each bullet point and its text in a horizontal row.
+  // flex-start keeps multi-line bullet points aligned neatly from the top.
+  bulletRow: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    marginTop: 2,
+  },
+
+  // Styles the bullet symbol shown before each instruction point.
+  // The size and lineHeight are slightly larger so the bullet matches the body text.
+  bullet: {
+    fontSize: 16,
+    lineHeight: 22,
+    marginRight: 6,
+    opacity: 0.9,
+  },
+
+  // Styles the supporting instruction text.
+  // flex: 1 allows longer text to wrap properly within the card.
+  itemText: {
     flex: 1,
     fontSize: 16,
-    lineHeight: 18,
-  },
-
-  // Styles the supporting text below the heading.
-  // opacity makes it slightly softer than the main title.
-  subTitle: {
-    fontSize: 12,
-    marginBottom: 6,
-    opacity: 0.8,
-    textAlign: "left",
+    lineHeight: 21,
+    opacity: 0.95,
   },
 });
