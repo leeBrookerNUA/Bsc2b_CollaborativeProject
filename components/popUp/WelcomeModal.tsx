@@ -19,7 +19,7 @@ export default function WelcomeModal({ visible, onClose }: WelcomeModalProps) {
           colors={["#6DAEFF", "#3A86FF", "#3A86FF"]}
           style={styles.modalCard}
         >
-          {/* Lightning background image exported from Figma. It links to the energy theme and sits behind the main modal content. */}
+          {/* Lightning background image. It links to the energy theme and sits behind the main modal content. */}
           <View style={styles.lightningBackground} pointerEvents="none">
 
             <Image

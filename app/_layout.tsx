@@ -4,17 +4,17 @@ import React, { useEffect } from "react";
 import { loadSound } from "../audio/audio";
 
 import {
-  Fredoka_400Regular,
-  Fredoka_500Medium,
-  Fredoka_600SemiBold,
-  Fredoka_700Bold,
+    Fredoka_400Regular,
+    Fredoka_500Medium,
+    Fredoka_600SemiBold,
+    Fredoka_700Bold,
 } from "@expo-google-fonts/fredoka";
 
 import {
-  Quicksand_400Regular,
-  Quicksand_500Medium,
-  Quicksand_600SemiBold,
-  Quicksand_700Bold,
+    Quicksand_400Regular,
+    Quicksand_500Medium,
+    Quicksand_600SemiBold,
+    Quicksand_700Bold,
 } from "@expo-google-fonts/quicksand";
 
 // RootLayout is the main layout file for the app.
