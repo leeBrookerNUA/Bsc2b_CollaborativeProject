@@ -23,7 +23,7 @@ export default function ScreenBackground({ children }: ScreenBackgroundProps) {
 
         {/* ImageBackground adds the star pattern on top of the gradient. This gives every page the same playful visual style. */}
         <ImageBackground
-          source={require("../../assets/stars-bg.png")}
+          source={require("../../assets/images/stars-bg.png")}
           style={styles.starsBackground}
           imageStyle={styles.starsImage}
         >

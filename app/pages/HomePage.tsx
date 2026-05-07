@@ -4,31 +4,47 @@ import { StyleSheet, View } from "react-native";
 import Header from "../../components/base/Header";
 import ScreenBackground from "../../components/base/ScreenBackground";
 import MainButton from "../../components/buttons/MainButton";
+import WelcomeModal from "../../components/popUp/WelcomeModal";
 
-// This is the main home screen of the app. It gives the user quick access to the main sections: Play, Facts & Tips, Instructions, and Settings.
+// Stores whether the welcome modal has already been shown.
+// This is outside the component so it does not reset every time the Home page reloads.
+let hasSeenWelcomeModal = false;
+
+// This is the main home screen of the app.
+// It gives the user quick access to the main sections: Play, Facts & Tips, Instructions, and Settings.
 export default function HomePage() {
 
   // Gives access to Expo Router so the user can move between pages.
   const router = useRouter();
 
+  // Shows the welcome modal only if it has not already been shown.
+  const [welcomeVisible, setWelcomeVisible] = React.useState(
+    !hasSeenWelcomeModal
+  );
+
+  // Closes the welcome modal and remembers that it has already been shown.
+  function closeWelcomeModal() {
+    hasSeenWelcomeModal = true;
+    setWelcomeVisible(false);
+  }
+
   return (
     <ScreenBackground>
-      {/* Main page layout.This holds the header and the main navigation buttons for the app. */}
-      <View style={styles.page}>
 
+      {/* Main page layout. This holds the header, welcome modal, and main navigation buttons for the app. */}
+      <View style={styles.page}>
         <Header
           title="Home"
-          onBackPress={() => { }}
-          onSettingsPress={() => { }}
+          onBackPress={() => {}}
+          onSettingsPress={() => {
+            router.navigate("/pages/SettingsHubPage");
+          }}
         />
-
 
         <View style={styles.spacer16} />
 
         {/* Container adds padding around the menu buttons so they do not touch the edges of the screen. */}
         <View style={styles.container}>
-
-
           <MainButton
             title="Instructions"
             gradientColors={["#8EF0B3", "#5EDC95", "#2ECC71"]}
@@ -62,6 +78,7 @@ export default function HomePage() {
               router.navigate("/pages/QuizSelectPage");
             }}
           />
+
           <View style={styles.spacer16} />
 
           <MainButton
@@ -73,8 +90,10 @@ export default function HomePage() {
               router.navigate("/pages/StartPage");
             }}
           />
-
         </View>
+
+        {/* Welcome pop-up shown only once while the app is open. */}
+        <WelcomeModal visible={welcomeVisible} onClose={closeWelcomeModal} />
       </View>
     </ScreenBackground>
   );
