@@ -6,12 +6,16 @@ import BatteryCard from "@/components/cards/BatteryCard";
 import FunFactCard from "@/components/cards/FunFactCard";
 import StatCard from "@/components/cards/StatCard";
 import { useRouter } from "expo-router";
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import HelpTipCard from "../../components/cards/HelpTipCard";
 
 // This screen shows the main play area of the app. It displays the toy battery status, charging activity, useful stats, a live fun fact, and a helpful charging tip.
 export default function StartPage() {
+
+  const [batteryCharge, _setBatteryCharge] = useState<number>(65); // placeholder battery state
+
+  const [powerRecieved, _setPowerRecieved] = useState<number>(4.5);
 
   // Gives access to Expo Router so the user can move between pages.
   const router = useRouter();
@@ -44,9 +48,9 @@ export default function StartPage() {
             <BatteryCard
               title="Hand Crank is Turning!"
               subtitle="Charging Battery..."
-              chargeText="65% Charged!"
+              chargeText={`${batteryCharge}% Charged!`}
               remainingText="120 Cranks Remaining"
-              fillPercent={65}
+              fillPercent={batteryCharge}
             />
 
             <View style={styles.spacer16} />
@@ -80,7 +84,7 @@ export default function StartPage() {
               <StatCard
                 iconLibrary="MaterialIcons"
                 iconName="bolt"
-                value="4.8W"
+                value={`${powerRecieved}W`}
                 title="power"
                 iconColor="#2ECC71"
                 iconBgColor="rgba(46, 204, 113, 0.12)"
