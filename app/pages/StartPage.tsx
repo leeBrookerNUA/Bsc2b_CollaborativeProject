@@ -13,9 +13,17 @@ import HelpTipCard from "../../components/cards/HelpTipCard";
 // This screen shows the main play area of the app. It displays the toy battery status, charging activity, useful stats, a live fun fact, and a helpful charging tip.
 export default function StartPage() {
 
-  const [batteryCharge, _setBatteryCharge] = useState<number>(65); // placeholder battery state
+  // Placeholder battery charge state
+  const [batteryCharge, _setBatteryCharge] = useState<number>(65);
 
+  // Placeholder power recieved state
   const [powerRecieved, _setPowerRecieved] = useState<number>(4.5);
+
+  // Placeholder cranks remaining state
+  const [cranksRemaining, _setCranksRemaining] = useState<number>(125);
+
+  // Placeholder time left state
+  const [timeLeft, _setTimeLeft] = useState<number>(2.5);
 
   // Gives access to Expo Router so the user can move between pages.
   const router = useRouter();
@@ -26,7 +34,7 @@ export default function StartPage() {
       {/* Main page layout. The menu content is kept near the top, while the Back Home button stays near the bottom of the screen. */}
       <View style={styles.page}>
         <View>
-          
+
           <Header
             title="Play"
             leftIconName="arrow-circle-left"
@@ -41,7 +49,7 @@ export default function StartPage() {
 
           {/* Container adds padding around the play screen content so the cards do not touch the edges of the screen. */}
           <View style={styles.container}>
-            
+
             <View style={styles.spacer16} />
 
             {/* Battery card shows the current charging status. It displays the activity, battery percentage, and remaining cranks.*/}
@@ -49,7 +57,7 @@ export default function StartPage() {
               title="Hand Crank is Turning!"
               subtitle="Charging Battery..."
               chargeText={`${batteryCharge}% Charged!`}
-              remainingText="120 Cranks Remaining"
+              remainingText={`${cranksRemaining} Cranks Left`}
               fillPercent={batteryCharge}
             />
 
@@ -62,11 +70,11 @@ export default function StartPage() {
 
             {/* Stats row displays key charging information side by side. Each StatCard shows one small piece of data with its own icon. */}
             <View style={styles.statsRow}>
-            
+
               <StatCard
                 iconLibrary="AntDesign"
                 iconName="clock-circle"
-                value="2"
+                value={`${timeLeft}`}
                 title="hours"
                 iconColor="#FF9F1C"
                 iconBgColor="rgba(255, 159, 28, 0.12)"
@@ -75,7 +83,7 @@ export default function StartPage() {
               <StatCard
                 iconLibrary="Feather"
                 iconName="refresh-cw"
-                value="120"
+                value={`${cranksRemaining}`}
                 title="cranks left"
                 iconColor="#3A86FF"
                 iconBgColor="rgba(58, 134, 255, 0.12)"
